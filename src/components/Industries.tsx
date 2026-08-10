@@ -28,7 +28,7 @@ export function Industries() {
           {INDUSTRIES.map((industry, i) => (
             <ScrollCard
               key={industry.title}
-              delay={i * 55}
+              delay={i * 80}
               className={`h-full ${i === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
             >
               <Link

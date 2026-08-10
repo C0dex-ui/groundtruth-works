@@ -19,8 +19,9 @@ export function Hero() {
     offset: ['start start', 'end start'],
   })
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '12%'])
-  const fgY = useTransform(scrollYProgress, [0, 1], ['0%', '6%'])
+  /* Light parallax only — heavy transforms felt laggy on scroll */
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '6%'])
+  const fgY = useTransform(scrollYProgress, [0, 1], ['0%', '3%'])
 
   return (
     <section

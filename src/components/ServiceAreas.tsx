@@ -23,7 +23,7 @@ export function ServiceAreas() {
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
               Based in Mayflower, AR. We regularly work a 60–75 mile radius across Central Arkansas.
-              Select a city to view its map.
+              Select a city to open its page — the map shows the whole State of Arkansas.
             </p>
 
             <div
@@ -61,13 +61,11 @@ export function ServiceAreas() {
           </div>
 
           <div className="min-w-0">
+            {/* Fixed whole-Arkansas pin — does not switch to other states or city zooms */}
             <AreaMap
-              name={active.name}
-              lat={active.lat}
-              lng={active.lng}
-              delta={0.14}
+              mode="state"
               heightClass="h-64 sm:h-80 lg:h-[22rem]"
-              subtitle="Click a city chip to recenter the map"
+              subtitle="Google Maps · State of Arkansas only"
             />
           </div>
         </div>

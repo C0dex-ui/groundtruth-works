@@ -4,6 +4,7 @@ import { AreaMap } from '../components/AreaMap'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import {
+  buildCityMapEmbedUrl,
   getCityBySlug,
   PHONE_DISPLAY,
   PHONE_HREF,
@@ -84,12 +85,13 @@ export function ServiceAreaPage() {
               </div>
 
               <AreaMap
+                mode="city"
                 name={city.name}
                 lat={city.lat}
                 lng={city.lng}
-                delta={0.1}
+                zoom={12}
                 heightClass="h-80 sm:h-96 lg:h-[28rem]"
-                subtitle="Interactive map · OpenStreetMap"
+                subtitle="Google Maps · Arkansas city pin only"
               />
             </div>
 
@@ -152,8 +154,8 @@ export function ServiceAreasIndexPage() {
                 >
                   <div className="relative h-40 overflow-hidden bg-paper-dark">
                     <iframe
-                      title={`Map of ${city.name}, AR`}
-                      src={`https://www.openstreetmap.org/export/embed.html?bbox=${city.lng - 0.08}%2C${city.lat - 0.055}%2C${city.lng + 0.08}%2C${city.lat + 0.055}&layer=mapnik&marker=${city.lat}%2C${city.lng}`}
+                      title={`Google Map of ${city.name}, Arkansas`}
+                      src={buildCityMapEmbedUrl(city, 11)}
                       className="pointer-events-none h-full w-full scale-105 border-0"
                       loading="lazy"
                       tabIndex={-1}

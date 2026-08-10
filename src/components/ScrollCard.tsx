@@ -1,29 +1,24 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef, type ReactNode } from 'react'
+import { motion } from 'framer-motion'
+import type { ReactNode } from 'react'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
 
 type ScrollCardProps = {
   children: ReactNode
   className?: string
+  /** Stagger delay in ms (converted to seconds for the transition). */
   delay?: number
 }
 
+/** Smooth ease-out curve — soft start, no overshoot bounce. */
+const EASE_OUT_SMOOTH: [number, number, number, number] = [0.22, 1, 0.36, 1]
+
 /**
- * Subtle 3D lift + mild tilt as the card scrolls into view.
- * Fully disabled when prefers-reduced-motion is set.
+ * Entrance: slow fade + gentle rise once into view.
+ * No continuous scroll-linked 3D (that was the lag source).
+ * Honors prefers-reduced-motion.
  */
 export function ScrollCard({ children, className = '', delay = 0 }: ScrollCardProps) {
-  const ref = useRef<HTMLDivElement>(null)
   const reduced = usePrefersReducedMotion()
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'center center'],
-  })
-
-  const rotateX = useTransform(scrollYProgress, [0, 1], [8, 0])
-  const y = useTransform(scrollYProgress, [0, 1], [28, 0])
-  const opacity = useTransform(scrollYProgress, [0, 0.35, 1], [0.35, 0.9, 1])
-  const scale = useTransform(scrollYProgress, [0, 1], [0.96, 1])
 
   if (reduced) {
     return <div className={className}>{children}</div>
@@ -31,17 +26,16 @@ export function ScrollCard({ children, className = '', delay = 0 }: ScrollCardPr
 
   return (
     <motion.div
-      ref={ref}
       className={className}
-      style={{
-        rotateX,
-        y,
-        opacity,
-        scale,
-        transformPerspective: 900,
-        transformStyle: 'preserve-3d',
-        transitionDelay: `${delay}ms`,
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.12, margin: '0px 0px -8% 0px' }}
+      transition={{
+        duration: 0.85,
+        delay: Math.min(delay / 1000, 0.35),
+        ease: EASE_OUT_SMOOTH,
       }}
+      style={{ willChange: 'opacity, transform' }}
     >
       {children}
     </motion.div>

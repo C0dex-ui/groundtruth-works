@@ -21,7 +21,7 @@ export function Process() {
         <ol className="mt-8 grid list-none gap-3 p-0 sm:mt-12 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-5">
           {PROCESS.map((stage, i) => (
             <li key={stage.title} className="h-full">
-              <ScrollCard delay={i * 45} className="h-full">
+              <ScrollCard delay={i * 60} className="h-full">
                 <Link
                   to={stage.href}
                   className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm transition-colors hover:border-accent/40 hover:bg-white/8"

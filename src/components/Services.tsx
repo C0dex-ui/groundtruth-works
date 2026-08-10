@@ -33,7 +33,7 @@ export function Services() {
             <ScrollCard
               key={service.title}
               className={`md:col-span-1 ${i === 0 ? 'lg:col-span-7' : 'lg:col-span-5'}`}
-              delay={i * 40}
+              delay={i * 70}
             >
               <Link
                 to={service.href}
@@ -69,7 +69,7 @@ export function Services() {
             <ScrollCard
               key={service.title}
               className="md:col-span-1 lg:col-span-4"
-              delay={80 + i * 35}
+              delay={60 + i * 55}
             >
               <Link
                 to={service.href}

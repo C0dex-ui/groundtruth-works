@@ -209,21 +209,83 @@ export function getCityBySlug(slug: string): ServiceCity | undefined {
   return SERVICE_CITIES.find((c) => c.slug === slug)
 }
 
-/** Mayflower HQ — default map center for homepage overview. */
+/** Mayflower HQ (within Arkansas only). */
 export const MAP = {
   lat: 34.9568,
   lng: -92.4274,
   zoom: 9,
 }
 
-/** Build OpenStreetMap embed URL centered on a lat/lng with a pin. */
-export function buildMapEmbedUrl(lat: number, lng: number, delta = 0.12) {
-  const bbox = `${lng - delta}%2C${lat - delta * 0.7}%2C${lng + delta}%2C${lat + delta * 0.7}`
-  return `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat}%2C${lng}`
+/**
+ * Whole State of Arkansas — homepage map only.
+ * One pin for Arkansas; zoom shows the state (not neighboring states / out-of-state cities).
+ */
+export const ARKANSAS_STATE_MAP = {
+  name: 'Arkansas',
+  /** Geographic center of Arkansas */
+  lat: 34.8997,
+  lng: -92.4392,
+  /** Zoom ~7 frames the full state */
+  zoom: 7,
+  placeQuery: 'Arkansas, USA',
+} as const
+
+/**
+ * Google Maps embed — Arkansas locations only.
+ * Uses the standard maps embed endpoint (no API key required for basic place pins).
+ */
+export function buildMapEmbedUrl(
+  lat: number,
+  lng: number,
+  options?: { zoom?: number; place?: string },
+) {
+  const zoom = options?.zoom ?? 12
+  const query = options?.place
+    ? encodeURIComponent(options.place)
+    : `${lat},${lng}`
+  return `https://maps.google.com/maps?q=${query}&ll=${lat},${lng}&z=${zoom}&hl=en&output=embed`
 }
 
-export function buildMapLinkUrl(lat: number, lng: number, zoom = 12) {
-  return `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=${zoom}/${lat}/${lng}`
+/** Google Maps full-page link. */
+export function buildMapLinkUrl(
+  lat: number,
+  lng: number,
+  options?: { zoom?: number; place?: string },
+) {
+  const zoom = options?.zoom ?? 12
+  if (options?.place) {
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(options.place)}`
+  }
+  return `https://www.google.com/maps?q=${lat},${lng}&z=${zoom}`
+}
+
+/** Whole Arkansas state embed — single state pin, no other areas. */
+export function buildArkansasStateMapEmbedUrl() {
+  return buildMapEmbedUrl(ARKANSAS_STATE_MAP.lat, ARKANSAS_STATE_MAP.lng, {
+    zoom: ARKANSAS_STATE_MAP.zoom,
+    place: ARKANSAS_STATE_MAP.placeQuery,
+  })
+}
+
+export function buildArkansasStateMapLinkUrl() {
+  return buildMapLinkUrl(ARKANSAS_STATE_MAP.lat, ARKANSAS_STATE_MAP.lng, {
+    zoom: ARKANSAS_STATE_MAP.zoom,
+    place: ARKANSAS_STATE_MAP.placeQuery,
+  })
+}
+
+/** City map — still Arkansas only (`City, AR`). */
+export function buildCityMapEmbedUrl(city: ServiceCity, zoom = 12) {
+  return buildMapEmbedUrl(city.lat, city.lng, {
+    zoom,
+    place: `${city.name}, AR`,
+  })
+}
+
+export function buildCityMapLinkUrl(city: ServiceCity) {
+  return buildMapLinkUrl(city.lat, city.lng, {
+    place: `${city.name}, Arkansas`,
+  })
 }
 
 
