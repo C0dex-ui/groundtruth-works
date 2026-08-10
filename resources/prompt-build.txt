@@ -1,0 +1,171 @@
+HOMEPAGE REDESIGN PROMPT – GROUND TRUTH WORKS / GROWFULLY
+=======================================================
+
+GOAL
+Redesign ONLY the homepage of https://groundtruth-works.lovable.app/
+Use 100% real existing content from the current site. Do NOT invent any services, industries, project names, cities, descriptions, or claims.
+Integrate the following sections fully into the homepage with clear “View All” buttons that link to their respective pages:
+- Services
+- Industries
+- Service Areas (with map)
+- Projects (photo grid gallery)
+
+DESIGN SYSTEM
+Apply “Industrial Material Design 3 + Controlled 3D Scroll Effects”.
+
+Core principles:
+- Clean, high-contrast industrial aesthetic suitable for a land clearing / site grading / excavation company
+- Strong visual hierarchy and card-based layouts with subtle elevation
+- Large, bold, condensed headlines
+- Mobile-first, high readability, large touch targets
+- Professional, trustworthy, rugged feel
+
+DESIGN REFERENCES (use as visual + interaction inspiration only):
+- Dribbble excavation and construction service websites by FleexStudio (strong industrial card layouts, clear hierarchy, high-visibility CTAs, project showcase structure)
+- Modern industrial / construction templates on ThemeForest that use clean Material-style cards and subtle parallax
+- Controlled scroll-depth examples (layered parallax + mild card tilt on scroll) rather than heavy full-3D WebGL scenes
+Keep effects restrained and performant for a local contractor website.
+
+3D / SCROLL EFFECTS (subtle and purposeful only):
+- Hero: multi-layer parallax (background site moves slower than foreground equipment)
+- Service cards: slight 3D lift + mild tilt (perspective + rotateX/Y) when scrolling into view
+- Process steps: cards rise with Z-depth as they enter viewport
+- Keep all effects restrained, performant, and respectful of prefers-reduced-motion
+- Prefer CSS scroll-driven animations + Framer Motion / GSAP ScrollTrigger (no heavy WebGL)
+
+COLOR PALETTE (exact – do not change)
+- Primary Accent / CTA: #c2ff36 (lime green)
+- Black / Header: #000000
+- Secondary text: #5a5a57
+- Light background / paper: #f2f2f0
+- White: #ffffff
+
+TYPOGRAPHY (exact)
+- Hero / large display headlines: Anton
+- Section headings & condensed text: Barlow Condensed (weight 600)
+- Body text: Roboto (400 & 500)
+
+HOMEPAGE STRUCTURE (in this exact order)
+
+1. STICKY HEADER
+- Black background (#000000)
+- Logo (Growfully – Site Work · Land Clearing · Grading)
+- Navigation: Services, Industries, Service Areas, Projects, About, Contact
+- Phone number: (501) 269-6860
+- Primary CTA button “GET A QUOTE” in #c2ff36
+
+2. HERO SECTION
+- Full-bleed construction site / equipment photo with dark overlay
+- Large condensed white headline (Anton):
+  WE CLEAR IT.
+  WE GRADE IT.
+  YOU BUILD ON IT.
+- Subtext: Land clearing, site grading and excavation across Central Arkansas.
+- Two buttons side by side:
+  - Primary: GET A QUOTE (#c2ff36)
+  - Secondary: CALL (501) 269-6860 (outlined white)
+- Small text at bottom: Mayflower, AR · Serving Central Arkansas since 2002
+- Apply subtle multi-layer parallax 3D effect
+
+3. TRUST BAR
+Horizontal strip showing real trust signals:
+- BBB A+ Accredited business
+- 24 yrs Working Central Arkansas since 2002
+- Insured
+- Licensed and covered on commercial sites
+- Free On-site estimate, written number
+
+4. SERVICES SECTION
+Heading: What We Do
+Subheading: Full-service land clearing, grading and excavation
+
+Display all 8 real services as cards (with icons or small photos if available):
+
+1. Land Clearing
+   Trees, stumps and undergrowth removed down to workable ground, on tracts from one acre up.
+
+2. Site Grading
+   Rough and fine grade to plan elevations, with the slope and compaction your pad detail calls for.
+
+3. Excavation Services
+   Cut, fill, trenching and bulk earthmoving for footings, utilities, ponds and building pads.
+
+4. Site Preparation
+   Raw ground to buildable site: clear, strip, grade, compact and stone in one contracted scope.
+
+5. Forestry Mulching
+   Standing vegetation ground in place to a mulch mat — no burn piles, no hauling, minimal soil disturbance.
+
+6. Brush Clearing
+   Undergrowth, briar and small-diameter growth cleared for access, fence lines and sight lines.
+
+7. Dirt Work
+   Hauling, spreading and shaping fill — pads, access roads, parking areas and balanced cut-and-fill.
+
+8. Drainage & Erosion Control
+   Positive drainage, swales, culverts and silt control that keeps a finished grade where you put it.
+
+Each card should have a subtle 3D lift/tilt on scroll.
+At the bottom of the section place a clear button:
+“View All Services” → links to the Services page
+
+5. PROCESS SECTION
+Heading: How a Site Gets Built
+Intro text (exact): “Raw ground to a pad you can build on, in five stages. We do all five, so nobody is waiting on another contractor to finish the dirt.”
+
+Display the 5 real stages as numbered cards with depth animation:
+1. Clear
+2. Strip
+3. Grade
+4. Compact
+5. Base
+
+(Use the exact short descriptions that currently exist on the site for each stage.)
+
+6. INDUSTRIES SECTION
+Heading: Who We Work For
+Show the three real industries as cards:
+
+- Solar Site Preparation
+- General Contractors
+- Commercial Development
+
+(Use the exact descriptions currently on the site.)
+Button at the bottom: “View All Industries” → links to Industries page
+
+7. SERVICE AREAS SECTION
+Heading: Where We Work
+Text: Based in Mayflower, AR. We regularly work a 60–75 mile radius across Central Arkansas.
+
+List the real cities:
+Mayflower, Conway, Vilonia, Greenbrier, Maumelle, North Little Rock, Little Rock, Sherwood, Benton, Bryant, Cabot, Jacksonville, Searcy, Russellville, Hot Springs
+
+Embed an interactive map centered on Mayflower, Arkansas.
+Button: “See All Service Areas” → links to Service Areas page
+
+8. PROJECTS SECTION
+Heading: Our Work
+Create a clean responsive photo grid gallery (3–4 columns on desktop).
+Structure it ready for real project photos.
+Important: Do NOT invent any project titles, locations, captions, or descriptions. Only use real photos the owner will upload later.
+Button: “View All Projects” → links to Projects page
+
+9. FINAL CTA / QUOTE SECTION
+Heading: Get a Real Number
+Exact text: “Tell us what you need cleared or graded and David gets back to you with a real number.”
+Include the existing quote form fields.
+Large phone number: (501) 269-6860
+Primary button: GET A QUOTE (#c2ff36)
+
+10. FOOTER
+Keep simple and professional with logo, phone, navigation links, and copyright.
+
+ADDITIONAL RULES
+- Use only the real content listed above. No placeholder text, no fake projects, no invented claims.
+- Maintain strong conversion focus (phone number and free estimate always visible).
+- Mobile-first, fast loading, accessible (respect prefers-reduced-motion).
+- High contrast, large touch targets, industrial and trustworthy feel.
+- All “View All” buttons must link to the correct existing pages.
+- Draw visual inspiration from the listed design references while staying true to the Industrial Material Design 3 + controlled 3D scroll direction.
+
+Build a clean, modern, high-converting homepage that feels professional and industrial while fully integrating the real Services, Industries, Service Areas (with map), and Projects sections.

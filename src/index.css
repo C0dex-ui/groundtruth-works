@@ -1,0 +1,421 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #c2ff36;
+  --color-accent-hover: #b0ec28;
+  --color-accent-dim: #9ed12a;
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #141414;
+  --color-steel: #1c1c1a;
+  --color-muted: #5a5a57;
+  --color-muted-light: #8a8a86;
+  --color-paper: #f2f2f0;
+  --color-paper-dark: #e4e4e0;
+  --color-white: #ffffff;
+  --color-line: rgb(0 0 0 / 0.08);
+  --font-display: "Anton", sans-serif;
+  --font-condensed: "Barlow Condensed", sans-serif;
+  --font-body: "Roboto", system-ui, sans-serif;
+  --shadow-card: 0 1px 0 rgb(255 255 255 / 0.06) inset, 0 12px 40px rgb(0 0 0 / 0.1);
+  --shadow-lift: 0 20px 50px rgb(0 0 0 / 0.14);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--color-ink);
+    background: var(--color-paper);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  /* Focus rings — always visible, never hide label text */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  button:focus:not(:focus-visible),
+  a:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.02em;
+  }
+
+  .font-condensed {
+    font-family: var(--font-condensed);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  .section-pad {
+    padding-block: clamp(4rem, 9vw, 7rem);
+    padding-inline: clamp(1rem, 4vw, 2rem);
+  }
+
+  .container-site {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+  }
+
+  .eyebrow {
+    font-family: var(--font-condensed);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-muted);
+  }
+
+  .heading-xl {
+    font-family: var(--font-condensed);
+    font-weight: 600;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .heading-display {
+    font-family: var(--font-display);
+    font-size: clamp(2.85rem, 10vw, 6rem);
+    line-height: 0.92;
+    text-transform: uppercase;
+  }
+
+  .card-industrial {
+    background: var(--color-white);
+    border: 1px solid var(--color-line);
+    box-shadow: var(--shadow-card);
+    transition:
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.35s ease;
+  }
+
+  .card-industrial:hover {
+    box-shadow: var(--shadow-lift);
+  }
+
+  .accent-bar {
+    width: 3rem;
+    height: 0.28rem;
+    background: var(--color-accent);
+    border-radius: 999px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.375rem;
+    background: var(--color-accent);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--color-ink);
+    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  }
+
+  .btn-primary,
+  .btn-primary:hover,
+  .btn-primary:focus-visible,
+  .btn-primary:active {
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  .btn-primary:hover,
+  .btn-primary:focus-visible {
+    background: var(--color-accent-hover);
+    color: var(--color-ink);
+  }
+
+  .btn-primary svg {
+    color: inherit;
+    flex-shrink: 0;
+  }
+
+  .btn-ghost-light {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.375rem;
+    border: 2px solid rgb(255 255 255 / 0.9);
+    background: transparent;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .btn-ghost-light:hover,
+  .btn-ghost-light:focus-visible {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: var(--color-ink);
+  }
+
+  .btn-ghost-light:active {
+    background: #f2f2f0;
+    color: var(--color-ink);
+  }
+
+  .btn-ghost-light svg {
+    color: inherit;
+    flex-shrink: 0;
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.375rem;
+    border: 2px solid var(--color-ink);
+    background: transparent;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--color-ink);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .btn-outline:hover,
+  .btn-outline:focus-visible,
+  .btn-outline:active {
+    background: var(--color-ink);
+    border-color: var(--color-ink);
+    color: #ffffff;
+  }
+
+  .btn-outline svg {
+    color: inherit;
+    flex-shrink: 0;
+  }
+
+  /* Solid dark CTA — always light text */
+  .btn-solid {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.375rem;
+    border: 2px solid var(--color-ink);
+    background: var(--color-ink);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .btn-solid:hover,
+  .btn-solid:focus-visible,
+  .btn-solid:active {
+    background: #1c1c1a;
+    border-color: #1c1c1a;
+    color: #ffffff;
+  }
+
+  .btn-solid svg {
+    color: inherit;
+    flex-shrink: 0;
+  }
+
+  .steel-grid {
+    background-color: var(--color-ink);
+    background-image:
+      linear-gradient(rgb(255 255 255 / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .noise-fade {
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 40%, rgb(194 255 54 / 0.12), transparent 55%),
+      radial-gradient(ellipse 50% 40% at 80% 20%, rgb(255 255 255 / 0.05), transparent 50%);
+  }
+
+  .img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border-radius: 999px;
+    border: 1px solid rgb(0 0 0 / 0.12);
+    background: #ffffff;
+    color: #0a0a0a;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.25;
+    cursor: pointer;
+    transition:
+      background 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  /* Force label visibility — never white-on-white or ink-on-ink */
+  .chip,
+  .chip span {
+    color: #0a0a0a;
+  }
+
+  .chip-icon {
+    color: rgb(10 10 10 / 0.45);
+    flex-shrink: 0;
+  }
+
+  /*
+   * Active / hover / focus / pressed — high-contrast pair only.
+   * !important beats conflicting Tailwind utility classes.
+   */
+  .chip:hover,
+  .chip:focus-visible,
+  .chip:active,
+  .chip[aria-selected="true"],
+  .chip.is-active {
+    background: #0a0a0a !important;
+    border-color: #0a0a0a !important;
+    color: #ffffff !important;
+  }
+
+  .chip:hover span,
+  .chip:focus-visible span,
+  .chip:active span,
+  .chip[aria-selected="true"] span,
+  .chip.is-active span {
+    color: #ffffff !important;
+  }
+
+  .chip:hover .chip-icon,
+  .chip:focus-visible .chip-icon,
+  .chip:active .chip-icon,
+  .chip[aria-selected="true"] .chip-icon,
+  .chip.is-active .chip-icon {
+    color: #c2ff36 !important;
+  }
+
+  /* Mobile sticky bar buttons — explicit contrast pairs */
+  .mobile-cta-call {
+    display: inline-flex;
+    min-height: 3rem;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    border: 1px solid rgb(255 255 255 / 0.3);
+    background: transparent;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .mobile-cta-call:hover,
+  .mobile-cta-call:focus-visible,
+  .mobile-cta-call:active {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #0a0a0a;
+  }
+
+  .mobile-cta-quote {
+    display: inline-flex;
+    min-height: 3rem;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    background: var(--color-accent);
+    color: #0a0a0a;
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .mobile-cta-quote:hover,
+  .mobile-cta-quote:focus-visible,
+  .mobile-cta-quote:active {
+    background: var(--color-accent-hover);
+    color: #0a0a0a;
+  }
+
+  /* Nav links on dark surfaces */
+  .nav-link-dark {
+    color: rgb(255 255 255 / 0.9);
+  }
+
+  .nav-link-dark:hover,
+  .nav-link-dark:focus-visible {
+    color: var(--color-accent);
+  }
+
+  .nav-link-dark[aria-current="page"],
+  .nav-link-dark.is-active {
+    color: var(--color-accent);
+  }
+}
