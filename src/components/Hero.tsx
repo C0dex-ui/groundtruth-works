@@ -11,6 +11,37 @@ import {
 } from '../data/content'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
 
+/** Soft ease-out — same family as ScrollCard for a consistent site feel */
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
+
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.08,
+    },
+  },
+}
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.85, ease: EASE },
+  },
+}
+
+const fadeUpSlow = {
+  hidden: { opacity: 0, y: 22 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.95, ease: EASE },
+  },
+}
+
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
   const reduced = usePrefersReducedMotion()
@@ -19,9 +50,7 @@ export function Hero() {
     offset: ['start start', 'end start'],
   })
 
-  /* Light parallax only — heavy transforms felt laggy on scroll */
   const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '6%'])
-  const fgY = useTransform(scrollYProgress, [0, 1], ['0%', '3%'])
 
   return (
     <section
@@ -29,9 +58,13 @@ export function Hero() {
       className="relative isolate overflow-hidden bg-ink text-white"
       aria-labelledby="hero-heading"
     >
+      {/* Media: gentle fade-in, optional light parallax */}
       <motion.div
         className="absolute inset-0 -z-20"
         style={reduced ? undefined : { y: bgY }}
+        initial={reduced ? false : { opacity: 0, scale: 1.04 }}
+        animate={reduced ? undefined : { opacity: 1, scale: 1 }}
+        transition={{ duration: 1.35, ease: EASE }}
         aria-hidden
       >
         {reduced ? (
@@ -60,32 +93,46 @@ export function Hero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/35 to-ink/45" />
       <div className="noise-fade pointer-events-none absolute inset-0 -z-10" />
 
-      {/*
-        Height: full viewport minus sticky header.
-        Mobile also leaves room for the bottom CTA bar (~4.5rem + safe area).
-      */}
       <div className="hero-shell container-site relative flex min-h-[calc(100svh-4.25rem)] flex-col justify-center py-10 sm:min-h-[calc(100svh-4.75rem)] sm:py-12 lg:py-14 max-sm:min-h-[calc(100svh-4.25rem-5.25rem)] max-sm:pb-8">
-        <motion.div style={reduced ? undefined : { y: fgY }} className="flex w-full min-w-0 flex-col">
+        <motion.div
+          className="flex w-full min-w-0 flex-col"
+          variants={reduced ? undefined : container}
+          initial={reduced ? false : 'hidden'}
+          animate={reduced ? undefined : 'show'}
+        >
           <div className="max-w-3xl min-w-0">
-            <div className="label mb-3 inline-flex max-w-full items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[0.7rem] text-accent backdrop-blur-sm sm:mb-5 sm:text-xs">
+            <motion.div
+              variants={reduced ? undefined : fadeUp}
+              className="label mb-3 inline-flex max-w-full items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[0.7rem] text-accent backdrop-blur-sm sm:mb-5 sm:text-xs"
+            >
               <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden />
               <span className="truncate">Mayflower · Central Arkansas</span>
-            </div>
+            </motion.div>
 
-            <h1 id="hero-heading" className="t-hero max-w-[16ch]">
+            <motion.h1
+              id="hero-heading"
+              variants={reduced ? undefined : fadeUpSlow}
+              className="t-hero max-w-[16ch]"
+            >
               WE CLEAR IT.
               <br />
               WE GRADE IT.
               <br />
               <span className="text-accent">YOU BUILD ON IT.</span>
-            </h1>
+            </motion.h1>
 
-            <p className="t-lead mt-4 max-w-xl text-white/90 sm:mt-6">
+            <motion.p
+              variants={reduced ? undefined : fadeUp}
+              className="t-lead mt-4 max-w-xl text-white/90 sm:mt-6"
+            >
               Land clearing, site grading and excavation across Central Arkansas.
               Owner-run site work since 2002 — free on-site estimates, written numbers.
-            </p>
+            </motion.p>
 
-            <div className="btn-row mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center">
+            <motion.div
+              variants={reduced ? undefined : fadeUp}
+              className="btn-row mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center"
+            >
               <Link to="/get-a-quote" className="btn-primary">
                 GET A QUOTE
                 <ArrowRight className="h-4 w-4 shrink-0" />
@@ -93,12 +140,20 @@ export function Hero() {
               <a href={PHONE_HREF} className="btn-ghost-light">
                 CALL {PHONE_DISPLAY}
               </a>
-            </div>
+            </motion.div>
 
-            <p className="mt-5 text-sm text-white/55 sm:mt-8">{LOCATION_LINE}</p>
+            <motion.p
+              variants={reduced ? undefined : fadeUp}
+              className="mt-5 text-sm text-white/55 sm:mt-8"
+            >
+              {LOCATION_LINE}
+            </motion.p>
           </div>
 
-          <div className="mt-8 flex w-full min-w-0 flex-col gap-3 border-t border-white/10 pt-6 sm:mt-10 sm:gap-4 sm:pt-8 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
+          <motion.div
+            variants={reduced ? undefined : fadeUp}
+            className="mt-8 flex w-full min-w-0 flex-col gap-3 border-t border-white/10 pt-6 sm:mt-10 sm:gap-4 sm:pt-8 lg:flex-row lg:items-center lg:justify-between lg:gap-8"
+          >
             <dl className="grid w-full max-w-lg grid-cols-3 gap-2 sm:gap-3">
               {[
                 { k: 'Since', v: '2002' },
@@ -125,7 +180,7 @@ export function Hero() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
