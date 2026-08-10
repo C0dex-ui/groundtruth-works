@@ -18,7 +18,7 @@ export function AreaMap({
   lng,
   delta = 0.12,
   zoom = 12,
-  heightClass = 'h-72 sm:h-80 lg:h-[22rem]',
+  heightClass = 'h-64 sm:h-80 lg:h-[22rem]',
   subtitle,
 }: AreaMapProps) {
   const embedSrc = buildMapEmbedUrl(lat, lng, delta)
@@ -28,7 +28,7 @@ export function AreaMap({
     <div className="card-industrial overflow-hidden rounded-2xl">
       <div className="flex items-center justify-between gap-3 border-b border-black/8 bg-ink px-4 py-3 text-white">
         <div className="min-w-0">
-          <span className="font-condensed block truncate text-sm uppercase tracking-[0.14em]">
+          <span className="label block truncate text-sm">
             {name}, AR
           </span>
           {subtitle && (

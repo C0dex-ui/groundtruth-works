@@ -24,12 +24,16 @@ export function Industries() {
           </Link>
         </div>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
           {INDUSTRIES.map((industry, i) => (
-            <ScrollCard key={industry.title} delay={i * 55} className="h-full">
+            <ScrollCard
+              key={industry.title}
+              delay={i * 55}
+              className={`h-full ${i === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
+            >
               <Link
                 to={industry.href}
-                className="card-industrial group relative flex h-full min-h-[26rem] flex-col overflow-hidden rounded-2xl"
+                className="card-industrial group relative flex h-full min-h-[18rem] flex-col overflow-hidden rounded-2xl sm:min-h-[22rem] lg:min-h-[26rem]"
               >
                 <img
                   src={industry.image}
@@ -39,16 +43,16 @@ export function Industries() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-transparent" />
                 <div className="relative mt-auto p-6 sm:p-7">
-                  <span className="font-condensed text-xs uppercase tracking-[0.18em] text-accent">
+                  <span className="label text-xs text-accent">
                     0{i + 1} / Industry
                   </span>
-                  <h3 className="font-condensed mt-2 text-3xl uppercase tracking-wide text-white">
+                  <h3 className="font-display mt-2 text-3xl uppercase text-white">
                     {industry.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-white/80">
+                  <p className="mt-3 font-body text-sm leading-relaxed text-white/80">
                     {industry.description}
                   </p>
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-white">
+                  <span className="label mt-5 inline-flex items-center gap-1.5 text-sm text-white">
                     View industry
                     <ArrowRight className="h-4 w-4 text-accent transition-transform group-hover:translate-x-1" />
                   </span>

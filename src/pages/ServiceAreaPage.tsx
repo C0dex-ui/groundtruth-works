@@ -94,9 +94,7 @@ export function ServiceAreaPage() {
             </div>
 
             <div className="mt-14">
-              <h2 className="font-condensed text-2xl uppercase tracking-wide text-ink">
-                Other cities we serve
-              </h2>
+              <h2 className="heading-xl text-ink">Other cities we serve</h2>
               <div className="mt-5 flex flex-wrap gap-2">
                 {others.map((c) => (
                   <Link
@@ -165,7 +163,7 @@ export function ServiceAreasIndexPage() {
                   </div>
                   <div className="flex items-center justify-between gap-3 p-4">
                     <div>
-                      <p className="font-condensed text-xl uppercase tracking-wide text-ink">
+                      <p className="font-display text-xl uppercase text-ink">
                         {city.name}, AR
                       </p>
                       <p className="mt-0.5 text-xs text-muted">

@@ -28,16 +28,16 @@ export function Services() {
         </div>
 
         {/* High-yield bento: 2 featured heroes + 6 compact cards */}
-        <div className="mt-10 grid gap-4 lg:grid-cols-12">
+        <div className="mt-8 grid gap-3 sm:mt-10 sm:gap-4 md:grid-cols-2 lg:grid-cols-12">
           {featured.map((service, i) => (
             <ScrollCard
               key={service.title}
-              className={i === 0 ? 'lg:col-span-7' : 'lg:col-span-5'}
+              className={`md:col-span-1 ${i === 0 ? 'lg:col-span-7' : 'lg:col-span-5'}`}
               delay={i * 40}
             >
               <Link
                 to={service.href}
-                className="card-industrial group relative flex h-full min-h-[20rem] flex-col overflow-hidden rounded-2xl sm:min-h-[22rem]"
+                className="card-industrial group relative flex h-full min-h-[16rem] flex-col overflow-hidden rounded-2xl sm:min-h-[20rem] lg:min-h-[22rem]"
               >
                 <img
                   src={service.image}
@@ -46,17 +46,17 @@ export function Services() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/10" />
-                <div className="relative mt-auto p-6 sm:p-8">
-                  <span className="inline-flex rounded-full bg-accent px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-ink">
+                <div className="relative mt-auto p-4 sm:p-6 lg:p-8">
+                  <span className="label inline-flex rounded-full bg-accent px-2.5 py-1 text-[0.65rem] text-ink">
                     Core service
                   </span>
-                  <h3 className="font-condensed mt-3 text-3xl uppercase tracking-wide text-white sm:text-4xl">
+                  <h3 className="font-display mt-3 text-2xl uppercase text-white sm:text-3xl lg:text-4xl">
                     {service.title}
                   </h3>
-                  <p className="mt-2 max-w-md text-sm leading-relaxed text-white/80 sm:text-base">
+                  <p className="mt-2 max-w-md font-body text-sm leading-relaxed text-white/80 sm:text-base">
                     {service.description}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+                  <span className="label mt-4 inline-flex items-center gap-1.5 text-sm text-accent">
                     Explore
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </span>
@@ -66,7 +66,11 @@ export function Services() {
           ))}
 
           {rest.map((service, i) => (
-            <ScrollCard key={service.title} className="lg:col-span-4" delay={80 + i * 35}>
+            <ScrollCard
+              key={service.title}
+              className="md:col-span-1 lg:col-span-4"
+              delay={80 + i * 35}
+            >
               <Link
                 to={service.href}
                 className="card-industrial group flex h-full flex-col overflow-hidden rounded-2xl"
@@ -80,14 +84,12 @@ export function Services() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent opacity-80" />
                 </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <h3 className="font-condensed text-xl uppercase tracking-wide text-ink">
-                    {service.title}
-                  </h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
+                <div className="flex flex-1 flex-col p-4 sm:p-5">
+                  <h3 className="heading-md text-ink">{service.title}</h3>
+                  <p className="mt-2 flex-1 font-body text-sm leading-relaxed text-muted">
                     {service.description}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-ink">
+                  <span className="label mt-4 inline-flex items-center gap-1 text-sm text-ink">
                     Learn more
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                   </span>

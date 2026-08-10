@@ -9,11 +9,11 @@ import { QuoteCTA } from '../components/QuoteCTA'
 import { ServiceAreas } from '../components/ServiceAreas'
 import { Services } from '../components/Services'
 import { TrustBar } from '../components/TrustBar'
-import { PHONE_DISPLAY, PHONE_HREF } from '../data/content'
+import { PHONE_HREF } from '../data/content'
 
 export function HomePage() {
   return (
-    <div className="min-h-screen bg-paper">
+    <div className="min-h-svh min-w-0 overflow-x-clip bg-paper">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-ink"
@@ -21,7 +21,7 @@ export function HomePage() {
         Skip to content
       </a>
       <Header />
-      <main id="main">
+      <main id="main" className="min-w-0">
         <Hero />
         <TrustBar />
         <Services />
@@ -33,17 +33,26 @@ export function HomePage() {
       </main>
       <Footer />
 
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-ink/95 p-3 backdrop-blur-md sm:hidden">
-        <div className="flex gap-2">
+      {/* Mobile conversion bar — safe-area for notched phones */}
+      <div
+        className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-ink/95 px-3 pt-3 backdrop-blur-md sm:hidden"
+        style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
+      >
+        <div className="mx-auto flex max-w-lg gap-2">
           <a href={PHONE_HREF} className="mobile-cta-call">
-            Call {PHONE_DISPLAY}
+            Call
           </a>
           <Link to="/get-a-quote" className="mobile-cta-quote">
             GET A QUOTE
           </Link>
         </div>
       </div>
-      <div className="h-[4.5rem] sm:hidden" aria-hidden />
+      {/* Spacer so footer content clears the sticky bar + home indicator */}
+      <div
+        className="sm:hidden"
+        style={{ height: 'calc(4.75rem + env(safe-area-inset-bottom))' }}
+        aria-hidden
+      />
     </div>
   )
 }

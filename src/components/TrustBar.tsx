@@ -5,23 +5,25 @@ const ICONS = [BadgeCheck, Clock3, Shield, FileCheck2]
 
 export function TrustBar() {
   return (
-    <section className="relative z-10 -mt-0 border-y border-black/10 bg-white" aria-label="Trust signals">
+    <section className="relative z-10 border-y border-black/10 bg-white" aria-label="Trust signals">
       <div className="container-site grid grid-cols-2 divide-x divide-y divide-black/8 md:grid-cols-4 md:divide-y-0">
         {TRUST.map((item, i) => {
           const Icon = ICONS[i]
           return (
             <div
               key={item.label}
-              className="flex items-start gap-3 px-4 py-6 sm:gap-4 sm:px-6 sm:py-7"
+              className="flex min-w-0 items-start gap-2.5 px-3 py-5 sm:gap-4 sm:px-6 sm:py-7"
             >
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-ink text-accent">
-                <Icon className="h-5 w-5" aria-hidden />
+              <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-ink text-accent sm:h-11 sm:w-11">
+                <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden />
               </span>
-              <div>
-                <p className="font-condensed text-xl uppercase tracking-wide text-ink sm:text-2xl">
+              <div className="min-w-0">
+                <p className="font-display text-[clamp(1.2rem,3vw,2rem)] uppercase leading-none text-ink">
                   {item.label}
                 </p>
-                <p className="mt-0.5 text-sm leading-snug text-muted">{item.detail}</p>
+                <p className="label mt-1 text-[0.72rem] leading-tight text-ink/75 sm:text-[0.85rem]">
+                  {item.detail}
+                </p>
               </div>
             </div>
           )

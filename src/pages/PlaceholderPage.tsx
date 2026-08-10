@@ -18,13 +18,9 @@ export function PlaceholderPage({ title, description }: PlaceholderPageProps) {
       <Header />
       <main id="main" className="section-pad bg-paper">
         <div className="container-site max-w-2xl">
-          <p className="font-condensed text-sm uppercase tracking-[0.18em] text-muted">
-            Growfully
-          </p>
-          <h1 className="font-condensed mt-2 text-4xl uppercase tracking-wide text-ink sm:text-5xl">
-            {title}
-          </h1>
-          <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+          <p className="eyebrow">Growfully</p>
+          <h1 className="heading-xl mt-2 text-ink">{title}</h1>
+          <p className="t-lead mt-4 text-muted">
             {description ??
               'This page is linked from the redesigned homepage. Interior content will be migrated next. Call for a free on-site estimate in the meantime.'}
           </p>

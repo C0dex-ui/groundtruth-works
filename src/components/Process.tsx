@@ -18,7 +18,7 @@ export function Process() {
           </p>
         </div>
 
-        <ol className="mt-12 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-5">
+        <ol className="mt-8 grid list-none gap-3 p-0 sm:mt-12 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-5">
           {PROCESS.map((stage, i) => (
             <li key={stage.title} className="h-full">
               <ScrollCard delay={i * 45} className="h-full">
@@ -39,10 +39,12 @@ export function Process() {
                     </span>
                   </div>
                   <div className="flex flex-1 flex-col p-4">
-                    <h3 className="font-condensed text-2xl uppercase tracking-wide">
-                      {stage.title}
+                    <h3 className="heading-md text-white">
+                      {stage.step}. {stage.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-white/65">{stage.description}</p>
+                    <p className="mt-2 font-body text-sm leading-relaxed text-white/65">
+                      {stage.description}
+                    </p>
                   </div>
                 </Link>
               </ScrollCard>

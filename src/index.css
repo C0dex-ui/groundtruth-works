@@ -13,9 +13,11 @@
   --color-paper-dark: #e4e4e0;
   --color-white: #ffffff;
   --color-line: rgb(0 0 0 / 0.08);
-  --font-display: "Anton", sans-serif;
-  --font-condensed: "Barlow Condensed", sans-serif;
+  /* Match live groundtruth-works.lovable.app font stack */
+  --font-display: "Anton", "Arial Narrow", sans-serif;
+  --font-condensed: "Barlow Condensed", "Arial Narrow", sans-serif;
   --font-body: "Roboto", system-ui, sans-serif;
+  --font-sans: "Roboto", system-ui, sans-serif;
   --shadow-card: 0 1px 0 rgb(255 255 255 / 0.06) inset, 0 12px 40px rgb(0 0 0 / 0.1);
   --shadow-lift: 0 20px 50px rgb(0 0 0 / 0.14);
 }
@@ -23,6 +25,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -43,10 +47,30 @@
   body {
     margin: 0;
     font-family: var(--font-body);
+    font-weight: 400;
     color: var(--color-ink);
     background: var(--color-paper);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Prevent horizontal scroll from full-bleed media / absolute layers */
+  #root {
+    overflow-x: clip;
+    min-width: 0;
+  }
+
+  /* Live site: h1–h3 use Anton display */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 0.95;
+    text-wrap: balance;
   }
 
   img {
@@ -63,7 +87,15 @@
   input,
   select,
   textarea {
-    font: inherit;
+    font-family: var(--font-body);
+    font-weight: 400;
+  }
+
+  /* iOS: 16px+ prevents auto-zoom on focus */
+  input,
+  select,
+  textarea {
+    font-size: 1rem;
   }
 
   ::selection {
@@ -84,26 +116,43 @@
 }
 
 @layer utilities {
+  /* Anton — hero, section titles, brand, large numbers (live .font-display / h1–h3) */
   .font-display {
     font-family: var(--font-display);
-    letter-spacing: 0.02em;
+    font-weight: 400;
+    letter-spacing: -0.01em;
   }
 
-  .font-condensed {
+  /* Barlow Condensed 600 — nav, labels, CTAs, taglines (live .label) */
+  .font-condensed,
+  .label {
     font-family: var(--font-condensed);
     font-weight: 600;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+    font-weight: 400;
   }
 
   .section-pad {
-    padding-block: clamp(4rem, 9vw, 7rem);
-    padding-inline: clamp(1rem, 4vw, 2rem);
+    padding-block: clamp(2.75rem, 6.5vw, 6.5rem);
+    padding-inline: clamp(1rem, 3.5vw, 2rem);
   }
 
   .container-site {
     width: 100%;
     max-width: 76rem;
     margin-inline: auto;
+    padding-inline: clamp(1rem, 3.5vw, 2rem);
+    box-sizing: border-box;
+  }
+
+  /* When section already pads horizontally, avoid double gutters from container */
+  .section-pad > .container-site {
+    padding-inline: 0;
   }
 
   .eyebrow {
@@ -111,24 +160,81 @@
     font-weight: 600;
     font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.06em;
     color: var(--color-muted);
   }
 
+  /* Live .t-h2 — Anton, large section heading */
   .heading-xl {
-    font-family: var(--font-condensed);
-    font-weight: 600;
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
-    line-height: 1.05;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 0.95;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: -0.01em;
   }
 
-  .heading-display {
+  /* Live .t-h3 — Anton, card / step titles */
+  .heading-md {
     font-family: var(--font-display);
-    font-size: clamp(2.85rem, 10vw, 6rem);
-    line-height: 0.92;
+    font-weight: 400;
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    line-height: 1.05;
     text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  /* Live .t-hero — fluid for phone → laptop → desktop */
+  .heading-display,
+  .t-hero {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.35rem, 7.2vw + 0.5rem, 6.5rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  /* Live .t-lead */
+  .t-lead {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: clamp(1.05rem, 0.6vw + 0.95rem, 1.25rem);
+    line-height: 1.65;
+  }
+
+  /* Full-width CTAs on narrow phones; inline from sm+ */
+  @media (max-width: 639px) {
+    .btn-primary,
+    .btn-outline,
+    .btn-ghost-light,
+    .btn-solid {
+      width: 100%;
+    }
+
+    .btn-row {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  /* Laptop mid-range (1024–1366): slightly denser section rhythm */
+  @media (min-width: 1024px) and (max-width: 1366px) {
+    .section-pad {
+      padding-block: clamp(3.25rem, 5vw, 5rem);
+    }
+
+    .t-hero {
+      font-size: clamp(2.75rem, 5.5vw, 4.75rem);
+    }
+  }
+
+  /* Short laptop / landscape phones: don't force tall hero */
+  @media (max-height: 720px) and (min-width: 768px) {
+    .hero-shell {
+      min-height: auto !important;
+      padding-block: 2.5rem !important;
+    }
   }
 
   .card-industrial {
@@ -157,12 +263,14 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    border-radius: 0.375rem;
+    border-radius: 2px;
     background: var(--color-accent);
-    padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
-    font-weight: 700;
+    padding: 0.9rem 1.75rem;
+    font-family: var(--font-condensed);
+    font-size: 0.9rem;
+    font-weight: 600;
     letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--color-ink);
     transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
   }
@@ -192,13 +300,15 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    border-radius: 0.375rem;
+    border-radius: 2px;
     border: 2px solid rgb(255 255 255 / 0.9);
     background: transparent;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
-    font-weight: 700;
+    padding: 0.8rem 1.65rem;
+    font-family: var(--font-condensed);
+    font-size: 0.9rem;
+    font-weight: 600;
     letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: #ffffff;
     transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
@@ -226,13 +336,15 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    border-radius: 0.375rem;
+    border-radius: 2px;
     border: 2px solid var(--color-ink);
     background: transparent;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
-    font-weight: 700;
+    padding: 0.8rem 1.65rem;
+    font-family: var(--font-condensed);
+    font-size: 0.9rem;
+    font-weight: 600;
     letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--color-ink);
     transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
@@ -257,13 +369,15 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    border-radius: 0.375rem;
+    border-radius: 2px;
     border: 2px solid var(--color-ink);
     background: var(--color-ink);
-    padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
-    font-weight: 700;
+    padding: 0.8rem 1.65rem;
+    font-family: var(--font-condensed);
+    font-size: 0.9rem;
+    font-weight: 600;
     letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: #ffffff;
     transition: background 0.2s ease, color 0.2s ease;
   }
@@ -310,9 +424,12 @@
     background: #ffffff;
     color: #0a0a0a;
     padding: 0.45rem 0.85rem;
+    font-family: var(--font-body);
     font-size: 0.8125rem;
     font-weight: 500;
     line-height: 1.25;
+    text-transform: none;
+    letter-spacing: normal;
     cursor: pointer;
     transition:
       background 0.2s ease,
@@ -368,12 +485,15 @@
     flex: 1;
     align-items: center;
     justify-content: center;
-    border-radius: 0.375rem;
+    border-radius: 2px;
     border: 1px solid rgb(255 255 255 / 0.3);
     background: transparent;
     color: #ffffff;
-    font-size: 0.875rem;
-    font-weight: 700;
+    font-family: var(--font-condensed);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
 
   .mobile-cta-call:hover,
@@ -390,11 +510,14 @@
     flex: 1;
     align-items: center;
     justify-content: center;
-    border-radius: 0.375rem;
+    border-radius: 2px;
     background: var(--color-accent);
     color: #0a0a0a;
-    font-size: 0.875rem;
-    font-weight: 700;
+    font-family: var(--font-condensed);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
 
   .mobile-cta-quote:hover,
@@ -404,8 +527,12 @@
     color: #0a0a0a;
   }
 
-  /* Nav links on dark surfaces */
+  /* Nav on dark — Barlow Condensed labels (live .label) */
   .nav-link-dark {
+    font-family: var(--font-condensed);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: rgb(255 255 255 / 0.9);
   }
 

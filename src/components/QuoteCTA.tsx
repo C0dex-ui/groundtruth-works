@@ -24,8 +24,8 @@ export function QuoteCTA() {
       aria-labelledby="quote-heading"
     >
       <div className="noise-fade pointer-events-none absolute inset-0" aria-hidden />
-      <div className="container-site relative grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-stretch">
-        <div className="flex flex-col justify-between gap-10">
+      <div className="container-site relative grid gap-8 lg:grid-cols-[1fr_1.05fr] lg:items-stretch lg:gap-10">
+        <div className="flex min-w-0 flex-col justify-between gap-8 sm:gap-10">
           <div>
             <p className="eyebrow !text-accent">Free estimate</p>
             <div className="accent-bar mt-3" />
@@ -40,12 +40,12 @@ export function QuoteCTA() {
           <div className="space-y-4">
             <a
               href={PHONE_HREF}
-              className="font-display group inline-flex items-center gap-3 text-4xl tracking-wide text-accent transition-colors hover:text-accent-hover sm:text-5xl"
+              className="font-display group inline-flex max-w-full flex-wrap items-center gap-3 text-[clamp(1.75rem,6vw,3rem)] uppercase text-accent transition-colors hover:text-accent-hover"
             >
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent text-ink sm:h-14 sm:w-14">
-                <Phone className="h-6 w-6" aria-hidden />
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent text-ink sm:h-14 sm:w-14">
+                <Phone className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden />
               </span>
-              {PHONE_DISPLAY}
+              <span className="break-all sm:break-normal">{PHONE_DISPLAY}</span>
             </a>
             <p className="text-sm text-white/55">
               Or email{' '}
@@ -73,10 +73,10 @@ export function QuoteCTA() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-white/10 bg-white p-6 text-ink shadow-[0_24px_60px_rgb(0_0_0/0.35)] sm:p-8">
+        <div className="min-w-0 rounded-2xl border border-white/10 bg-white p-4 text-ink shadow-[0_24px_60px_rgb(0_0_0/0.35)] sm:p-6 lg:p-8">
           {submitted ? (
             <div className="flex min-h-[20rem] flex-col items-center justify-center py-8 text-center">
-              <p className="font-condensed text-3xl uppercase tracking-wide">Request received</p>
+              <p className="font-display text-3xl uppercase">Request received</p>
               <p className="mt-3 max-w-sm text-muted">
                 Thanks — David will follow up. For the fastest reply, call{' '}
                 <a href={PHONE_HREF} className="font-semibold text-ink underline">
@@ -89,8 +89,10 @@ export function QuoteCTA() {
             <>
               <div className="mb-6 flex items-end justify-between gap-4 border-b border-black/8 pb-5">
                 <div>
-                  <p className="font-condensed text-2xl uppercase tracking-wide">Request a quote</p>
-                  <p className="mt-1 text-sm text-muted">Usually same-week site visits on commercial work.</p>
+                  <p className="font-display text-2xl uppercase">Request a quote</p>
+                  <p className="mt-1 font-body text-sm text-muted">
+                    Usually same-week site visits on commercial work.
+                  </p>
                 </div>
                 <Link to="/get-a-quote" className="hidden text-sm font-medium text-muted underline sm:inline">
                   Full form →

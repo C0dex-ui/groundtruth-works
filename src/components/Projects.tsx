@@ -35,13 +35,17 @@ export function Projects() {
           </Link>
         </div>
 
-        {/* Asymmetric high-yield gallery */}
-        <div className="mt-10 grid auto-rows-[12rem] grid-cols-2 gap-3 sm:auto-rows-[14rem] sm:gap-4 md:grid-cols-4 md:auto-rows-[16rem]">
+        {/* Gallery: simple 2-up on mobile, asymmetric from md */}
+        <div className="mt-8 grid grid-cols-2 gap-2 sm:mt-10 sm:gap-3 md:auto-rows-[14rem] md:grid-cols-4 md:gap-4 lg:auto-rows-[16rem]">
           {FRAMES.map((frame, i) => (
             <figure
               key={frame.src}
-              className={`card-industrial group relative overflow-hidden rounded-2xl ${
-                i === 0 ? 'col-span-2 row-span-2' : i === 3 ? 'col-span-2 md:col-span-1' : ''
+              className={`card-industrial group relative aspect-[4/3] overflow-hidden rounded-xl sm:rounded-2xl md:aspect-auto ${
+                i === 0
+                  ? 'col-span-2 row-span-1 md:row-span-2'
+                  : i === 3
+                    ? 'col-span-2 md:col-span-1'
+                    : ''
               }`}
             >
               <img
@@ -50,8 +54,8 @@ export function Projects() {
                 className="img-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
-              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 to-transparent px-4 pb-4 pt-12">
-                <span className="font-condensed text-sm uppercase tracking-[0.12em] text-white/90">
+              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 to-transparent px-3 pb-3 pt-10 sm:px-4 sm:pb-4 sm:pt-12">
+                <span className="label text-[0.7rem] text-white/90 sm:text-sm">
                   {frame.caption}
                 </span>
               </figcaption>

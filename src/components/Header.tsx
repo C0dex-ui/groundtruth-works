@@ -35,32 +35,37 @@ export function Header() {
       }`}
     >
       <div className="h-0.5 w-full bg-accent" aria-hidden />
-      <div className="container-site flex h-[4.25rem] items-center justify-between gap-4 px-4 sm:h-[4.75rem] sm:px-6 lg:px-8">
-        <Link to="/" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-md bg-steel ring-1 ring-white/15">
+      <div className="container-site flex h-[4.25rem] items-center justify-between gap-2 sm:h-[4.75rem] sm:gap-4">
+        <Link
+          to="/"
+          className="flex min-w-0 max-w-[55%] items-center gap-2 sm:max-w-none sm:gap-3"
+          onClick={() => setOpen(false)}
+        >
+          <span className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-md bg-steel ring-1 ring-white/15 sm:h-11 sm:w-11">
             <img
               src={IMAGES.logo}
               alt={`${COMPANY} logo`}
-              className="h-9 w-9 object-contain"
+              className="h-8 w-8 object-contain sm:h-9 sm:w-9"
             />
           </span>
           <span className="min-w-0">
-            <span className="font-condensed block text-lg leading-none tracking-wide sm:text-xl">
+            <span className="font-display block text-[1.25rem] uppercase leading-none sm:text-[1.45rem]">
               Growfully
             </span>
-            <span className="mt-1 block truncate text-[0.62rem] uppercase tracking-[0.14em] text-white/55 sm:text-[0.68rem]">
+            <span className="label mt-1 hidden truncate text-[0.66rem] tracking-[0.18em] text-white/70 sm:block">
               {TAGLINE}
             </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Primary">
+        {/* Desktop / large laptop nav */}
+        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Primary">
           {NAV.map((item) => (
             <NavLink
               key={item.href}
               to={item.href}
               className={({ isActive }) =>
-                `nav-link-dark rounded-md px-3 py-2 text-[0.9rem] font-medium transition-colors hover:bg-white/10 ${
+                `nav-link-dark rounded-md px-2.5 py-2 text-[0.8rem] transition-colors hover:bg-white/10 xl:px-3 xl:text-[0.9rem] ${
                   isActive ? 'is-active bg-white/10' : ''
                 }`
               }
@@ -70,20 +75,24 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
           <a
             href={PHONE_HREF}
-            className="nav-link-dark hidden items-center gap-2 rounded-md border border-white/15 bg-white/5 px-3 py-2 text-sm font-medium hover:border-accent/50 hover:bg-white/10 lg:inline-flex"
+            className="nav-link-dark hidden items-center gap-2 rounded-md border border-white/15 bg-white/5 px-3 py-2 text-sm hover:border-accent/50 hover:bg-white/10 xl:inline-flex"
           >
             <Phone className="h-4 w-4 shrink-0 text-accent" aria-hidden />
             <span>{PHONE_DISPLAY}</span>
           </a>
-          <Link to="/get-a-quote" className="btn-primary !min-h-11 !px-3.5 sm:!px-4">
-            GET A QUOTE
+          <Link
+            to="/get-a-quote"
+            className="btn-primary !min-h-10 !w-auto !px-3 !py-2 !text-[0.75rem] sm:!min-h-11 sm:!px-4 sm:!text-[0.9rem]"
+          >
+            <span className="sm:hidden">QUOTE</span>
+            <span className="hidden sm:inline">GET A QUOTE</span>
           </Link>
           <button
             type="button"
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md border border-white/20 text-white xl:hidden"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md border border-white/20 text-white lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -95,15 +104,18 @@ export function Header() {
       </div>
 
       {open && (
-        <div id="mobile-nav" className="border-t border-white/10 bg-ink-soft xl:hidden">
-          <nav className="container-site flex flex-col gap-1 px-4 py-4 sm:px-6" aria-label="Mobile">
+        <div
+          id="mobile-nav"
+          className="max-h-[calc(100svh-4.25rem)] overflow-y-auto border-t border-white/10 bg-ink-soft lg:hidden"
+        >
+          <nav className="container-site flex flex-col gap-1 py-4" aria-label="Mobile">
             {NAV.map((item) => (
               <NavLink
                 key={item.href}
                 to={item.href}
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `nav-link-dark rounded-md px-3 py-3.5 text-base font-medium hover:bg-white/10 ${
+                  `nav-link-dark rounded-md px-3 py-3.5 text-base hover:bg-white/10 ${
                     isActive ? 'is-active bg-white/10' : ''
                   }`
                 }
@@ -115,6 +127,13 @@ export function Header() {
               <Phone className="h-4 w-4 shrink-0 text-accent" aria-hidden />
               <span className="ml-2">{PHONE_DISPLAY}</span>
             </a>
+            <Link
+              to="/get-a-quote"
+              onClick={() => setOpen(false)}
+              className="btn-primary mt-2 w-full"
+            >
+              GET A QUOTE
+            </Link>
           </nav>
         </div>
       )}
