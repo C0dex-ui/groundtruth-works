@@ -1,5 +1,5 @@
-import { ExternalLink, Star } from 'lucide-react'
-import { useState } from 'react'
+import { ChevronLeft, ChevronRight, ExternalLink, Star } from 'lucide-react'
+import { useCallback, useEffect, useState } from 'react'
 import { COMPANY, RATINGS, TESTIMONIALS } from '../data/content'
 
 /** Trustindex grid cards typically clamp longer bodies behind Read more. */
@@ -108,7 +108,6 @@ function TrustindexCard({
 
   return (
     <article className="ti-card flex h-full min-w-0 flex-col rounded-[10px] border border-[#e5e7eb] bg-white p-5">
-      {/* Header row */}
       <header className="flex items-center gap-3">
         <ReviewerAvatar name={review.name} photo={review.photo} />
         <div className="min-w-0">
@@ -121,12 +120,10 @@ function TrustindexCard({
         </div>
       </header>
 
-      {/* Stars */}
       <div className="mt-3.5">
         <Stars rating={review.rating} />
       </div>
 
-      {/* Body */}
       {shown ? (
         <div className="mt-2.5 flex flex-1 flex-col">
           <p className="font-body text-[14.5px] leading-[1.55] text-[#3c4043]">{shown}</p>
@@ -149,11 +146,54 @@ function TrustindexCard({
   )
 }
 
+function useVisibleCount() {
+  const [count, setCount] = useState(1)
+
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth
+      if (w >= 1024) setCount(3)
+      else if (w >= 640) setCount(2)
+      else setCount(1)
+    }
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
+
+  return Math.min(count, TESTIMONIALS.length)
+}
+
 /**
- * Trustindex-style Google Reviews widget (Grid + Light).
+ * Trustindex-style Google Reviews widget (Slider + Light).
  * Real reviews only — https://maps.app.goo.gl/deo5VoXM6QLw8BsdA
  */
 export function Testimonials() {
+  const visibleCount = useVisibleCount()
+  const total = TESTIMONIALS.length
+  const maxIndex = Math.max(0, total - visibleCount)
+  const [index, setIndex] = useState(0)
+
+  // Keep index in range when viewport changes
+  useEffect(() => {
+    setIndex((i) => Math.min(i, maxIndex))
+  }, [maxIndex])
+
+  const canPaginate = total > visibleCount
+
+  const prev = useCallback(() => {
+    if (!canPaginate) return
+    setIndex((i) => (i <= 0 ? maxIndex : i - 1))
+  }, [canPaginate, maxIndex])
+
+  const next = useCallback(() => {
+    if (!canPaginate) return
+    setIndex((i) => (i >= maxIndex ? 0 : i + 1))
+  }, [canPaginate, maxIndex])
+
+  // Card width percent of track (each card = 100/visibleCount of viewport)
+  const cardPct = 100 / visibleCount
+
   return (
     <section
       id="testimonials"
@@ -171,7 +211,7 @@ export function Testimonials() {
 
         {/* Trustindex widget shell */}
         <div className="ti-widget rounded-[12px] bg-white p-4 shadow-[0_2px_8px_rgb(0_0_0/0.06)] sm:p-5 lg:p-6">
-          {/* Summary header — Trustindex “with badge” pattern */}
+          {/* Summary header */}
           <div className="ti-header mb-5 flex flex-col gap-4 border-b border-[#eee] pb-5 sm:mb-6 sm:flex-row sm:items-center sm:justify-between sm:pb-5">
             <div className="flex min-w-0 items-center gap-3.5">
               <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f1f3f4]">
@@ -209,11 +249,76 @@ export function Testimonials() {
             </a>
           </div>
 
-          {/* Trustindex Grid layout */}
-          <div className="ti-grid grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-            {TESTIMONIALS.map((review) => (
-              <TrustindexCard key={review.name + review.relativeTime} review={review} />
-            ))}
+          {/* Slider with pagination arrows */}
+          <div className="ti-slider relative">
+            {/* Prev arrow */}
+            <button
+              type="button"
+              onClick={prev}
+              disabled={!canPaginate}
+              aria-label="Previous reviews"
+              className="ti-arrow absolute left-0 top-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white text-[#5f6368] shadow-[0_2px_8px_rgb(0_0_0/0.1)] transition-colors hover:border-[#1a73e8] hover:text-[#1a73e8] disabled:pointer-events-none disabled:opacity-30 sm:-translate-x-3 lg:-translate-x-4"
+            >
+              <ChevronLeft className="h-5 w-5" aria-hidden />
+            </button>
+
+            {/* Next arrow */}
+            <button
+              type="button"
+              onClick={next}
+              disabled={!canPaginate}
+              aria-label="Next reviews"
+              className="ti-arrow absolute right-0 top-1/2 z-10 flex h-10 w-10 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white text-[#5f6368] shadow-[0_2px_8px_rgb(0_0_0/0.1)] transition-colors hover:border-[#1a73e8] hover:text-[#1a73e8] disabled:pointer-events-none disabled:opacity-30 sm:translate-x-3 lg:translate-x-4"
+            >
+              <ChevronRight className="h-5 w-5" aria-hidden />
+            </button>
+
+            <div className="overflow-hidden px-1">
+              <div
+                className="flex transition-transform duration-400 ease-out"
+                style={{
+                  transform: `translateX(-${index * cardPct}%)`,
+                  // smooth cubic-ish
+                  transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                  transitionDuration: '400ms',
+                }}
+              >
+                {TESTIMONIALS.map((review) => (
+                  <div
+                    key={review.name + review.relativeTime}
+                    className="min-w-0 shrink-0 px-2"
+                    style={{ width: `${cardPct}%` }}
+                  >
+                    <TrustindexCard review={review} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Dot pagination */}
+            {canPaginate && (
+              <div
+                className="mt-5 flex items-center justify-center gap-2"
+                role="tablist"
+                aria-label="Review pages"
+              >
+                {Array.from({ length: maxIndex + 1 }, (_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    role="tab"
+                    aria-selected={i === index}
+                    aria-label={`Show reviews page ${i + 1}`}
+                    onClick={() => setIndex(i)}
+                    className={`h-2 rounded-full transition-all ${
+                      i === index
+                        ? 'w-5 bg-[#1a73e8]'
+                        : 'w-2 bg-[#dadce0] hover:bg-[#9aa0a6]'
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Trustindex footer attribution strip (minimal) */}
