@@ -9,7 +9,7 @@ import {
 
 type AreaMapProps = {
   /**
-   * `state` = whole Arkansas with one pin (homepage).
+   * `state` = Growfully LLC HQ pin (homepage service territory).
    * `city` = single Arkansas city pin (area pages).
    */
   mode?: 'state' | 'city'
@@ -23,7 +23,7 @@ type AreaMapProps = {
 
 /**
  * Google Maps embed for Arkansas only.
- * Homepage uses whole-state pin; city pages pin that AR city.
+ * Homepage uses the official Growfully LLC place pin; city pages pin that AR city.
  */
 export function AreaMap({
   mode = 'city',
@@ -36,7 +36,7 @@ export function AreaMap({
 }: AreaMapProps) {
   const isState = mode === 'state'
 
-  const title = isState ? 'Arkansas' : `${name ?? 'Service area'}, AR`
+  const title = isState ? 'Growfully LLC' : `${name ?? 'Service area'}, AR`
   const embedSrc = isState
     ? buildArkansasStateMapEmbedUrl()
     : buildMapEmbedUrl(lat ?? ARKANSAS_STATE_MAP.lat, lng ?? ARKANSAS_STATE_MAP.lng, {
@@ -51,7 +51,7 @@ export function AreaMap({
       })
 
   const meta = isState
-    ? 'State of Arkansas · service territory'
+    ? 'Mayflower, AR · Central Arkansas service territory'
     : `${name}, Arkansas · ${(lat ?? 0).toFixed(4)}°N, ${Math.abs(lng ?? 0).toFixed(4)}°W`
 
   return (
@@ -69,13 +69,13 @@ export function AreaMap({
         key={embedSrc}
         title={
           isState
-            ? 'Google Map — State of Arkansas service area'
+            ? 'Google Map — Growfully LLC, Central Arkansas'
             : `Google Map — ${name}, Arkansas`
         }
         src={embedSrc}
         className={`w-full border-0 ${heightClass}`}
         loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
+        referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
       />
       <div className="flex flex-wrap items-center justify-between gap-2 border-t border-black/5 bg-white px-4 py-2.5 text-xs text-muted">

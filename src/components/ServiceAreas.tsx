@@ -23,7 +23,7 @@ export function ServiceAreas() {
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
               Based in Mayflower, AR. We regularly work a 60–75 mile radius across Central Arkansas.
-              Select a city to open its page — the map shows the whole State of Arkansas.
+              Select a city to open its page — the map pins Growfully LLC.
             </p>
 
             <div
@@ -61,11 +61,11 @@ export function ServiceAreas() {
           </div>
 
           <div className="min-w-0">
-            {/* Fixed whole-Arkansas pin — does not switch to other states or city zooms */}
+            {/* Official Growfully LLC Google Maps place pin */}
             <AreaMap
               mode="state"
               heightClass="h-64 sm:h-80 lg:h-[22rem]"
-              subtitle="Google Maps · State of Arkansas only"
+              subtitle="Google Maps · Growfully LLC"
             />
           </div>
         </div>

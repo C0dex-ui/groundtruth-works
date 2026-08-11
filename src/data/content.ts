@@ -8,12 +8,60 @@ export const COMPANY = 'Growfully, LLC'
 export const TAGLINE = 'SITE WORK · LAND CLEARING · GRADING'
 export const LOCATION_LINE = 'Mayflower, AR · Serving Central Arkansas since 2002'
 
+/**
+ * Public trust signals — only real credentials.
+ * Google rating: keep in sync with the live Maps listing
+ * (https://maps.app.goo.gl/deo5VoXM6QLw8BsdA). Do not invent scores.
+ */
+export const RATINGS = {
+  sinceYear: 2002,
+  bbb: {
+    grade: 'A+',
+    label: 'A+ Rated',
+    detail: 'BBB Accredited',
+    href: 'https://www.bbb.org/us/ar/mayflower/profile/landscape-contractors/growfully-llc-0935-90361655',
+  },
+  google: {
+    /** Live Google Business Profile score for Growfully LLC */
+    score: '5.0',
+    /** Total Google reviews on the business profile (Maps listing). */
+    reviewCount: 3,
+    detail: 'Google Rating',
+    href: 'https://maps.app.goo.gl/deo5VoXM6QLw8BsdA',
+  },
+} as const
+
+/**
+ * Google reviews scraped from the live Maps listing only.
+ * Source: https://maps.app.goo.gl/deo5VoXM6QLw8BsdA
+ * Do not invent, paraphrase into fake quotes, or add placeholder customers.
+ * Kelvin Blevens left a 5★ rating with no written body — omitted here.
+ */
+export const TESTIMONIALS = [
+  {
+    name: 'Tina Ford',
+    rating: 5,
+    relativeTime: 'a week ago',
+    text: 'I wish I could give more than 5 stars! David was very professional, polite, on time, excellent communication with his time, got the job done in extreme heat, and was very reasonable with the quote for removing 18 trees that were 60-65 feet tall. His attention to safety was exceptional and was a concern for me when hiring someone to do this job. Once I saw his process start, I had every confidence in his ability to get the job done with his safety techniques. He removed stumps, graded, leveled and seeded the whole area and had the job done on time as promised within one week from starting. I highly recommend Growfully for any landscaping needs.',
+    source: 'Google',
+  },
+  {
+    name: 'M Ten',
+    rating: 5,
+    relativeTime: '8 years ago',
+    text: 'DAVID IS HONEST AND DEPENDABLE HE GOT TO MY JOB SOONER THAN HE PROMISED. HE AND HIS CREW ARE FRIENDLY AND VERY RESPECTFUL AND DID AN ABSOLUTELY BEAUTIFUL JOB! I WILL BE CALLING HIM BACK TO DO MORE IN THE FUTURE',
+    source: 'Google',
+  },
+] as const
+
 /** Hero background video (served from public/). */
 export const HERO_VIDEO = '/videos/groundtruth-hero.mp4'
 
 /** Every path is used once — no redundant imagery across the homepage. */
 export const IMAGES = {
   logo: '/logo.png',
+  /** Official BBB Accredited Business seal */
+  bbbLogo: '/images/bbb-logo.png',
   /** Poster / reduced-motion fallback for hero video */
   hero: '/images/hero.jpg',
   landClearing: '/images/service-land-clearing.jpg',
@@ -217,17 +265,28 @@ export const MAP = {
 }
 
 /**
- * Whole State of Arkansas — homepage map only.
- * One pin for Arkansas; zoom shows the state (not neighboring states / out-of-state cities).
+ * Homepage map — official Growfully LLC Google Maps place pin.
+ * Embed provided by the business Google listing.
  */
+export const GROWFULLY_MAP = {
+  name: 'Growfully LLC',
+  lat: 35.046168,
+  lng: -92.6490385,
+  placeQuery: 'Growfully LLC',
+  /** Official place embed (Central Arkansas service territory). */
+  embedUrl:
+    'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d257230.79269788688!2d-92.6490385!3d35.046168!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87d29da3e0b11ce3%3A0xa8728947de885622!2sGrowfully%20LLC!5e1!3m2!1sen!2sus!4v1786430695651!5m2!1sen!2sus',
+  openUrl:
+    'https://www.google.com/maps/search/?api=1&query=Growfully%20LLC',
+} as const
+
+/** @deprecated Prefer GROWFULLY_MAP — kept for city-map fallbacks. */
 export const ARKANSAS_STATE_MAP = {
-  name: 'Arkansas',
-  /** Geographic center of Arkansas */
-  lat: 34.8997,
-  lng: -92.4392,
-  /** Zoom ~7 frames the full state */
-  zoom: 7,
-  placeQuery: 'Arkansas, USA',
+  name: GROWFULLY_MAP.name,
+  lat: GROWFULLY_MAP.lat,
+  lng: GROWFULLY_MAP.lng,
+  zoom: 10,
+  placeQuery: GROWFULLY_MAP.placeQuery,
 } as const
 
 /**
@@ -259,19 +318,13 @@ export function buildMapLinkUrl(
   return `https://www.google.com/maps?q=${lat},${lng}&z=${zoom}`
 }
 
-/** Whole Arkansas state embed — single state pin, no other areas. */
+/** Homepage embed — Growfully LLC place pin. */
 export function buildArkansasStateMapEmbedUrl() {
-  return buildMapEmbedUrl(ARKANSAS_STATE_MAP.lat, ARKANSAS_STATE_MAP.lng, {
-    zoom: ARKANSAS_STATE_MAP.zoom,
-    place: ARKANSAS_STATE_MAP.placeQuery,
-  })
+  return GROWFULLY_MAP.embedUrl
 }
 
 export function buildArkansasStateMapLinkUrl() {
-  return buildMapLinkUrl(ARKANSAS_STATE_MAP.lat, ARKANSAS_STATE_MAP.lng, {
-    zoom: ARKANSAS_STATE_MAP.zoom,
-    place: ARKANSAS_STATE_MAP.placeQuery,
-  })
+  return GROWFULLY_MAP.openUrl
 }
 
 /** City map — still Arkansas only (`City, AR`). */
