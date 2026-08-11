@@ -1,27 +1,20 @@
 import { ExternalLink, Star } from 'lucide-react'
+import { useState } from 'react'
 import { COMPANY, RATINGS, TESTIMONIALS } from '../data/content'
 
-function Stars({
-  rating,
-  size = 'md',
-}: {
-  rating: number
-  size?: 'sm' | 'md' | 'lg'
-}) {
-  const dim =
-    size === 'lg' ? 'h-5 w-5' : size === 'sm' ? 'h-3.5 w-3.5' : 'h-4 w-4'
+/** Trustindex grid cards typically clamp longer bodies behind Read more. */
+const PREVIEW_CHARS = 120
+
+function Stars({ rating }: { rating: number }) {
   return (
-    <div
-      className="flex items-center gap-0.5"
-      aria-label={`${rating} out of 5 stars`}
-    >
+    <div className="flex items-center gap-0.5" aria-label={`${rating} out of 5 stars`}>
       {Array.from({ length: 5 }, (_, i) => (
         <Star
           key={i}
-          className={`${dim} ${
+          className={`h-4 w-4 ${
             i < rating
-              ? 'fill-[#fbbc04] text-[#fbbc04]'
-              : 'fill-transparent text-black/15'
+              ? 'fill-[#fbbc05] text-[#fbbc05]'
+              : 'fill-transparent text-[#dadce0]'
           }`}
           aria-hidden
         />
@@ -30,7 +23,6 @@ function Stars({
   )
 }
 
-/** Official multicolor Google “G”. */
 function GoogleMark({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" aria-hidden focusable="false">
@@ -54,17 +46,16 @@ function GoogleMark({ className }: { className?: string }) {
   )
 }
 
-/** Colored initial avatar — Elfsight grid card pattern. */
+/** Trustindex-style circular avatar (initial when no photo). */
 function ReviewerAvatar({ name }: { name: string }) {
   const initial = name.trim().charAt(0).toUpperCase() || '?'
-  // Stable hue from name so cards feel distinct without fake photos
   let hash = 0
   for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash)
   const hue = Math.abs(hash) % 360
   return (
     <span
-      className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white sm:h-11 sm:w-11 sm:text-base"
-      style={{ backgroundColor: `hsl(${hue} 42% 42%)` }}
+      className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-base font-semibold text-white"
+      style={{ backgroundColor: `hsl(${hue} 52% 55%)` }}
       aria-hidden
     >
       {initial}
@@ -73,9 +64,70 @@ function ReviewerAvatar({ name }: { name: string }) {
 }
 
 /**
- * Elfsight-style Google Reviews grid:
- * header (business + aggregate) → equal-height card grid → write/read CTA.
- * Content is live Google reviews only.
+ * Trustindex Grid “Light” review card:
+ * avatar | blue name + gray date → stars → body → Read more
+ */
+function TrustindexCard({
+  review,
+}: {
+  review: (typeof TESTIMONIALS)[number]
+}) {
+  const [expanded, setExpanded] = useState(false)
+  const full = review.text ?? ''
+  const needsMore = full.length > PREVIEW_CHARS
+  const shown =
+    !full
+      ? null
+      : expanded || !needsMore
+        ? full
+        : `${full.slice(0, PREVIEW_CHARS).trimEnd()}…`
+
+  return (
+    <article className="ti-card flex h-full min-w-0 flex-col rounded-[10px] border border-[#e5e7eb] bg-white p-5">
+      {/* Header row */}
+      <header className="flex items-center gap-3">
+        <ReviewerAvatar name={review.name} />
+        <div className="min-w-0">
+          <p className="truncate font-body text-[15px] font-semibold leading-snug text-[#1a73e8]">
+            {review.name}
+          </p>
+          <p className="mt-0.5 font-body text-[13px] leading-snug text-[#70757a]">
+            {review.relativeTime}
+          </p>
+        </div>
+      </header>
+
+      {/* Stars */}
+      <div className="mt-3.5">
+        <Stars rating={review.rating} />
+      </div>
+
+      {/* Body */}
+      {shown ? (
+        <div className="mt-2.5 flex flex-1 flex-col">
+          <p className="font-body text-[14.5px] leading-[1.55] text-[#3c4043]">{shown}</p>
+          {needsMore && (
+            <button
+              type="button"
+              onClick={() => setExpanded((v) => !v)}
+              className="mt-2 self-start font-body text-[14px] font-medium text-[#1a73e8] hover:underline"
+            >
+              {expanded ? 'Show less' : 'Read more'}
+            </button>
+          )}
+        </div>
+      ) : (
+        <p className="mt-2.5 flex-1 font-body text-[14px] text-[#70757a]">
+          Rated {review.rating}.0 on Google
+        </p>
+      )}
+    </article>
+  )
+}
+
+/**
+ * Trustindex-style Google Reviews widget (Grid + Light).
+ * Real reviews only — https://maps.app.goo.gl/deo5VoXM6QLw8BsdA
  */
 export function Testimonials() {
   return (
@@ -93,28 +145,28 @@ export function Testimonials() {
           </h2>
         </div>
 
-        {/* Elfsight-style widget shell */}
-        <div className="overflow-hidden rounded-2xl border border-black/8 bg-white shadow-[0_8px_30px_rgb(0_0_0/0.06)]">
-          {/* Header bar — business rating strip */}
-          <div className="flex flex-col gap-4 border-b border-black/6 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-6">
-            <div className="flex min-w-0 items-center gap-3 sm:gap-4">
-              <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-black/6 bg-paper sm:h-14 sm:w-14">
-                <GoogleMark className="h-7 w-7 sm:h-8 sm:w-8" />
+        {/* Trustindex widget shell */}
+        <div className="ti-widget rounded-[12px] bg-white p-4 shadow-[0_2px_8px_rgb(0_0_0/0.06)] sm:p-5 lg:p-6">
+          {/* Summary header — Trustindex “with badge” pattern */}
+          <div className="ti-header mb-5 flex flex-col gap-4 border-b border-[#eee] pb-5 sm:mb-6 sm:flex-row sm:items-center sm:justify-between sm:pb-5">
+            <div className="flex min-w-0 items-center gap-3.5">
+              <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f1f3f4]">
+                <GoogleMark className="h-8 w-8" />
               </span>
               <div className="min-w-0">
-                <p className="truncate font-body text-base font-medium text-ink sm:text-lg">
+                <p className="truncate font-body text-[17px] font-medium text-[#202124]">
                   {COMPANY}
                 </p>
-                <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
-                  <span className="font-body text-lg font-semibold tabular-nums text-ink sm:text-xl">
+                <div className="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-1">
+                  <span className="font-body text-[16px] font-medium tabular-nums text-[#202124]">
                     {RATINGS.google.score}
                   </span>
-                  <Stars rating={5} size="md" />
+                  <Stars rating={5} />
                   <a
                     href={RATINGS.google.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-body text-sm text-[#1a73e8] underline-offset-2 hover:underline"
+                    className="ml-1 font-body text-[14px] text-[#1a73e8] hover:underline"
                   >
                     Based on {RATINGS.google.reviewCount} reviews
                   </a>
@@ -126,51 +178,27 @@ export function Testimonials() {
               href={RATINGS.google.href}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-[#1a73e8] px-5 py-2.5 font-body text-sm font-medium text-white transition-colors hover:bg-[#1765cc]"
+              className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-[#1a73e8] px-5 font-body text-[14px] font-medium text-white transition-colors hover:bg-[#1765cc] sm:h-12"
             >
               Review us on Google
               <ExternalLink className="h-3.5 w-3.5" aria-hidden />
             </a>
           </div>
 
-          {/* Grid cards — Elfsight Grid Card pattern */}
-          <div className="grid gap-4 p-4 sm:grid-cols-2 sm:gap-5 sm:p-5 lg:grid-cols-2 lg:p-6">
+          {/* Trustindex Grid layout */}
+          <div className="ti-grid grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
             {TESTIMONIALS.map((review) => (
-              <article
-                key={review.name + review.relativeTime}
-                className="flex h-full min-w-0 flex-col rounded-xl border border-black/6 bg-white p-4 shadow-[0_2px_12px_rgb(0_0_0/0.04)] sm:p-5"
-              >
-                {/* Author row */}
-                <div className="flex items-start gap-3">
-                  <ReviewerAvatar name={review.name} />
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="min-w-0">
-                        <p className="truncate font-body text-sm font-semibold text-ink sm:text-[0.95rem]">
-                          {review.name}
-                        </p>
-                        <p className="mt-0.5 font-body text-xs text-muted">
-                          {review.relativeTime}
-                        </p>
-                      </div>
-                      <GoogleMark className="mt-0.5 h-5 w-5 shrink-0 opacity-90" />
-                    </div>
-                    <div className="mt-1.5">
-                      <Stars rating={review.rating} size="sm" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Review body */}
-                <blockquote className="mt-3 flex-1">
-                  <p className="font-body text-sm leading-relaxed text-[#3c4043] sm:text-[0.9375rem] sm:leading-relaxed">
-                    {review.text}
-                  </p>
-                </blockquote>
-              </article>
+              <TrustindexCard key={review.name + review.relativeTime} review={review} />
             ))}
           </div>
 
+          {/* Trustindex footer attribution strip (minimal) */}
+          <div className="ti-footer mt-5 flex items-center justify-center gap-1.5 border-t border-[#eee] pt-4">
+            <GoogleMark className="h-3.5 w-3.5" />
+            <span className="font-body text-[12px] text-[#70757a]">
+              Reviews from Google
+            </span>
+          </div>
         </div>
       </div>
     </section>

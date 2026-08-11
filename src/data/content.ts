@@ -32,10 +32,10 @@ export const RATINGS = {
 } as const
 
 /**
- * Google reviews scraped from the live Maps listing only.
+ * All Google reviews from the live Maps listing.
  * Source: https://maps.app.goo.gl/deo5VoXM6QLw8BsdA
  * Do not invent, paraphrase into fake quotes, or add placeholder customers.
- * Kelvin Blevens left a 5★ rating with no written body — omitted here.
+ * Profile has 3 reviews (all 5★). Kelvin Blevens left stars only — no written body.
  */
 export const TESTIMONIALS = [
   {
@@ -43,16 +43,24 @@ export const TESTIMONIALS = [
     rating: 5,
     relativeTime: 'a week ago',
     text: 'I wish I could give more than 5 stars! David was very professional, polite, on time, excellent communication with his time, got the job done in extreme heat, and was very reasonable with the quote for removing 18 trees that were 60-65 feet tall. His attention to safety was exceptional and was a concern for me when hiring someone to do this job. Once I saw his process start, I had every confidence in his ability to get the job done with his safety techniques. He removed stumps, graded, leveled and seeded the whole area and had the job done on time as promised within one week from starting. I highly recommend Growfully for any landscaping needs.',
-    source: 'Google',
+    source: 'Google' as const,
   },
   {
     name: 'M Ten',
     rating: 5,
     relativeTime: '8 years ago',
     text: 'DAVID IS HONEST AND DEPENDABLE HE GOT TO MY JOB SOONER THAN HE PROMISED. HE AND HIS CREW ARE FRIENDLY AND VERY RESPECTFUL AND DID AN ABSOLUTELY BEAUTIFUL JOB! I WILL BE CALLING HIM BACK TO DO MORE IN THE FUTURE',
-    source: 'Google',
+    source: 'Google' as const,
   },
-] as const
+  {
+    name: 'Kelvin Blevens',
+    rating: 5,
+    relativeTime: '8 years ago',
+    /** No written review on Google — star rating only */
+    text: null as string | null,
+    source: 'Google' as const,
+  },
+]
 
 /** Hero background video (served from public/). */
 export const HERO_VIDEO = '/videos/groundtruth-hero.mp4'
