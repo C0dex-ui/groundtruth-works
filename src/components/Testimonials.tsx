@@ -171,21 +171,6 @@ export function Testimonials() {
             ))}
           </div>
 
-          {/* Footer strip */}
-          <div className="flex flex-col items-center justify-between gap-3 border-t border-black/6 bg-[#fafafa] px-4 py-4 sm:flex-row sm:px-6">
-            <p className="font-body text-xs text-muted sm:text-sm">
-              Reviews loaded from Google · not edited or invented
-            </p>
-            <a
-              href={RATINGS.google.href}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 font-body text-sm font-medium text-[#1a73e8] underline-offset-2 hover:underline"
-            >
-              Read all reviews
-              <ExternalLink className="h-3.5 w-3.5" aria-hidden />
-            </a>
-          </div>
         </div>
       </div>
     </section>
