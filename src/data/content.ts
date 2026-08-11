@@ -60,8 +60,10 @@ export const HERO_VIDEO = '/videos/groundtruth-hero.mp4'
 /** Every path is used once — no redundant imagery across the homepage. */
 export const IMAGES = {
   logo: '/logo.png',
-  /** Official BBB Accredited Business seal */
+  /** BBB Accredited Business seal (transparent PNG) */
   bbbLogo: '/images/bbb-logo.png',
+  /** Google 5-star reviews mark (transparent PNG) */
+  googleReviewsLogo: '/images/google-5star-logo.png',
   /** Poster / reduced-motion fallback for hero video */
   hero: '/images/hero.jpg',
   landClearing: '/images/service-land-clearing.jpg',
