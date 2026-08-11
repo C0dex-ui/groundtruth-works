@@ -46,12 +46,36 @@ function GoogleMark({ className }: { className?: string }) {
   )
 }
 
-/** Trustindex-style circular avatar (initial when no photo). */
-function ReviewerAvatar({ name }: { name: string }) {
+/**
+ * Trustindex-style circular avatar.
+ * Uses real Google profile photo when available; otherwise initial fallback.
+ */
+function ReviewerAvatar({ name, photo }: { name: string; photo?: string | null }) {
+  const [imgFailed, setImgFailed] = useState(false)
   const initial = name.trim().charAt(0).toUpperCase() || '?'
   let hash = 0
   for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash)
   const hue = Math.abs(hash) % 360
+  const showPhoto = Boolean(photo) && !imgFailed
+
+  if (showPhoto) {
+    return (
+      <span className="inline-flex h-12 w-12 shrink-0 overflow-hidden rounded-full bg-[#e8eaed] ring-1 ring-black/5">
+        <img
+          src={photo!}
+          alt=""
+          width={48}
+          height={48}
+          className="h-full w-full object-cover"
+          loading="lazy"
+          decoding="async"
+          referrerPolicy="no-referrer"
+          onError={() => setImgFailed(true)}
+        />
+      </span>
+    )
+  }
+
   return (
     <span
       className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-base font-semibold text-white"
@@ -86,7 +110,7 @@ function TrustindexCard({
     <article className="ti-card flex h-full min-w-0 flex-col rounded-[10px] border border-[#e5e7eb] bg-white p-5">
       {/* Header row */}
       <header className="flex items-center gap-3">
-        <ReviewerAvatar name={review.name} />
+        <ReviewerAvatar name={review.name} photo={review.photo} />
         <div className="min-w-0">
           <p className="truncate font-body text-[15px] font-semibold leading-snug text-[#1a73e8]">
             {review.name}

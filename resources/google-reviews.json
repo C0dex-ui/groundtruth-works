@@ -1,29 +1,33 @@
 {
   "source": "https://maps.app.goo.gl/deo5VoXM6QLw8BsdA",
   "place": "Growfully LLC",
-  "scrapedAt": "2026-08-11T07:43:44.430Z",
+  "scrapedAt": "2026-08-11T07:56:10.233Z",
   "overallRating": "5.0",
   "reviewCount": 3,
-  "notes": "All 3 Google reviews are shown on the site. Kelvin Blevens is star-only (no written body).",
   "reviews": [
     {
       "name": "Tina Ford",
       "rating": 5,
       "relativeTime": "a week ago",
-      "text": "I wish I could give more than 5 stars! David was very professional, polite, on time, excellent communication with his time, got the job done in extreme heat, and was very reasonable with the quote for removing 18 trees that were 60-65 feet tall. His attention to safety was exceptional and was a concern for me when hiring someone to do this job. Once I saw his process start, I had every confidence in his ability to get the job done with his safety techniques. He removed stumps, graded, leveled and seeded the whole area and had the job done on time as promised within one week from starting. I highly recommend Growfully for any landscaping needs."
+      "text": "I wish I could give more than 5 stars! David was very professional, polite, on time, excellent communication with his time, got the job done in extreme heat, and was very reasonable with the quote for removing 18 trees that were 60-65 feet tall. His attention to safety was exceptional and was a concern for me when hiring someone to do this job. Once I saw his process start, I had every confidence in his ability to get the job done with his safety techniques. He removed stumps, graded, leveled and seeded the whole area and had the job done on time as promised within one week from starting. I highly recommend Growfully for any landscaping needs.",
+      "photo": "/images/reviewers/tina-ford.jpg",
+      "photoSource": "https://lh3.googleusercontent.com/a/ACg8ocIe9UYTlvU2gVXfGp2O0tccqbi_1nG5JERWioYwST3W6Y34rQ=w36-h36-p-rp-mo-ba12-br100"
     },
     {
       "name": "M Ten",
       "rating": 5,
       "relativeTime": "8 years ago",
-      "text": "DAVID IS HONEST AND DEPENDABLE HE GOT TO MY JOB SOONER THAN HE PROMISED. HE AND HIS CREW ARE FRIENDLY AND VERY RESPECTFUL AND DID AN ABSOLUTELY BEAUTIFUL JOB! I WILL BE CALLING HIM BACK TO DO MORE IN THE FUTURE"
+      "text": "DAVID IS HONEST AND DEPENDABLE HE GOT TO MY JOB SOONER THAN HE PROMISED. HE AND HIS CREW ARE FRIENDLY AND VERY RESPECTFUL AND DID AN ABSOLUTELY BEAUTIFUL JOB! I WILL BE CALLING HIM BACK TO DO MORE IN THE FUTURE",
+      "photo": "/images/reviewers/m-ten.jpg",
+      "photoSource": "https://lh3.googleusercontent.com/a-/ALV-UjXHH2CIlsBFGFbiD7cTpJYxcR8kJYfJqz_QPlMUsTYEXGpdTu040w=w36-h36-p-rp-mo-ba12-br100"
     },
     {
       "name": "Kelvin Blevens",
       "rating": 5,
       "relativeTime": "8 years ago",
       "text": null,
-      "note": "5★ rating only — no written review body on Google"
+      "photo": "/images/reviewers/kelvin-blevens.jpg",
+      "photoSource": "https://lh3.googleusercontent.com/a-/ALV-UjVmWLKfEiNmkkUHDkezkU9up-DAbCAzORB_RkCae3eU7h20luVx=w36-h36-p-rp-mo-ba12-br100"
     }
   ]
 }
