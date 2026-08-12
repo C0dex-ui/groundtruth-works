@@ -102,12 +102,108 @@ export const IMAGES = {
   ],
 } as const
 
-export const NAV = [
-  { label: 'Services', href: '/services' },
-  { label: 'Industries', href: '/industries' },
-  { label: 'Service Areas', href: '/service-areas' },
+/** Primary nav — Services / Industries / Service Areas open dropdowns (Lovable pattern). */
+export type NavChild = { label: string; href: string; description?: string }
+export type NavItem = {
+  label: string
+  href: string
+  children?: readonly NavChild[]
+}
+
+export const NAV: readonly NavItem[] = [
+  {
+    label: 'Services',
+    href: '/services',
+    children: [
+      {
+        label: 'Land Clearing',
+        href: '/services/land-clearing',
+        description: 'Trees, stumps and undergrowth to workable ground',
+      },
+      {
+        label: 'Site Grading',
+        href: '/services/site-grading',
+        description: 'Rough and fine grade to plan elevations',
+      },
+      {
+        label: 'Excavation Services',
+        href: '/services/excavation-services',
+        description: 'Cut, fill, trenching and bulk earthmoving',
+      },
+      {
+        label: 'Site Preparation',
+        href: '/services/site-preparation',
+        description: 'Clear, strip, grade, compact and stone',
+      },
+      {
+        label: 'Forestry Mulching',
+        href: '/services/forestry-mulching',
+        description: 'Mulch mat in place — no burn piles',
+      },
+      {
+        label: 'Brush Clearing',
+        href: '/services/brush-clearing',
+        description: 'Undergrowth, briar and fence lines',
+      },
+      {
+        label: 'Dirt Work',
+        href: '/services/dirt-work',
+        description: 'Hauling, pads, access roads, cut-and-fill',
+      },
+      {
+        label: 'Drainage & Erosion Control',
+        href: '/services/drainage-erosion-control',
+        description: 'Swales, culverts and silt control',
+      },
+    ],
+  },
+  {
+    label: 'Industries',
+    href: '/industries',
+    children: [
+      {
+        label: 'Solar Site Preparation',
+        href: '/industries/solar-site-preparation',
+        description: 'Arrays, roads, tolerance grading',
+      },
+      {
+        label: 'General Contractors',
+        href: '/industries/general-contractors',
+        description: 'Site-work sub who hits grade',
+      },
+      {
+        label: 'Commercial Development',
+        href: '/industries/commercial-development',
+        description: 'Pads, parking and industrial sites',
+      },
+    ],
+  },
+  {
+    label: 'Service Areas',
+    href: '/service-areas',
+    children: [
+      { label: 'Mayflower, AR', href: '/service-areas/mayflower-ar' },
+      { label: 'Conway, AR', href: '/service-areas/conway-ar' },
+      { label: 'Vilonia, AR', href: '/service-areas/vilonia-ar' },
+      { label: 'Greenbrier, AR', href: '/service-areas/greenbrier-ar' },
+      { label: 'Maumelle, AR', href: '/service-areas/maumelle-ar' },
+      { label: 'North Little Rock, AR', href: '/service-areas/north-little-rock-ar' },
+      { label: 'Little Rock, AR', href: '/service-areas/little-rock-ar' },
+      { label: 'Sherwood, AR', href: '/service-areas/sherwood-ar' },
+      { label: 'All service areas', href: '/service-areas' },
+    ],
+  },
   { label: 'Projects', href: '/projects' },
   { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+]
+
+/** Company links used in footer (matches Lovable sitemap). */
+export const COMPANY_LINKS = [
+  { label: 'About Growfully', href: '/about' },
+  { label: 'Completed projects', href: '/projects' },
+  { label: 'Insights', href: '/insights' },
+  { label: 'Reviews', href: '/reviews' },
   { label: 'Contact', href: '/contact' },
 ] as const
 

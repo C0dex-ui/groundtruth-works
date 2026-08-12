@@ -44,4 +44,4 @@ npm run preview
 9. Quote CTA form  
 10. Footer  
 
-Interior pages use the same design system as the homepage. Body copy is migrated from the previous live site (`groundtruth-works.lovable.app`) — services, industries, service areas, projects, about, contact, quote, privacy, and terms.
+Interior pages use the same design system as the homepage. Body copy is migrated from the previous live site (`groundtruth-works.lovable.app`) — services (with nav dropdowns), industries, service areas, projects, about, insights, reviews, contact, quote, privacy, and terms. Header dropdowns mirror Lovable for Services, Industries, and Service Areas.

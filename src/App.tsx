@@ -4,9 +4,11 @@ import { AboutPage } from './pages/AboutPage'
 import { ContactPage } from './pages/ContactPage'
 import { HomePage } from './pages/HomePage'
 import { IndustriesIndexPage, IndustryDetailPage } from './pages/IndustriesPage'
+import { InsightArticlePage, InsightsIndexPage } from './pages/InsightsPage'
 import { LegalPage } from './pages/LegalPage'
 import { ProjectsPage } from './pages/ProjectsPage'
 import { QuotePage } from './pages/QuotePage'
+import { ReviewsPage } from './pages/ReviewsPage'
 import { ServiceAreaPage, ServiceAreasIndexPage } from './pages/ServiceAreaPage'
 import { ServiceDetailPage, ServicesIndexPage } from './pages/ServicesPage'
 
@@ -24,6 +26,9 @@ export default function App() {
         <Route path="/service-areas/:slug" element={<ServiceAreaPage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/insights" element={<InsightsIndexPage />} />
+        <Route path="/insights/:slug" element={<InsightArticlePage />} />
+        <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/get-a-quote" element={<QuotePage />} />
         <Route path="/privacy" element={<LegalPage kind="privacy" />} />
