@@ -5,6 +5,7 @@ import { CardGrid, SectionBlock } from '../components/SectionBlock'
 import {
   EMAIL,
   EMAIL_HREF,
+  INTERIOR_IMAGES,
   PHONE_DISPLAY,
   PHONE_HREF,
   QUOTE_SERVICE_OPTIONS,
@@ -31,6 +32,8 @@ export function QuotePage() {
         lead={QUOTE_PAGE.lead}
         primaryCta={{ label: `Call ${PHONE_DISPLAY}`, href: PHONE_HREF }}
         secondaryCta={{ label: EMAIL, href: EMAIL_HREF, external: true }}
+        image={INTERIOR_IMAGES.quote}
+        imageAlt="Graded pad ready for construction"
         dark
       >
         <p className="mt-6 text-sm text-white/55">

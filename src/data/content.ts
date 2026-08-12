@@ -104,7 +104,8 @@ export const IMAGES = {
 } as const
 
 /**
- * INTERIOR-only photos (sourced from live Lovable assets under /images/lovable/).
+ * INTERIOR-only photos.
+ * Lovable assets under /images/lovable/ + enhanced hero crops under /images/heroes/.
  * Never used on the homepage. Each path appears on at most one interior route.
  */
 export const INTERIOR_IMAGES = {
@@ -112,6 +113,14 @@ export const INTERIOR_IMAGES = {
   industriesIndex: '/images/lovable/01-og-default.jpg',
   serviceAreasIndex: '/images/lovable/14-og-city.jpg',
   projectsHero: '/images/lovable/15-arkansas-land-Db6vANsR.jpg',
+  about: '/images/heroes/about.jpg',
+  contact: '/images/heroes/contact.jpg',
+  quote: '/images/heroes/quote.jpg',
+  reviews: '/images/heroes/reviews.jpg',
+  insights: '/images/heroes/insights.jpg',
+  insightsArticle: '/images/heroes/insights-article.jpg',
+  privacy: '/images/heroes/privacy.jpg',
+  terms: '/images/heroes/terms.jpg',
   /** Service detail heroes — separate files from homepage service cards */
   serviceDetail: {
     'land-clearing': '/images/lovable/03-growfully3.jpg',

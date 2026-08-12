@@ -4,6 +4,7 @@ import { PageHero } from '../components/PageHero'
 import { PageShell } from '../components/PageShell'
 import { CardGrid, SectionBlock } from '../components/SectionBlock'
 import { TrustStrip } from '../components/TrustStrip'
+import { INTERIOR_IMAGES } from '../data/content'
 import { ABOUT } from '../data/company-pages'
 
 /**
@@ -22,6 +23,8 @@ export function AboutPage() {
         title={ABOUT.heroTitle}
         lead={ABOUT.lead}
         primaryCta={{ label: 'GET A QUOTE', href: '/get-a-quote' }}
+        image={INTERIOR_IMAGES.about}
+        imageAlt="Site clearing work in Central Arkansas"
       >
         <TrustStrip />
       </PageHero>

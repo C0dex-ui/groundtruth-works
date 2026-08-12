@@ -2,7 +2,13 @@ import { Link } from 'react-router-dom'
 import { PageHero } from '../components/PageHero'
 import { PageShell } from '../components/PageShell'
 import { SectionBlock } from '../components/SectionBlock'
-import { EMAIL_HREF, PHONE_DISPLAY, PHONE_HREF, RATINGS } from '../data/content'
+import {
+  EMAIL_HREF,
+  INTERIOR_IMAGES,
+  PHONE_DISPLAY,
+  PHONE_HREF,
+  RATINGS,
+} from '../data/content'
 import { REVIEWS_PAGE } from '../data/insights'
 
 /**
@@ -23,6 +29,8 @@ export function ReviewsPage() {
         lead={REVIEWS_PAGE.lead}
         primaryCta={{ label: `Call ${PHONE_DISPLAY}`, href: PHONE_HREF }}
         secondaryCta={{ label: 'See project record', href: '/projects' }}
+        image={INTERIOR_IMAGES.reviews}
+        imageAlt="Compacted subgrade on a commercial site"
       />
 
       <SectionBlock title="Verified credentials" tone="white">

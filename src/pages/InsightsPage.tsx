@@ -4,6 +4,7 @@ import { InteriorCta } from '../components/InteriorCta'
 import { PageHero } from '../components/PageHero'
 import { PageShell } from '../components/PageShell'
 import { Checklist, SectionBlock } from '../components/SectionBlock'
+import { INTERIOR_IMAGES } from '../data/content'
 import {
   getInsightPost,
   INSIGHT_POSTS,
@@ -23,6 +24,8 @@ export function InsightsIndexPage() {
         title={INSIGHTS_INDEX.heroTitle}
         lead={INSIGHTS_INDEX.lead}
         primaryCta={{ label: 'GET A QUOTE', href: '/get-a-quote' }}
+        image={INTERIOR_IMAGES.insights}
+        imageAlt="Base stone and finished grade on a Growfully site"
       />
 
       <SectionBlock title="All posts" tone="white">
@@ -102,6 +105,8 @@ export function InsightArticlePage() {
           </span>
         }
         primaryCta={{ label: 'GET A QUOTE', href: '/get-a-quote' }}
+        image={INTERIOR_IMAGES.insightsArticle}
+        imageAlt="Land clearing and site work in Central Arkansas"
       />
 
       <article className="section-pad bg-white">

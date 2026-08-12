@@ -7,6 +7,7 @@ import { ProcessList, SectionBlock } from '../components/SectionBlock'
 import {
   EMAIL,
   EMAIL_HREF,
+  INTERIOR_IMAGES,
   PHONE_DISPLAY,
   PHONE_HREF,
   SERVICE_CITIES,
@@ -48,6 +49,8 @@ export function ContactPage() {
           href: 'sms:+15012696860',
           external: true,
         }}
+        image={INTERIOR_IMAGES.contact}
+        imageAlt="Growfully crew on a Central Arkansas site"
       />
 
       <SectionBlock title="Contact details" tone="white">

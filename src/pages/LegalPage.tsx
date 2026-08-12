@@ -1,11 +1,13 @@
 import { PageHero } from '../components/PageHero'
 import { PageShell } from '../components/PageShell'
+import { INTERIOR_IMAGES } from '../data/content'
 import { PRIVACY, TERMS } from '../data/company-pages'
 
 type LegalKind = 'privacy' | 'terms'
 
 export function LegalPage({ kind }: { kind: LegalKind }) {
   const doc = kind === 'privacy' ? PRIVACY : TERMS
+  const image = kind === 'privacy' ? INTERIOR_IMAGES.privacy : INTERIOR_IMAGES.terms
 
   return (
     <PageShell>
@@ -26,6 +28,8 @@ export function LegalPage({ kind }: { kind: LegalKind }) {
         }
         primaryCta={{ label: 'Back to Home', href: '/' }}
         secondaryCta={{ label: 'Contact', href: '/contact' }}
+        image={image}
+        imageAlt=""
       />
 
       <section className="section-pad bg-white">

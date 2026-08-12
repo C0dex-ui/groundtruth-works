@@ -1,6 +1,5 @@
 import { ArrowRight, MapPin, Phone } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { AreaMap } from '../components/AreaMap'
 import { InteriorCta } from '../components/InteriorCta'
 import { PageHero } from '../components/PageHero'
 import { PageShell } from '../components/PageShell'
@@ -64,12 +63,19 @@ export function ServiceAreaPage() {
           </>
         }
         primaryCta={{ label: 'GET A QUOTE', href: '#quote' }}
+        map={{
+          mode: 'city',
+          name: city.name,
+          lat: city.lat,
+          lng: city.lng,
+          zoom: 12,
+        }}
       >
         <TrustStrip />
       </PageHero>
 
       <section className="section-pad bg-white">
-        <div className="container-site grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+        <div className="container-site max-w-3xl">
           <div>
             {detail?.ground && detail.groundTitle && (
               <>
@@ -183,16 +189,6 @@ export function ServiceAreaPage() {
               </Link>
             </div>
           </div>
-
-          <AreaMap
-            mode="city"
-            name={city.name}
-            lat={city.lat}
-            lng={city.lng}
-            zoom={12}
-            heightClass="h-80 sm:h-96 lg:h-[28rem]"
-            subtitle="Google Maps · Arkansas city pin only"
-          />
         </div>
       </section>
 

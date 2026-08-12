@@ -26,20 +26,12 @@ export function Process() {
                   to={stage.href}
                   className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm transition-colors hover:border-accent/40 hover:bg-white/8"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <img
-                      src={stage.image}
-                      alt=""
-                      className="img-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/80 to-transparent" />
-                    <span className="font-display absolute left-3 top-3 flex h-10 w-10 items-center justify-center rounded-md bg-accent text-xl text-ink">
+                  {/* Photos reserved for interior page heroes — process uses number cards only */}
+                  <div className="flex flex-1 flex-col p-5">
+                    <span className="font-display flex h-12 w-12 items-center justify-center rounded-md bg-accent text-2xl text-ink">
                       {stage.step}
                     </span>
-                  </div>
-                  <div className="flex flex-1 flex-col p-4">
-                    <h3 className="heading-md text-white">
+                    <h3 className="heading-md mt-4 text-white">
                       {stage.step}. {stage.title}
                     </h3>
                     <p className="mt-2 font-body text-sm leading-relaxed text-white/65">

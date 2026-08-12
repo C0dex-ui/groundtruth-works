@@ -2,15 +2,27 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { Phone } from 'lucide-react'
 import { Breadcrumbs, type Crumb } from './Breadcrumbs'
+import { AreaMap } from './AreaMap'
 import { PHONE_DISPLAY, PHONE_HREF } from '../data/content'
+
+export type HeroMap = {
+  mode?: 'state' | 'city'
+  name?: string
+  lat?: number
+  lng?: number
+  zoom?: number
+}
 
 type PageHeroProps = {
   crumbs: Crumb[]
   eyebrow?: string
   title: string
   lead: ReactNode
+  /** Prefer a unique photo per route. */
   image?: string
   imageAlt?: string
+  /** Or an interactive map (city pages). */
+  map?: HeroMap
   primaryCta?: { label: string; href: string }
   secondaryCta?: { label: string; href: string; external?: boolean }
   children?: ReactNode
@@ -18,7 +30,7 @@ type PageHeroProps = {
 }
 
 /**
- * Interior page hero — industrial card layout matching homepage hierarchy.
+ * Interior page hero — always two-column on large screens when image or map is set.
  */
 export function PageHero({
   crumbs,
@@ -27,6 +39,7 @@ export function PageHero({
   lead,
   image,
   imageAlt = '',
+  map,
   primaryCta,
   secondaryCta,
   children,
@@ -36,6 +49,8 @@ export function PageHero({
     ? 'relative overflow-hidden steel-grid text-white'
     : 'bg-paper'
 
+  const hasMedia = Boolean(image || map)
+
   return (
     <section className={shell}>
       {dark && <div className="noise-fade pointer-events-none absolute inset-0" aria-hidden />}
@@ -44,7 +59,7 @@ export function PageHero({
           <Breadcrumbs items={crumbs} />
 
           <div
-            className={`grid gap-8 lg:items-center ${image ? 'lg:grid-cols-[1.05fr_0.95fr] lg:gap-12' : ''}`}
+            className={`grid gap-8 lg:items-center ${hasMedia ? 'lg:grid-cols-[1.05fr_0.95fr] lg:gap-12' : ''}`}
           >
             <div>
               {eyebrow && (
@@ -108,8 +123,32 @@ export function PageHero({
 
             {image && (
               <div className="card-industrial relative aspect-[4/3] overflow-hidden rounded-2xl lg:aspect-[5/4]">
-                <img src={image} alt={imageAlt} className="img-cover" />
+                <img
+                  src={image}
+                  alt={imageAlt}
+                  className="img-cover"
+                  loading="eager"
+                  decoding="async"
+                />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent" />
+              </div>
+            )}
+
+            {!image && map && (
+              <div className="min-w-0">
+                <AreaMap
+                  mode={map.mode ?? 'city'}
+                  name={map.name}
+                  lat={map.lat}
+                  lng={map.lng}
+                  zoom={map.zoom ?? 12}
+                  heightClass="h-64 sm:h-80 lg:h-[22rem]"
+                  subtitle={
+                    map.mode === 'state'
+                      ? 'Google Maps · Growfully LLC'
+                      : `Google Maps · ${map.name}, AR`
+                  }
+                />
               </div>
             )}
           </div>
