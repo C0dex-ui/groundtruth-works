@@ -20,8 +20,8 @@ export function LegalPage({ kind }: { kind: LegalKind }) {
         title={doc.title}
         lead={
           <>
-            <span className="block text-sm text-muted">{doc.updated}</span>
-            <span className="mt-3 block rounded-xl border border-black/10 bg-white px-4 py-3 text-sm leading-relaxed text-muted">
+            <span className="block text-sm text-white/70">{doc.updated}</span>
+            <span className="mt-3 block rounded-xl border border-white/20 bg-ink/50 px-4 py-3 text-sm leading-relaxed text-white/80 backdrop-blur-sm">
               {doc.notice}
             </span>
           </>

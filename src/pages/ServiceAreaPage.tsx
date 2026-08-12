@@ -57,7 +57,7 @@ export function ServiceAreaPage() {
           <>
             {lead}
             {(detail?.subline || meta) && (
-              <span className="mt-3 block text-sm text-muted">
+              <span className="mt-3 block text-sm text-white/70">
                 {detail?.subline ??
                   (meta ? `${meta.county} · ${meta.drive} from Mayflower` : null)}
               </span>

@@ -71,13 +71,13 @@ export function PageHero({
             decoding="async"
             fetchPriority="high"
           />
-          {/* Readability scrim — left-weighted so copy stays clear */}
+          {/* Readability scrim — strong left/base so white copy always reads */}
           <div
-            className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/45"
+            className="absolute inset-0 bg-gradient-to-r from-ink via-ink/88 to-ink/55"
             aria-hidden
           />
           <div
-            className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/25 to-ink/40"
+            className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/35 to-ink/50"
             aria-hidden
           />
           <div className="noise-fade pointer-events-none absolute inset-0" aria-hidden />
@@ -99,9 +99,13 @@ export function PageHero({
             )}
             <div className="accent-bar mt-2.5" />
             <h1 className={`heading-xl mt-3 ${onDark ? 'text-white' : 'text-ink'}`}>{title}</h1>
+            {/*
+              Nested lead content often hardcodes text-ink / text-muted (e.g. phone numbers).
+              .hero-lead-on-dark forces readable light text for all descendants.
+            */}
             <div
               className={`mt-3 text-base leading-relaxed sm:text-[1.05rem] ${
-                onDark ? 'text-white/80' : 'text-muted'
+                onDark ? 'hero-lead-on-dark' : 'text-muted'
               }`}
             >
               {lead}
