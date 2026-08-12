@@ -1,5 +1,6 @@
 import { ArrowRight, MapPin } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
+import { CutAndFillDiagram, GradeToleranceNote } from '../components/CutAndFillDiagram'
 import { InteriorCta } from '../components/InteriorCta'
 import { PageHero } from '../components/PageHero'
 import { PageShell } from '../components/PageShell'
@@ -167,6 +168,14 @@ export function ServiceDetailPage() {
           ))}
         </div>
       </SectionBlock>
+
+      {/* Lovable site-grading interactive diagram */}
+      {detail.slug === 'site-grading' && (
+        <>
+          <CutAndFillDiagram />
+          <GradeToleranceNote />
+        </>
+      )}
 
       {detail.extraSections?.map((section) => (
         <SectionBlock
