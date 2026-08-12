@@ -44,4 +44,4 @@ npm run preview
 9. Quote CTA form  
 10. Footer  
 
-Interior routes resolve to lightweight placeholders so navigation works; migrate full interior pages next.
+Interior pages use the same design system as the homepage. Body copy is migrated from the previous live site (`groundtruth-works.lovable.app`) — services, industries, service areas, projects, about, contact, quote, privacy, and terms.
