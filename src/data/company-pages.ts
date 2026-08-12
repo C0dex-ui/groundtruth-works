@@ -54,10 +54,39 @@ export const ABOUT = {
       body: 'We sequence around the trades that follow us and tell you honestly when weather has taken a day.',
     },
   ],
-  equipmentNote:
-    'The fleet is sized for the one-to-fifty-acre commercial work we take on, not for jobs we would have to sub out anyway. Specialty attachments and any oversized equipment are brought in per job and disclosed in the quote rather than buried in a lump sum. Ask on the site visit and you will be told exactly what is coming to your job.',
-  insuranceNote:
-    'Growfully is a licensed and insured Arkansas contractor and carries general liability and workers’ compensation coverage. Certificates of insurance are issued on request to a named certificate holder. We add the owner, GC and lender as additional insured where the contract requires it. Standard prequal packets, W-9 and safety documentation returned promptly.',
+  /** From Lovable About — machine list not published until owner confirms each line. */
+  equipmentIntro:
+    'The fleet is sized for the one-to-fifty-acre commercial work we take on, not for jobs we would have to sub out anyway. We publish the machine list rather than describe it in the abstract, so the list stays unpublished until David Culberson has confirmed every line of it.',
+  equipmentClose:
+    'Specialty attachments and any oversized equipment are brought in per job and disclosed in the quote rather than buried in a lump sum. Ask on the site visit and you will be told exactly what is coming to your job.',
+  /** From Lovable About — do not invent license # or policy limits. */
+  licensing: [
+    {
+      label: 'Contractor license',
+      value:
+        'Number not published on this site. Current certificate goes out with the quote on request.',
+    },
+    {
+      label: 'Insurance limits',
+      value:
+        'Limits not published as figures here. Certificates of insurance issued to the GC or owner before mobilisation.',
+    },
+    {
+      label: 'Additional insured',
+      value:
+        'We add the owner, GC and lender as additional insured where the contract requires it. Send the requirement with the bid documents.',
+    },
+    {
+      label: "Workers' compensation",
+      value: 'Carried and documented. Carrier details available on request.',
+    },
+    {
+      label: 'W-9 and prequalification',
+      value: 'Standard prequal packets, W-9 and safety documentation returned promptly.',
+    },
+  ],
+  licensingClose:
+    'We state these plainly rather than claiming credentials in the abstract. If a number is not published on this page, it means we have not published it yet — ask and it will be sent directly.',
 } as const
 
 export const PROJECTS_PAGE = {

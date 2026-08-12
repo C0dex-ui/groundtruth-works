@@ -8,7 +8,6 @@ import { Projects } from '../components/Projects'
 import { QuoteCTA } from '../components/QuoteCTA'
 import { ServiceAreas } from '../components/ServiceAreas'
 import { Services } from '../components/Services'
-import { Testimonials } from '../components/Testimonials'
 import { TrustBar } from '../components/TrustBar'
 import { PHONE_HREF } from '../data/content'
 
@@ -30,7 +29,7 @@ export function HomePage() {
         <Industries />
         <ServiceAreas />
         <Projects />
-        <Testimonials />
+        {/* No testimonials section on Lovable homepage; /reviews keeps commercial reviews empty until tagged. */}
         <QuoteCTA />
       </main>
       <Footer />

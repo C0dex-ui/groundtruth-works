@@ -1,34 +1,15 @@
-import { ExternalLink, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { InteriorCta } from '../components/InteriorCta'
 import { PageHero } from '../components/PageHero'
 import { PageShell } from '../components/PageShell'
 import { SectionBlock } from '../components/SectionBlock'
-import {
-  EMAIL_HREF,
-  PHONE_DISPLAY,
-  PHONE_HREF,
-  RATINGS,
-  TESTIMONIALS,
-} from '../data/content'
+import { EMAIL_HREF, PHONE_DISPLAY, PHONE_HREF, RATINGS } from '../data/content'
 import { REVIEWS_PAGE } from '../data/insights'
 
-function Stars({ rating }: { rating: number }) {
-  return (
-    <div className="flex items-center gap-0.5" aria-label={`${rating} out of 5 stars`}>
-      {Array.from({ length: 5 }, (_, i) => (
-        <Star
-          key={i}
-          className={`h-4 w-4 ${
-            i < rating ? 'fill-[#fbbc05] text-[#fbbc05]' : 'fill-transparent text-[#dadce0]'
-          }`}
-          aria-hidden
-        />
-      ))}
-    </div>
-  )
-}
-
+/**
+ * Reviews page — copy structure matches groundtruth-works.lovable.app/reviews.
+ * Do not invent ratings, license numbers, or testimonials.
+ * Lovable explicitly keeps “Reviews of current service lines” empty until tagged commercial reviews exist.
+ */
 export function ReviewsPage() {
   return (
     <PageShell>
@@ -45,53 +26,64 @@ export function ReviewsPage() {
       />
 
       <SectionBlock title="Verified credentials" tone="white">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2">
           <article className="card-industrial rounded-2xl p-5 sm:p-6">
             <p className="label text-xs text-muted">BBB Accredited</p>
-            <p className="font-display mt-2 text-2xl uppercase text-ink">
-              {RATINGS.bbb.grade} Rated
+            <p className="font-display mt-2 text-xl uppercase text-ink sm:text-2xl">
+              A+ rating
             </p>
-            <p className="mt-2 text-sm text-muted">
-              Better Business Bureau accredited business. Profile on file with BBB.
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              Better Business Bureau accredited business with an A+ rating.
             </p>
             <a
               href={RATINGS.bbb.href}
               target="_blank"
               rel="noreferrer"
-              className="label mt-4 inline-flex items-center gap-1 text-sm text-ink hover:underline"
+              className="mt-4 inline-block text-sm font-medium text-ink underline"
             >
               View BBB profile
-              <ExternalLink className="h-3.5 w-3.5" aria-hidden />
             </a>
           </article>
 
           <article className="card-industrial rounded-2xl p-5 sm:p-6">
-            <p className="label text-xs text-muted">Google Business Profile</p>
-            <p className="font-display mt-2 text-2xl uppercase text-ink">
-              {RATINGS.google.score} · {RATINGS.google.reviewCount} reviews
+            <p className="label text-xs text-muted">HomeAdvisor</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              Rating and review count are not published on this site until they are read off the live
+              HomeAdvisor profile the same day. Ask David for the current profile link.
             </p>
-            <p className="mt-2 text-sm text-muted">
-              Live Google rating for Growfully LLC. Keep scores in sync with the Maps listing.
+          </article>
+
+          <article className="card-industrial rounded-2xl p-5 sm:p-6">
+            <p className="label text-xs text-muted">Google Business Profile</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              We will not print a rating number on this page until the figure is verified on the
+              profile the same day. Open the live listing to see current reviews.
             </p>
             <a
               href={RATINGS.google.href}
               target="_blank"
               rel="noreferrer"
-              className="label mt-4 inline-flex items-center gap-1 text-sm text-ink hover:underline"
+              className="mt-4 inline-block text-sm font-medium text-ink underline"
             >
-              View on Google
-              <ExternalLink className="h-3.5 w-3.5" aria-hidden />
+              Open Google listing
             </a>
           </article>
 
           <article className="card-industrial rounded-2xl p-5 sm:p-6">
             <p className="label text-xs text-muted">Years in business</p>
-            <p className="font-display mt-2 text-2xl uppercase text-ink">
-              24 years · since {RATINGS.sinceYear}
+            <p className="font-display mt-2 text-xl uppercase text-ink sm:text-2xl">
+              24 years, since 2002
             </p>
-            <p className="mt-2 text-sm text-muted">
-              Same region under the same owner, David Culberson. Licensed and insured; certificates
-              issued before mobilisation.
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              In the same region under the same owner, David Culberson.
+            </p>
+          </article>
+
+          <article className="card-industrial rounded-2xl p-5 sm:p-6 sm:col-span-2">
+            <p className="label text-xs text-muted">Licensed and insured</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              License number and insurance limits are not published as figures on this site. Certificates
+              are issued before mobilisation on request. Call or email for current documents.
             </p>
           </article>
         </div>
@@ -105,58 +97,23 @@ export function ReviewsPage() {
         </div>
       </SectionBlock>
 
-      <SectionBlock
-        title="Google reviews from the live profile"
-        lead="Attributed, unedited reviews from the Growfully LLC Google Business Profile."
-        tone="white"
-      >
-        <div className="grid gap-4 md:grid-cols-3">
-          {TESTIMONIALS.map((review) => (
-            <article
-              key={review.name}
-              className="card-industrial flex h-full flex-col rounded-2xl p-5"
-            >
-              <div className="flex items-center gap-3">
-                {review.photo ? (
-                  <img
-                    src={review.photo}
-                    alt=""
-                    className="h-11 w-11 rounded-full object-cover ring-1 ring-black/5"
-                    loading="lazy"
-                  />
-                ) : (
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-ink text-accent">
-                    {review.name.charAt(0)}
-                  </span>
-                )}
-                <div>
-                  <p className="font-semibold text-ink">{review.name}</p>
-                  <p className="text-xs text-muted">{review.relativeTime}</p>
-                </div>
-              </div>
-              <div className="mt-3">
-                <Stars rating={review.rating} />
-              </div>
-              {review.text ? (
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{review.text}</p>
-              ) : (
-                <p className="mt-3 flex-1 text-sm text-muted">
-                  Rated {review.rating}.0 on Google (star rating only).
-                </p>
-              )}
-              <p className="label mt-4 text-[0.7rem] text-muted">Source: Google</p>
-            </article>
-          ))}
+      <SectionBlock title="Reviews of current service lines" tone="white">
+        <p className="font-display text-2xl uppercase text-ink">Nothing published here yet.</p>
+        <div className="mt-4 max-w-3xl space-y-4 text-base leading-relaxed text-muted sm:text-lg">
+          <p>
+            We have not yet published a review that describes current commercial site work. Reviews
+            from recent clearing, grading and site prep jobs are being collected now and will appear
+            here — tagged, attributed and unedited — as they come in.
+          </p>
+          <p>
+            In the meantime, if you want a reference, ask. David Culberson will put you in touch with
+            a general contractor or owner whose site he has worked on. Call{' '}
+            <a href={PHONE_HREF} className="font-medium text-ink underline">
+              {PHONE_DISPLAY}
+            </a>
+            .
+          </p>
         </div>
-        <a
-          href={RATINGS.google.href}
-          target="_blank"
-          rel="noreferrer"
-          className="btn-outline mt-8 inline-flex"
-        >
-          Read on Google
-          <ExternalLink className="h-4 w-4" />
-        </a>
       </SectionBlock>
 
       <SectionBlock title={REVIEWS_PAGE.leaveTitle} tone="paper">
@@ -168,23 +125,20 @@ export function ReviewsPage() {
             rel="noreferrer"
             className="btn-primary"
           >
-            Leave a Google review
+            Leave a review on Google
           </a>
           <a href={EMAIL_HREF} className="btn-outline">
             Or email growfullyllc@gmail.com
           </a>
         </div>
         <p className="mt-6 text-sm text-muted">
-          Want a reference? David Culberson will put you in touch with a general contractor or owner
-          whose site he has worked on.{' '}
+          Prefer a call?{' '}
           <Link to="/contact" className="font-medium text-ink underline">
             Contact
           </Link>{' '}
-          or call {PHONE_DISPLAY}.
+          or {PHONE_DISPLAY}.
         </p>
       </SectionBlock>
-
-      <InteriorCta />
     </PageShell>
   )
 }

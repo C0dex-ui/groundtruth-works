@@ -4,7 +4,7 @@ import { AreaMap } from '../components/AreaMap'
 import { InteriorCta } from '../components/InteriorCta'
 import { PageHero } from '../components/PageHero'
 import { PageShell } from '../components/PageShell'
-import { FaqList, SectionBlock } from '../components/SectionBlock'
+import { CardGrid, FaqList, SectionBlock } from '../components/SectionBlock'
 import { TrustStrip } from '../components/TrustStrip'
 import {
   PHONE_DISPLAY,
@@ -16,27 +16,30 @@ import {
 import {
   CITY_META,
   getCityMeta,
-  MAYFLOWER_DETAIL,
   SERVICE_AREAS_INDEX,
 } from '../data/company-pages'
+import { getCityDetail } from '../data/city-detail'
 
 export function ServiceAreaPage() {
   const { slug } = useParams<{ slug: string }>()
   const city = slug ? getCityBySlug(slug) : undefined
   const meta = slug ? getCityMeta(slug) : undefined
+  const detail = slug ? getCityDetail(slug) : undefined
 
   if (!city) {
     return <Navigate to="/service-areas" replace />
   }
 
   const others = SERVICE_CITIES.filter((c) => c.slug !== city.slug)
-  const isMayflower = city.slug === 'mayflower-ar'
 
-  const lead = isMayflower
-    ? MAYFLOWER_DETAIL.lead
-    : `Growfully provides land clearing, site grading and excavation for commercial and contractor jobs in and around ${city.name}, Arkansas — working a 60–75 mile radius from Mayflower across Central Arkansas.${
-        meta ? ` Common work here: ${meta.commonWork}.` : ''
-      }`
+  // Prefer Lovable long-form when we have it; otherwise table facts only (no invented copy).
+  const heroTitle =
+    detail?.heroTitle ?? `Site Work in ${city.name}, AR`
+  const lead =
+    detail?.lead ??
+    (meta
+      ? `Growfully works ${city.name}, Arkansas (${meta.county}). Drive time from the Mayflower yard: ${meta.drive}. Most common work listed on the service-areas table: ${meta.commonWork}.`
+      : `Growfully provides land clearing, site grading and excavation in and around ${city.name}, Arkansas, within a 60–75 mile radius of Mayflower.`)
 
   return (
     <PageShell>
@@ -47,21 +50,14 @@ export function ServiceAreaPage() {
           { label: `${city.name}, AR` },
         ]}
         eyebrow="Service area"
-        title={
-          isMayflower
-            ? MAYFLOWER_DETAIL.heroTitle
-            : `Site Work in ${city.name}, AR`
-        }
+        title={heroTitle}
         lead={
           <>
             {lead}
-            {(isMayflower || meta) && (
+            {(detail?.subline || meta) && (
               <span className="mt-3 block text-sm text-muted">
-                {isMayflower
-                  ? MAYFLOWER_DETAIL.subline
-                  : meta
-                    ? `${meta.county} · ${meta.drive} from Mayflower`
-                    : null}
+                {detail?.subline ??
+                  (meta ? `${meta.county} · ${meta.drive} from Mayflower` : null)}
               </span>
             )}
           </>
@@ -74,45 +70,72 @@ export function ServiceAreaPage() {
       <section className="section-pad bg-white">
         <div className="container-site grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
           <div>
-            {isMayflower ? (
+            {detail?.ground && detail.groundTitle && (
               <>
-                <h2 className="heading-xl text-ink">{MAYFLOWER_DETAIL.groundTitle}</h2>
+                <h2 className="heading-xl text-ink">{detail.groundTitle}</h2>
                 <div className="mt-4 space-y-4 text-base leading-relaxed text-muted">
-                  {MAYFLOWER_DETAIL.ground.map((p) => (
+                  {detail.ground.map((p) => (
                     <p key={p.slice(0, 40)}>{p}</p>
                   ))}
                 </div>
-                <h2 className="heading-xl mt-10 text-ink">{MAYFLOWER_DETAIL.builtTitle}</h2>
-                <div className="mt-4 space-y-4 text-base leading-relaxed text-muted">
-                  {MAYFLOWER_DETAIL.built.map((p) => (
-                    <p key={p.slice(0, 40)}>{p}</p>
-                  ))}
-                </div>
-                <h2 className="heading-xl mt-10 text-ink">
-                  {MAYFLOWER_DETAIL.calledForTitle}
-                </h2>
-                <p className="mt-4 text-base leading-relaxed text-muted">
-                  {MAYFLOWER_DETAIL.calledFor}
-                </p>
               </>
-            ) : (
+            )}
+
+            {detail?.built && detail.builtTitle && (
               <>
-                <h2 className="heading-xl text-ink">Site work in {city.name}</h2>
-                <p className="mt-4 text-base leading-relaxed text-muted">
-                  Based in Mayflower, Growfully regularly works {city.name} and the surrounding
-                  {meta ? ` ${meta.county}` : ' Central Arkansas'} market. Drive time from the yard
-                  is {meta?.drive ?? 'within our 60–75 mile working radius'}.
-                </p>
-                {meta && (
-                  <div className="card-industrial mt-6 rounded-2xl p-5">
-                    <p className="label text-xs text-muted">Most common work</p>
-                    <p className="mt-2 text-base text-ink">{meta.commonWork}</p>
+                <h2 className="heading-xl mt-10 text-ink">{detail.builtTitle}</h2>
+                <div className="mt-4 space-y-4 text-base leading-relaxed text-muted">
+                  {detail.built.map((p) => (
+                    <p key={p.slice(0, 40)}>{p}</p>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {detail?.calledFor && detail.calledForTitle && (
+              <>
+                <h2 className="heading-xl mt-10 text-ink">{detail.calledForTitle}</h2>
+                {typeof detail.calledFor === 'string' ? (
+                  <p className="mt-4 text-base leading-relaxed text-muted">
+                    {detail.calledFor}
+                  </p>
+                ) : (
+                  <div className="mt-6">
+                    <CardGrid items={detail.calledFor} />
+                    {detail.calledForNote && (
+                      <p className="mt-4 text-sm font-medium text-ink">
+                        {detail.calledForNote}
+                      </p>
+                    )}
                   </div>
                 )}
-                <p className="mt-6 text-base leading-relaxed text-muted">
-                  David Culberson walks the tract, writes the number, and runs the machines —
-                  whether the job is a commercial pad, acreage clearing, or drainage that keeps a
-                  finished grade where you put it.
+              </>
+            )}
+
+            {!detail && meta && (
+              <>
+                <h2 className="heading-xl text-ink">{city.name}, AR</h2>
+                <div className="card-industrial mt-6 rounded-2xl p-5">
+                  <p className="label text-xs text-muted">From the service-areas table</p>
+                  <dl className="mt-3 space-y-2 text-sm">
+                    <div>
+                      <dt className="text-muted">County</dt>
+                      <dd className="font-medium text-ink">{meta.county}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-muted">Drive time from Mayflower</dt>
+                      <dd className="font-medium text-ink">{meta.drive}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-muted">Most common work</dt>
+                      <dd className="font-medium text-ink">{meta.commonWork}</dd>
+                    </div>
+                  </dl>
+                </div>
+                <p className="mt-6 text-sm leading-relaxed text-muted">
+                  Long-form local copy for this town is only published when it exists on the source
+                  site. Facts above come from the Central Arkansas service-areas table; call for a
+                  site-specific number.
                 </p>
               </>
             )}
@@ -155,26 +178,34 @@ export function ServiceAreaPage() {
         </div>
       </SectionBlock>
 
-      {isMayflower && (
-        <SectionBlock title="Mayflower questions" tone="white">
-          <FaqList items={[...MAYFLOWER_DETAIL.faqs]} />
+      {detail?.faqs && (
+        <SectionBlock title={`${city.name} questions`} tone="white">
+          <FaqList items={detail.faqs} />
         </SectionBlock>
       )}
 
       <SectionBlock title="Other cities we serve" tone="white">
         <div className="flex flex-wrap gap-2">
-          {others.map((c) => (
+          {(detail?.nearby
+            ? SERVICE_CITIES.filter((c) => detail.nearby!.includes(c.slug))
+            : others
+          ).map((c) => (
             <Link key={c.slug} to={`/service-areas/${c.slug}`} className="chip">
               <MapPin className="chip-icon h-3.5 w-3.5" aria-hidden />
               <span>{c.name}</span>
             </Link>
           ))}
+          {detail?.nearby && (
+            <Link to="/service-areas" className="chip">
+              <span>See all service areas</span>
+            </Link>
+          )}
         </div>
       </SectionBlock>
 
       <InteriorCta
         title={`Get a quote for your ${city.name} site`}
-        lead={`${city.name} is in our working radius. Add the scope and the timing and David Culberson will come look at it.`}
+        lead={`Add the scope and the timing and David Culberson will come look at it — or call ${PHONE_DISPLAY}.`}
       />
     </PageShell>
   )

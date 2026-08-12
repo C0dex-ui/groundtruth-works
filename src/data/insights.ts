@@ -164,6 +164,7 @@ export const LAND_CLEARING_COST_ARTICLE = {
   ],
 } as const
 
+/** Exact policy copy from groundtruth-works.lovable.app/reviews */
 export const REVIEWS_PAGE = {
   heroTitle: 'Credentials and reviews',
   lead:
@@ -172,7 +173,7 @@ export const REVIEWS_PAGE = {
   which: [
     "A good number of Growfully's public reviews were written years ago about residential work from an earlier chapter of this business — services the company no longer offers.",
     'Those reviews are real and they are positive, but reprinting them here would tell a solar developer or a general contractor that they are looking at a residential yard company. That is not what Growfully does and not who this site is for.',
-    'So every review is tagged with the service line it actually describes, and only reviews tagged to a current construction service — clearing, grading, excavation, site prep, mulching, dirt work, drainage — are shown. Where we do show Google reviews below, they come from the live Google Business Profile and are attributed unedited.',
+    'So every review is tagged with the service line it actually describes, and only reviews tagged to a current construction service — clearing, grading, excavation, site prep, mulching, dirt work, drainage — are shown. If that leaves this section empty, it stays empty. The credentials above are verifiable; a misleading testimonial is not worth more than that.',
   ],
   leaveTitle: 'Worked with us? Leave a review',
   leave:
