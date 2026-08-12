@@ -2,6 +2,71 @@ import { Link } from 'react-router-dom'
 import { PROCESS } from '../data/content'
 import { ScrollCard } from './ScrollCard'
 
+/** Black + lime process diagrams (Lovable homepage style). */
+function ClearIcon() {
+  return (
+    <svg viewBox="0 0 200 120" className="h-full w-full" aria-hidden>
+      <rect width="200" height="120" fill="#c2ff36" />
+      {/* Rolling ground */}
+      <path d="M0 78 Q 50 58 100 72 T 200 68 L 200 120 L 0 120 Z" fill="#0a0a0a" />
+      {/* Three pines */}
+      {[48, 100, 152].map((x) => (
+        <g key={x}>
+          <rect x={x - 2} y={58} width="4" height="22" fill="#0a0a0a" />
+          <path d={`M ${x} 28 L ${x + 18} 62 L ${x - 18} 62 Z`} fill="#0a0a0a" />
+          <path d={`M ${x} 38 L ${x + 14} 58 L ${x - 14} 58 Z`} fill="#0a0a0a" />
+        </g>
+      ))}
+    </svg>
+  )
+}
+
+function StripIcon() {
+  return (
+    <svg viewBox="0 0 200 120" className="h-full w-full" aria-hidden>
+      <rect width="200" height="120" fill="#ffffff" />
+      {/* Stripped topsoil mound (lime) */}
+      <path d="M0 72 Q 40 48 100 58 T 200 62 L 200 88 L 0 88 Z" fill="#c2ff36" />
+      {/* Competent subgrade */}
+      <rect x="0" y="88" width="200" height="32" fill="#0a0a0a" />
+    </svg>
+  )
+}
+
+function GradeIcon() {
+  return (
+    <svg viewBox="0 0 200 120" className="h-full w-full" aria-hidden>
+      <rect width="200" height="120" fill="#ffffff" />
+      {/* Finished grade — slight undulation then solid mass */}
+      <path d="M0 70 Q 50 58 100 66 T 200 62 L 200 120 L 0 120 Z" fill="#0a0a0a" />
+    </svg>
+  )
+}
+
+function CompactIcon() {
+  return (
+    <svg viewBox="0 0 200 120" className="h-full w-full" aria-hidden>
+      <rect width="200" height="120" fill="#ffffff" />
+      {/* Thin densified surface band */}
+      <rect x="0" y="78" width="200" height="10" fill="#c2ff36" />
+      <rect x="0" y="88" width="200" height="32" fill="#0a0a0a" />
+    </svg>
+  )
+}
+
+function BaseIcon() {
+  return (
+    <svg viewBox="0 0 200 120" className="h-full w-full" aria-hidden>
+      <rect width="200" height="120" fill="#ffffff" />
+      {/* Base stone layer */}
+      <rect x="0" y="72" width="200" height="18" fill="#c2ff36" />
+      <rect x="0" y="90" width="200" height="30" fill="#0a0a0a" />
+    </svg>
+  )
+}
+
+const ICONS = [ClearIcon, StripIcon, GradeIcon, CompactIcon, BaseIcon] as const
+
 export function Process() {
   return (
     <section className="section-pad steel-grid text-white" aria-labelledby="process-heading">
@@ -18,28 +83,32 @@ export function Process() {
           </p>
         </div>
 
-        <ol className="mt-6 grid list-none gap-2.5 p-0 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3 xl:grid-cols-5">
-          {PROCESS.map((stage, i) => (
-            <li key={stage.title} className="h-full">
-              <ScrollCard delay={i * 60} className="h-full">
-                <Link
-                  to={stage.href}
-                  className="group flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm transition-colors hover:border-accent/40 hover:bg-white/8"
-                >
-                  {/* Photos reserved for interior page heroes — process uses number cards only */}
-                  <div className="flex flex-1 flex-col p-4">
-                    <span className="font-display flex h-10 w-10 items-center justify-center rounded-md bg-accent text-xl text-ink">
-                      {stage.step}
-                    </span>
-                    <h3 className="heading-md mt-3 text-white">{stage.title}</h3>
-                    <p className="mt-1.5 font-body text-sm leading-relaxed text-white/65">
-                      {stage.description}
-                    </p>
-                  </div>
-                </Link>
-              </ScrollCard>
-            </li>
-          ))}
+        <ol className="mt-6 grid list-none gap-3 p-0 sm:grid-cols-2 sm:gap-3.5 lg:grid-cols-3 xl:grid-cols-5">
+          {PROCESS.map((stage, i) => {
+            const Icon = ICONS[i] ?? ClearIcon
+            return (
+              <li key={stage.title} className="h-full">
+                <ScrollCard delay={i * 60} className="h-full">
+                  <Link
+                    to={stage.href}
+                    className="group flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm transition-colors hover:border-accent/40 hover:bg-white/8"
+                  >
+                    <div className="aspect-[5/3] overflow-hidden border-b border-white/10 bg-white">
+                      <Icon />
+                    </div>
+                    <div className="flex flex-1 flex-col p-4">
+                      <h3 className="heading-md text-white">
+                        {stage.step}. {stage.title}
+                      </h3>
+                      <p className="mt-1.5 font-body text-sm leading-relaxed text-white/65">
+                        {stage.description}
+                      </p>
+                    </div>
+                  </Link>
+                </ScrollCard>
+              </li>
+            )
+          })}
         </ol>
       </div>
     </section>
