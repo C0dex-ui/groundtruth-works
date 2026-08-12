@@ -94,7 +94,7 @@ export function Hero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/35 to-ink/45" />
       <div className="noise-fade pointer-events-none absolute inset-0 -z-10" />
 
-      <div className="hero-shell container-site relative flex min-h-[min(78svh,42rem)] flex-col justify-center py-8 sm:min-h-[min(80svh,46rem)] sm:py-10 lg:py-12 max-sm:min-h-[min(72svh,36rem)] max-sm:pb-7">
+      <div className="hero-shell container-site relative flex min-h-[min(70svh,38rem)] flex-col justify-center py-7 sm:min-h-[min(80svh,46rem)] sm:py-10 lg:py-12 max-sm:min-h-[min(68svh,34rem)] max-sm:pb-6">
         <motion.div
           className="flex w-full min-w-0 flex-col"
           variants={reduced ? undefined : container}
@@ -124,7 +124,7 @@ export function Hero() {
 
             <motion.p
               variants={reduced ? undefined : fadeUp}
-              className="t-lead mt-4 max-w-xl text-white/90 sm:mt-6"
+              className="t-lead mt-3 max-w-xl text-white/90 sm:mt-6"
             >
               Land clearing, site grading and excavation across Central Arkansas.
               Owner-run site work since 2002 — free on-site estimates, written numbers.
@@ -132,7 +132,7 @@ export function Hero() {
 
             <motion.div
               variants={reduced ? undefined : fadeUp}
-              className="btn-row mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center"
+              className="btn-row mt-5 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3"
             >
               <Link to="/get-a-quote" className="btn-primary">
                 GET A QUOTE
@@ -145,7 +145,7 @@ export function Hero() {
 
             <motion.p
               variants={reduced ? undefined : fadeUp}
-              className="mt-5 text-sm text-white/55 sm:mt-8"
+              className="mt-4 text-sm text-white/55 sm:mt-8"
             >
               {LOCATION_LINE}
             </motion.p>
@@ -153,10 +153,10 @@ export function Hero() {
 
           <motion.div
             variants={reduced ? undefined : fadeUp}
-            className="mt-8 flex w-full min-w-0 flex-col gap-3 border-t border-white/10 pt-6 sm:mt-10 sm:gap-4 sm:pt-8 lg:flex-row lg:items-center lg:justify-between lg:gap-8"
+            className="mt-6 flex w-full min-w-0 flex-col gap-2.5 border-t border-white/10 pt-5 sm:mt-10 sm:gap-4 sm:pt-8 lg:flex-row lg:items-center lg:justify-between lg:gap-8"
           >
             <dl
-              className="grid w-full max-w-3xl grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-3"
+              className="grid w-full max-w-3xl grid-cols-1 gap-2 min-[400px]:grid-cols-3 sm:gap-3"
               aria-label="Trust signals"
             >
               {/* Shared white cards — logos larger, fill card cleanly */}

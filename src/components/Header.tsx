@@ -214,21 +214,21 @@ export function Header() {
       }`}
     >
       <div className="h-0.5 w-full bg-accent" aria-hidden />
-      <div className="container-site flex h-[4.25rem] items-center justify-between gap-2 sm:h-[4.75rem] sm:gap-4">
+      <div className="container-site flex h-[3.75rem] items-center justify-between gap-2 sm:h-[4.75rem] sm:gap-4">
         <Link
           to="/"
-          className="flex min-w-0 max-w-[55%] items-center gap-2 sm:max-w-none sm:gap-3"
+          className="flex min-w-0 max-w-[48%] items-center gap-2 sm:max-w-none sm:gap-3"
           onClick={() => setOpen(false)}
         >
-          <span className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-md bg-steel ring-1 ring-white/15 sm:h-11 sm:w-11">
+          <span className="relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-md bg-steel ring-1 ring-white/15 sm:h-11 sm:w-11">
             <img
               src={IMAGES.logo}
               alt={`${COMPANY} logo`}
-              className="h-8 w-8 object-contain sm:h-9 sm:w-9"
+              className="h-7 w-7 object-contain sm:h-9 sm:w-9"
             />
           </span>
           <span className="min-w-0">
-            <span className="font-display block text-[1.25rem] uppercase leading-none sm:text-[1.45rem]">
+            <span className="font-display block truncate text-[1.1rem] uppercase leading-none sm:text-[1.45rem]">
               Growfully
             </span>
             <span className="label mt-1 hidden truncate text-[0.66rem] tracking-[0.18em] text-white/70 sm:block">
@@ -288,7 +288,7 @@ export function Header() {
       {open && (
         <div
           id="mobile-nav"
-          className="max-h-[calc(100svh-4.25rem)] overflow-y-auto border-t border-white/10 bg-ink-soft lg:hidden"
+          className="max-h-[calc(100svh-3.75rem)] overflow-y-auto overscroll-contain border-t border-white/10 bg-ink-soft sm:max-h-[calc(100svh-4.75rem)] lg:hidden"
         >
           <nav className="container-site flex flex-col gap-1 py-4" aria-label="Mobile">
             {NAV.map((item) => (

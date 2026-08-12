@@ -53,6 +53,7 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
+    overflow-wrap: break-word;
   }
 
   /* Prevent horizontal scroll from full-bleed media / absolute layers */
@@ -250,11 +251,87 @@
     .btn-ghost-light,
     .btn-solid {
       width: 100%;
+      min-height: 2.875rem;
+      padding-inline: 1.25rem;
+      font-size: 0.85rem;
     }
 
     .btn-row {
       flex-direction: column;
       width: 100%;
+      gap: 0.625rem;
+    }
+
+    /* Tighter, readable section rhythm on phones */
+    .section-pad {
+      padding-block: clamp(1.5rem, 5.5vw, 2.25rem);
+      padding-inline: 1rem;
+    }
+
+    .section-pad + .section-pad {
+      padding-top: clamp(1rem, 4vw, 1.5rem);
+    }
+
+    .section-pad-hero {
+      padding-block: clamp(2rem, 7vw, 2.75rem);
+      padding-inline: 1rem;
+    }
+
+    .container-site {
+      padding-inline: 1rem;
+    }
+
+    .heading-xl {
+      font-size: clamp(1.55rem, 7.2vw, 2.05rem);
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .heading-md {
+      font-size: clamp(1rem, 4.2vw, 1.2rem);
+      overflow-wrap: anywhere;
+    }
+
+    .t-hero {
+      font-size: clamp(2.05rem, 10.5vw, 2.85rem);
+    }
+
+    .t-lead {
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .chip {
+      min-height: 2.5rem;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.8125rem;
+    }
+
+    /* Horizontal tables: smooth scroll, no page blowout */
+    .table-scroll,
+    .overflow-x-auto {
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+      max-width: 100%;
+    }
+  }
+
+  /* Very small phones (≤360px) */
+  @media (max-width: 360px) {
+    .heading-xl {
+      font-size: 1.45rem;
+    }
+
+    .t-hero {
+      font-size: 1.9rem;
+    }
+
+    .btn-primary,
+    .btn-outline,
+    .btn-ghost-light,
+    .btn-solid {
+      padding-inline: 1rem;
+      font-size: 0.8rem;
     }
   }
 
@@ -278,6 +355,14 @@
     .hero-shell {
       min-height: auto !important;
       padding-block: 2rem !important;
+    }
+  }
+
+  /* Landscape phones: compact homepage hero */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .hero-shell {
+      min-height: auto !important;
+      padding-block: 1.25rem !important;
     }
   }
 

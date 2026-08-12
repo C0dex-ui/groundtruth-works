@@ -89,7 +89,7 @@ export function QuoteCTA() {
           </ul>
         </div>
 
-        <div className="min-w-0 rounded-2xl border border-white/10 bg-white p-4 text-ink shadow-[0_24px_60px_rgb(0_0_0/0.35)] sm:p-5 lg:p-6">
+        <div className="min-w-0 rounded-xl border border-white/10 bg-white p-3.5 text-ink shadow-[0_24px_60px_rgb(0_0_0/0.35)] sm:rounded-2xl sm:p-5 lg:p-6">
           {submitted ? (
             <div className="flex min-h-[14rem] flex-col items-center justify-center py-6 text-center">
               <p className="font-display text-3xl uppercase">Request received</p>

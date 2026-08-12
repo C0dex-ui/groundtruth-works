@@ -12,16 +12,16 @@ export function TrustBar() {
           return (
             <div
               key={item.label}
-              className="flex min-w-0 items-start gap-2.5 px-3 py-3.5 sm:gap-3 sm:px-5 sm:py-4"
+              className="flex min-w-0 items-start gap-2 px-2.5 py-3 sm:gap-3 sm:px-5 sm:py-4"
             >
-              <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-ink text-accent sm:h-9 sm:w-9">
-                <Icon className="h-4 w-4" aria-hidden />
+              <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-ink text-accent sm:h-9 sm:w-9">
+                <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden />
               </span>
               <div className="min-w-0">
-                <p className="font-display text-[clamp(1.05rem,2.4vw,1.55rem)] uppercase leading-none text-ink">
+                <p className="font-display text-[clamp(0.95rem,3.5vw,1.55rem)] uppercase leading-none text-ink">
                   {item.label}
                 </p>
-                <p className="label mt-1 text-[0.68rem] leading-tight text-ink/75 sm:text-[0.78rem]">
+                <p className="label mt-1 text-[0.62rem] leading-snug text-ink/75 sm:text-[0.78rem]">
                   {item.detail}
                 </p>
               </div>

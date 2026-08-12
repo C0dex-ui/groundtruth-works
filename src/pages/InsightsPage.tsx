@@ -120,8 +120,8 @@ export function InsightArticlePage() {
           <h2 className="heading-xl mt-8 text-ink">The short answer, by ground type</h2>
           <p className="mt-4 text-base leading-relaxed text-muted">{article.tableLead}</p>
 
-          <div className="mt-6 overflow-x-auto rounded-2xl border border-black/8">
-            <table className="w-full min-w-[36rem] text-left text-sm">
+          <div className="table-scroll mt-6 overflow-x-auto rounded-2xl border border-black/8">
+            <table className="w-full min-w-[32rem] text-left text-sm sm:min-w-[36rem]">
               <thead className="border-b border-black/8 bg-paper">
                 <tr>
                   <th className="label px-4 py-3 text-xs text-muted">Ground condition</th>

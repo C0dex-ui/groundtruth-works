@@ -92,13 +92,15 @@ export function PageHero({
         <div className="container-site">
           <Breadcrumbs items={crumbs} light={onDark} />
 
-          {/* Content stays left-aligned; no right-side image column */}
-          <div className="mt-4 max-w-2xl lg:max-w-3xl">
+          {/* Content stays left-aligned; full width on phones, constrained on desktop */}
+          <div className="mt-3 min-w-0 max-w-2xl sm:mt-4 lg:max-w-3xl">
             {eyebrow && (
               <p className={`eyebrow ${onDark ? '!text-accent' : ''}`}>{eyebrow}</p>
             )}
             <div className="accent-bar mt-2.5" />
-            <h1 className={`heading-xl mt-3 ${onDark ? 'text-white' : 'text-ink'}`}>{title}</h1>
+            <h1 className={`heading-xl mt-3 break-words ${onDark ? 'text-white' : 'text-ink'}`}>
+              {title}
+            </h1>
             {/*
               Nested lead content often hardcodes text-ink / text-muted (e.g. phone numbers).
               .hero-lead-on-dark forces readable light text for all descendants.

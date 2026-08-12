@@ -50,7 +50,7 @@ export function ContactPage() {
             {CONTACT_PAGE.lead}
             <a
               href={PHONE_HREF}
-              className="font-display mt-4 block text-[clamp(1.75rem,5vw,3rem)] uppercase tracking-tight text-accent hover:text-accent-hover"
+              className="font-display mt-4 block break-all text-[clamp(1.5rem,8vw,3rem)] uppercase tracking-tight text-accent hover:text-accent-hover"
             >
               {PHONE_DISPLAY}
             </a>

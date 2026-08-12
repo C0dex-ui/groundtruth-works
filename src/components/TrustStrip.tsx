@@ -15,14 +15,18 @@ export function TrustStrip({ className = '' }: { className?: string }) {
         return (
           <div
             key={item.label}
-            className="flex items-start gap-2 rounded-lg border border-black/8 bg-white px-2.5 py-2.5 shadow-[var(--shadow-card)]"
+            className="flex min-w-0 items-start gap-1.5 rounded-lg border border-black/8 bg-white px-2 py-2 shadow-[var(--shadow-card)] sm:gap-2 sm:px-2.5 sm:py-2.5"
           >
-            <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-ink text-accent">
-              <Icon className="h-3.5 w-3.5" aria-hidden />
+            <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-ink text-accent sm:h-7 sm:w-7">
+              <Icon className="h-3 w-3 sm:h-3.5 sm:w-3.5" aria-hidden />
             </span>
             <div className="min-w-0">
-              <p className="font-display text-base uppercase leading-none text-ink">{item.label}</p>
-              <p className="mt-0.5 text-[0.65rem] leading-tight text-muted">{item.detail}</p>
+              <p className="font-display text-sm uppercase leading-none text-ink sm:text-base">
+                {item.label}
+              </p>
+              <p className="mt-0.5 text-[0.6rem] leading-tight text-muted sm:text-[0.65rem]">
+                {item.detail}
+              </p>
             </div>
           </div>
         )

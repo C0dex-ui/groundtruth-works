@@ -89,20 +89,20 @@ export function Process() {
           </p>
         </div>
 
-        <ol className="mt-6 grid list-none gap-3 p-0 sm:grid-cols-2 sm:gap-3.5 lg:grid-cols-3 xl:grid-cols-5">
+        <ol className="mt-6 grid list-none grid-cols-1 gap-3 p-0 min-[420px]:grid-cols-2 sm:gap-3.5 lg:grid-cols-3 xl:grid-cols-5">
           {PROCESS.map((stage, i) => {
             const Icon = ICONS[i] ?? ClearIcon
             return (
-              <li key={stage.title} className="h-full">
+              <li key={stage.title} className="h-full min-w-0">
                 <ScrollCard delay={i * 60} className="h-full">
                   <Link
                     to={stage.href}
                     className="group flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm transition-colors hover:border-accent/40 hover:bg-white/8"
                   >
-                    <div className="aspect-[5/3] overflow-hidden border-b border-white/10 bg-white">
+                    <div className="aspect-[16/10] overflow-hidden border-b border-white/10 bg-white sm:aspect-[5/3]">
                       <Icon />
                     </div>
-                    <div className="flex flex-1 flex-col p-4">
+                    <div className="flex flex-1 flex-col p-3.5 sm:p-4">
                       <h3 className="heading-md text-white">
                         {stage.step}. {stage.title}
                       </h3>

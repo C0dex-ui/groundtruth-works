@@ -274,8 +274,8 @@ export function ServiceAreasIndexPage() {
         lead={SERVICE_AREAS_INDEX.townsLead}
         tone="white"
       >
-        <div className="overflow-x-auto rounded-2xl border border-black/8 bg-white">
-          <table className="w-full min-w-[40rem] text-left text-sm">
+        <div className="table-scroll overflow-x-auto rounded-2xl border border-black/8 bg-white">
+          <table className="w-full min-w-[34rem] text-left text-sm sm:min-w-[40rem]">
             <thead className="border-b border-black/8 bg-paper">
               <tr>
                 <th className="label px-4 py-3 text-xs text-muted">Town</th>

@@ -129,8 +129,8 @@ export function MulchingCompare() {
           </figure>
         </div>
 
-        <div className="mt-6 overflow-x-auto rounded-xl border border-black/8 bg-white">
-          <table className="w-full min-w-[40rem] text-left text-sm">
+        <div className="table-scroll mt-6 overflow-x-auto rounded-xl border border-black/8 bg-white">
+          <table className="w-full min-w-[36rem] text-left text-sm sm:min-w-[40rem]">
             <thead className="border-b border-black/8 bg-paper">
               <tr>
                 <th className="label px-3 py-2.5 text-xs text-muted">Factor</th>

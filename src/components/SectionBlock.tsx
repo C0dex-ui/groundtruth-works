@@ -49,7 +49,7 @@ export function SectionBlock({
   )
 
   const media = image ? (
-    <div className="card-industrial relative aspect-[16/11] overflow-hidden rounded-xl sm:aspect-[5/3] lg:sticky lg:top-28 lg:aspect-[4/3]">
+    <div className="card-industrial relative aspect-[16/10] overflow-hidden rounded-xl sm:aspect-[5/3] lg:sticky lg:top-28 lg:aspect-[4/3]">
       <img
         src={image}
         alt={imageAlt}
@@ -68,17 +68,18 @@ export function SectionBlock({
     <section id={id} className={`section-pad ${bg} ${className}`}>
       <div className="container-site">
         {image ? (
-          <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-8">
-            <div className="min-w-0">
+          <div className="grid gap-4 sm:gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-8">
+            {/* Media first on very small screens for visual interest, then copy */}
+            <div className="order-2 min-w-0 lg:order-1">
               {header}
-              <div className="mt-5 sm:mt-6">{children}</div>
+              <div className="mt-4 sm:mt-6">{children}</div>
             </div>
-            {media}
+            <div className="order-1 lg:order-2">{media}</div>
           </div>
         ) : (
           <>
-            <div className="max-w-3xl">{header}</div>
-            <div className="mt-5 sm:mt-6">{children}</div>
+            <div className="max-w-3xl min-w-0">{header}</div>
+            <div className="mt-4 min-w-0 sm:mt-6">{children}</div>
           </>
         )}
       </div>
@@ -112,11 +113,11 @@ export function ProcessList({
   steps: { title: string; body: string }[]
 }) {
   return (
-    <ol className="grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 sm:gap-3.5">
+    <ol className="grid list-none grid-cols-1 gap-2.5 p-0 sm:grid-cols-2 sm:gap-3.5">
       {steps.map((step, i) => (
         <li key={step.title} className="h-full min-w-0">
-          <article className="card-industrial flex h-full gap-3 rounded-xl p-3.5 sm:gap-3.5 sm:p-4">
-            <span className="font-display flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-ink text-base text-accent">
+          <article className="card-industrial flex h-full gap-2.5 rounded-xl p-3 sm:gap-3.5 sm:p-4">
+            <span className="font-display flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-ink text-sm text-accent sm:h-10 sm:w-10 sm:text-base">
               {String(i + 1).padStart(2, '0')}
             </span>
             <div className="min-w-0 flex-1">

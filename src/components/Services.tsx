@@ -37,7 +37,7 @@ export function Services() {
             >
               <Link
                 to={service.href}
-                className="card-industrial group relative flex h-full min-h-[14rem] flex-col overflow-hidden rounded-xl sm:min-h-[16rem] lg:min-h-[18rem]"
+                className="card-industrial group relative flex h-full min-h-[12.5rem] flex-col overflow-hidden rounded-xl sm:min-h-[16rem] lg:min-h-[18rem]"
               >
                 <img
                   src={service.image}
