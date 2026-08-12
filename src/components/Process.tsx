@@ -31,9 +31,7 @@ export function Process() {
                     <span className="font-display flex h-10 w-10 items-center justify-center rounded-md bg-accent text-xl text-ink">
                       {stage.step}
                     </span>
-                    <h3 className="heading-md mt-3 text-white">
-                      {stage.step}. {stage.title}
-                    </h3>
+                    <h3 className="heading-md mt-3 text-white">{stage.title}</h3>
                     <p className="mt-1.5 font-body text-sm leading-relaxed text-white/65">
                       {stage.description}
                     </p>
