@@ -1,4 +1,4 @@
-import { ArrowRight, MapPin } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { PadBuildUp, SolarAcres } from '../components/diagrams'
 import { InteriorCta } from '../components/InteriorCta'
@@ -12,8 +12,9 @@ import {
   ProcessList,
   SectionBlock,
 } from '../components/SectionBlock'
+import { ServiceAreasPanel } from '../components/ServiceAreasPanel'
 import { TrustStrip } from '../components/TrustStrip'
-import { INTERIOR_IMAGES, SERVICE_CITIES, SERVICES } from '../data/content'
+import { INTERIOR_IMAGES, SERVICES } from '../data/content'
 import { INDUSTRIES_INDEX } from '../data/company-pages'
 import { getIndustryDetail, INDUSTRIES_DETAIL } from '../data/industries-detail'
 import { getServiceDetail } from '../data/services-detail'
@@ -183,18 +184,12 @@ export function IndustryDetailPage() {
         </div>
       </SectionBlock>
 
-      <SectionBlock title={`${detail.title} across Central Arkansas`} tone="white">
-        <div className="flex flex-wrap gap-2">
-          {SERVICE_CITIES.slice(0, 8).map((city) => (
-            <Link key={city.slug} to={`/service-areas/${city.slug}`} className="chip">
-              <MapPin className="chip-icon h-3.5 w-3.5" aria-hidden />
-              <span>
-                {city.name}, AR
-              </span>
-            </Link>
-          ))}
-        </div>
-      </SectionBlock>
+      <ServiceAreasPanel
+        title={`${detail.title} across Central Arkansas`}
+        lead="Based in Mayflower, working a 60–75 mile radius across Central Arkansas. The map pins Growfully LLC — open a city for the local page."
+        tone="white"
+        id="industry-areas"
+      />
 
       <InteriorCta
         title={detail.quoteCtaLabel}

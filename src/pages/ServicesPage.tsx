@@ -1,4 +1,4 @@
-import { ArrowRight, MapPin } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import {
   ClearingMethods,
@@ -20,8 +20,9 @@ import {
   ProcessList,
   SectionBlock,
 } from '../components/SectionBlock'
+import { ServiceAreasPanel } from '../components/ServiceAreasPanel'
 import { TrustStrip } from '../components/TrustStrip'
-import { INTERIOR_IMAGES, SERVICE_CITIES, SERVICES } from '../data/content'
+import { INTERIOR_IMAGES, SERVICES } from '../data/content'
 import { SERVICES_INDEX } from '../data/company-pages'
 import {
   getServiceDetail,
@@ -32,7 +33,6 @@ import {
 export function ServicesIndexPage() {
   const featured = SERVICES.filter((s) => 'featured' in s && s.featured)
   const rest = SERVICES.filter((s) => !('featured' in s && s.featured))
-  const cities = SERVICE_CITIES.slice(0, 8)
 
   return (
     <PageShell>
@@ -97,22 +97,12 @@ export function ServicesIndexPage() {
         </div>
       </SectionBlock>
 
-      <SectionBlock title={SERVICES_INDEX.areasTitle} tone="white">
-        <div className="flex flex-wrap gap-2">
-          {cities.map((city) => (
-            <Link key={city.slug} to={`/service-areas/${city.slug}`} className="chip">
-              <MapPin className="chip-icon h-3.5 w-3.5" aria-hidden />
-              <span>
-                {city.name}, AR
-              </span>
-            </Link>
-          ))}
-        </div>
-        <Link to="/service-areas" className="btn-outline mt-6 inline-flex">
-          All service areas
-          <ArrowRight className="h-4 w-4" />
-        </Link>
-      </SectionBlock>
+      <ServiceAreasPanel
+        title={SERVICES_INDEX.areasTitle}
+        lead="Based in Mayflower, working a 60–75 mile radius across Central Arkansas. Select a city for a local page, or open the full service-area map."
+        tone="white"
+        id="where-we-run"
+      />
 
       <InteriorCta />
     </PageShell>
@@ -233,22 +223,12 @@ export function ServiceDetailPage() {
         </div>
       </SectionBlock>
 
-      <SectionBlock title={`${detail.title} across Central Arkansas`} tone="white">
-        <div className="flex flex-wrap gap-2">
-          {SERVICE_CITIES.slice(0, 8).map((city) => (
-            <Link key={city.slug} to={`/service-areas/${city.slug}`} className="chip">
-              <MapPin className="chip-icon h-3.5 w-3.5" aria-hidden />
-              <span>
-                {city.name}, AR
-              </span>
-            </Link>
-          ))}
-        </div>
-        <Link to="/service-areas" className="btn-outline mt-6 inline-flex">
-          See all service areas
-          <ArrowRight className="h-4 w-4" />
-        </Link>
-      </SectionBlock>
+      <ServiceAreasPanel
+        title={`${detail.title} across Central Arkansas`}
+        lead="Based in Mayflower, working a 60–75 mile radius across Central Arkansas. The map pins Growfully LLC — open a city for the local page."
+        tone="white"
+        id="service-areas-panel"
+      />
 
       <InteriorCta
         title={detail.quoteCtaLabel}
