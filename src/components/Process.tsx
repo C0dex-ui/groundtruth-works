@@ -6,9 +6,15 @@ import { ScrollCard } from './ScrollCard'
 function ClearIcon() {
   return (
     <svg viewBox="0 0 200 120" className="h-full w-full" aria-hidden>
-      <rect width="200" height="120" fill="#c2ff36" />
+      {/* White sky — same as the other process diagrams */}
+      <rect width="200" height="120" fill="#ffffff" />
       {/* Rolling ground */}
       <path d="M0 78 Q 50 58 100 72 T 200 68 L 200 120 L 0 120 Z" fill="#0a0a0a" />
+      {/* Thin lime accent along the ground line (brand, not sky) */}
+      <path
+        d="M0 78 Q 50 58 100 72 T 200 68 L 200 74 Q 150 76 100 78 T 0 84 Z"
+        fill="#c2ff36"
+      />
       {/* Three pines */}
       {[48, 100, 152].map((x) => (
         <g key={x}>
