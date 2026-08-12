@@ -4,7 +4,7 @@ import { PageHero } from '../components/PageHero'
 import { PageShell } from '../components/PageShell'
 import { CardGrid, SectionBlock } from '../components/SectionBlock'
 import { TrustStrip } from '../components/TrustStrip'
-import { INTERIOR_IMAGES } from '../data/content'
+import { INTERIOR_IMAGES, PHONE_DISPLAY, PHONE_HREF } from '../data/content'
 import { ABOUT } from '../data/company-pages'
 
 /**
@@ -92,8 +92,8 @@ export function AboutPage() {
           <Link to="/contact" className="btn-outline">
             Request certificates
           </Link>
-          <a href="tel:+15012696860" className="btn-primary">
-            Call (501) 269-6860
+          <a href={PHONE_HREF} className="btn-primary">
+            Call {PHONE_DISPLAY}
           </a>
         </div>
       </SectionBlock>

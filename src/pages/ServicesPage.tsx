@@ -132,7 +132,7 @@ export function ServiceDetailPage() {
         lead={detail.lead}
         image={detail.image}
         imageAlt=""
-        primaryCta={{ label: detail.quoteCtaLabel, href: '#quote' }}
+        primaryCta={{ label: detail.quoteCtaLabel, href: '/get-a-quote' }}
       >
         <TrustStrip />
       </PageHero>

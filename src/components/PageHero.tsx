@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Phone } from 'lucide-react'
 import { Breadcrumbs, type Crumb } from './Breadcrumbs'
 import { AreaMap } from './AreaMap'
-import { PHONE_DISPLAY, PHONE_HREF } from '../data/content'
+import { PHONE_DISPLAY, PHONE_HREF, isExternalHref } from '../data/content'
 
 export type HeroMap = {
   mode?: 'state' | 'city'
@@ -84,12 +84,11 @@ export function PageHero({
 
               <div className="btn-row mt-5 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
                 {primaryCta &&
-                  (primaryCta.href.startsWith('tel:') || primaryCta.href.startsWith('http') ? (
+                  (isExternalHref(primaryCta.href) || primaryCta.href.startsWith('#') ? (
                     <a href={primaryCta.href} className="btn-primary">
-                      {primaryCta.label}
-                    </a>
-                  ) : primaryCta.href.startsWith('#') ? (
-                    <a href={primaryCta.href} className="btn-primary">
+                      {primaryCta.href.startsWith('tel:') && (
+                        <Phone className="h-4 w-4" aria-hidden />
+                      )}
                       {primaryCta.label}
                     </a>
                   ) : (
@@ -99,10 +98,15 @@ export function PageHero({
                   ))}
 
                 {secondaryCta ? (
-                  secondaryCta.href.startsWith('tel:') || secondaryCta.external ? (
+                  isExternalHref(secondaryCta.href) ||
+                  secondaryCta.external ||
+                  secondaryCta.href.startsWith('#') ? (
                     <a
                       href={secondaryCta.href}
                       className={dark ? 'btn-ghost-light' : 'btn-outline'}
+                      {...(secondaryCta.href.startsWith('http')
+                        ? { target: '_blank', rel: 'noreferrer' }
+                        : {})}
                     >
                       {secondaryCta.href.startsWith('tel:') && (
                         <Phone className="h-4 w-4" aria-hidden />

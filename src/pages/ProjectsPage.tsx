@@ -4,7 +4,7 @@ import { InteriorCta } from '../components/InteriorCta'
 import { PageHero } from '../components/PageHero'
 import { PageShell } from '../components/PageShell'
 import { SectionBlock } from '../components/SectionBlock'
-import { INTERIOR_IMAGES, SERVICES } from '../data/content'
+import { INTERIOR_IMAGES, PHONE_DISPLAY, PHONE_HREF, SERVICES } from '../data/content'
 import { PROJECTS_PAGE } from '../data/company-pages'
 
 /**
@@ -22,7 +22,7 @@ export function ProjectsPage() {
         eyebrow="Projects"
         title={PROJECTS_PAGE.heroTitle}
         lead={PROJECTS_PAGE.lead}
-        primaryCta={{ label: 'Call (501) 269-6860', href: 'tel:+15012696860' }}
+        primaryCta={{ label: `Call ${PHONE_DISPLAY}`, href: PHONE_HREF }}
         secondaryCta={{ label: 'GET A QUOTE', href: '/get-a-quote' }}
         image={INTERIOR_IMAGES.projectsHero}
         imageAlt="Central Arkansas land — capability photography in progress"
@@ -71,8 +71,8 @@ export function ProjectsPage() {
           ))}
         </div>
         <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
-          <a href="tel:+15012696860" className="btn-primary">
-            Call (501) 269-6860
+          <a href={PHONE_HREF} className="btn-primary">
+            Call {PHONE_DISPLAY}
           </a>
           <Link to="/about" className="btn-outline">
             About Growfully

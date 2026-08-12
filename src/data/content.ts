@@ -2,8 +2,28 @@
 
 export const PHONE_DISPLAY = '(501) 269-6860'
 export const PHONE_HREF = 'tel:+15012696860'
+/** SMS to the same business line (Contact page “text” CTA). */
+export const SMS_HREF = 'sms:+15012696860'
 export const EMAIL = 'growfullyllc@gmail.com'
 export const EMAIL_HREF = 'mailto:growfullyllc@gmail.com'
+
+/** True for hrefs that must use <a>, not React Router <Link>. */
+export function isExternalHref(href: string): boolean {
+  return /^(https?:|tel:|sms:|mailto:)/i.test(href)
+}
+
+/**
+ * Open a prefilled mailto for quote/contact forms (no backend required).
+ * Returns false if the browser blocked navigation.
+ */
+export function openMailtoQuote(fields: {
+  subject: string
+  lines: string[]
+}): void {
+  const body = encodeURIComponent(fields.lines.filter(Boolean).join('\n'))
+  const subject = encodeURIComponent(fields.subject)
+  window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`
+}
 export const COMPANY = 'Growfully, LLC'
 export const TAGLINE = 'SITE WORK · LAND CLEARING · GRADING'
 export const LOCATION_LINE = 'Mayflower, AR · Serving Central Arkansas since 2002'

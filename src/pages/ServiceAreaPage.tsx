@@ -64,7 +64,7 @@ export function ServiceAreaPage() {
             )}
           </>
         }
-        primaryCta={{ label: 'GET A QUOTE', href: '#quote' }}
+        primaryCta={{ label: 'GET A QUOTE', href: '/get-a-quote' }}
         image={cityHeroImage(city.slug)}
         imageAlt={`Site work capability photography — ${city.name}, Arkansas service area`}
       >

@@ -14,7 +14,7 @@ import {
 } from '../components/SectionBlock'
 import { ServiceAreasPanel } from '../components/ServiceAreasPanel'
 import { TrustStrip } from '../components/TrustStrip'
-import { INTERIOR_IMAGES, SERVICES } from '../data/content'
+import { INTERIOR_IMAGES, PHONE_DISPLAY, PHONE_HREF, SERVICES } from '../data/content'
 import { INDUSTRIES_INDEX } from '../data/company-pages'
 import { getIndustryDetail, INDUSTRIES_DETAIL } from '../data/industries-detail'
 import { getServiceDetail } from '../data/services-detail'
@@ -87,8 +87,8 @@ export function IndustriesIndexPage() {
           <Link to="/get-a-quote" className="btn-primary">
             GET A QUOTE
           </Link>
-          <a href="tel:+15012696860" className="btn-outline">
-            Call (501) 269-6860
+          <a href={PHONE_HREF} className="btn-outline">
+            Call {PHONE_DISPLAY}
           </a>
         </div>
       </SectionBlock>
@@ -123,7 +123,7 @@ export function IndustryDetailPage() {
         lead={detail.lead}
         image={detail.image}
         imageAlt=""
-        primaryCta={{ label: detail.quoteCtaLabel, href: '#quote' }}
+        primaryCta={{ label: detail.quoteCtaLabel, href: '/get-a-quote' }}
       >
         <TrustStrip />
       </PageHero>

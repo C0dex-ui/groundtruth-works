@@ -9,6 +9,7 @@ import {
   PHONE_DISPLAY,
   PHONE_HREF,
   QUOTE_SERVICE_OPTIONS,
+  openMailtoQuote,
 } from '../data/content'
 import { HOURS_LINE, QUOTE_PAGE } from '../data/company-pages'
 
@@ -17,6 +18,20 @@ export function QuotePage() {
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    const fd = new FormData(e.currentTarget)
+    openMailtoQuote({
+      subject: 'Quote request from growfully site',
+      lines: [
+        `Name: ${String(fd.get('name') ?? '')}`,
+        `Phone: ${String(fd.get('phone') ?? '')}`,
+        `Email: ${String(fd.get('email') ?? '')}`,
+        `Service: ${String(fd.get('service') ?? '')}`,
+        `Location: ${String(fd.get('location') ?? '')}`,
+        '',
+        'About the site:',
+        String(fd.get('message') ?? ''),
+      ],
+    })
     setSubmitted(true)
   }
 

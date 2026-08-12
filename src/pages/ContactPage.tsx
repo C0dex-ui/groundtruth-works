@@ -12,6 +12,8 @@ import {
   PHONE_HREF,
   SERVICE_CITIES,
   SERVICES,
+  SMS_HREF,
+  openMailtoQuote,
 } from '../data/content'
 import { CONTACT_PAGE, HOURS_DETAIL } from '../data/company-pages'
 
@@ -20,6 +22,17 @@ export function ContactPage() {
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    const fd = new FormData(e.currentTarget)
+    openMailtoQuote({
+      subject: 'Contact from growfully site',
+      lines: [
+        `Name: ${String(fd.get('name') ?? '')}`,
+        `Phone or email: ${String(fd.get('contact') ?? '')}`,
+        '',
+        'About the site:',
+        String(fd.get('message') ?? ''),
+      ],
+    })
     setSubmitted(true)
   }
 
@@ -46,8 +59,7 @@ export function ContactPage() {
         primaryCta={{ label: 'Call now', href: PHONE_HREF }}
         secondaryCta={{
           label: 'Text the same number',
-          href: 'sms:+15012696860',
-          external: true,
+          href: SMS_HREF,
         }}
         image={INTERIOR_IMAGES.contact}
         imageAlt="Growfully crew on a Central Arkansas site"

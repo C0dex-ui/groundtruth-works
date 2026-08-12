@@ -53,13 +53,13 @@ export function InteriorCta({
           </div>
 
           <div className="flex flex-col gap-2.5">
-            <a href={PHONE_HREF} className="btn-primary w-full !min-h-12 !text-base">
+            <Link to="/get-a-quote" className="btn-primary w-full !min-h-12 !text-base">
+              GET A QUOTE
+            </Link>
+            <a href={PHONE_HREF} className="btn-ghost-light w-full !min-h-12 !text-base">
               <Phone className="h-5 w-5" aria-hidden />
               Call {PHONE_DISPLAY}
             </a>
-            <Link to="/get-a-quote" className="btn-ghost-light w-full !min-h-12 !text-base">
-              GET A QUOTE
-            </Link>
             <p className="text-center text-sm text-white/50">
               Mon–Sat 7:00 AM – 5:00 PM · Sunday closed
             </p>
