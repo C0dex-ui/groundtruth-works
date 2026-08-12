@@ -16,6 +16,7 @@ const jobs = [
   // Index / company / legal / insights heroes
   ['services-index.jpg', 'public/images/service-land-clearing.jpg', 0.05, 0.08, 0.9, 0.82],
   ['industries-index.jpg', 'public/images/industry-commercial.jpg', 0.08, 0.12, 0.84, 0.78],
+  ['service-areas-index.jpg', 'public/images/gallery-04.jpg', 0.1, 0.05, 0.85, 0.85],
   ['about.jpg', 'public/images/process-clear.jpg', 0.05, 0.08, 0.9, 0.75],
   ['contact.jpg', 'public/images/process-strip.jpg', 0.1, 0.12, 0.85, 0.78],
   ['quote.jpg', 'public/images/process-grade.jpg', 0.0, 0.05, 0.92, 0.8],

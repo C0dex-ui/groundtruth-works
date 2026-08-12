@@ -111,7 +111,7 @@ export const IMAGES = {
 export const INTERIOR_IMAGES = {
   servicesIndex: '/images/heroes/services-index.jpg',
   industriesIndex: '/images/heroes/industries-index.jpg',
-  serviceAreasIndex: '/images/lovable/14-og-city.jpg',
+  serviceAreasIndex: '/images/heroes/service-areas-index.jpg',
   projectsHero: '/images/lovable/15-arkansas-land-Db6vANsR.jpg',
   about: '/images/heroes/about.jpg',
   contact: '/images/heroes/contact.jpg',
