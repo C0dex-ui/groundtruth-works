@@ -191,14 +191,26 @@ export function Hero() {
                 </a>
               </div>
 
-              {/* Match Lovable trust signals — no Google score printed (reviews page policy). */}
-              <div className="flex min-h-[5rem] min-w-0 items-center justify-center rounded-lg border border-black/10 bg-white px-3 py-3 shadow-sm sm:min-h-[5.5rem] sm:px-4 sm:py-3.5">
-                <div className="min-w-0 text-center">
-                  <dt className="label text-[0.65rem] text-ink/50 sm:text-[0.7rem]">Estimate</dt>
-                  <dd className="font-display mt-1 text-2xl leading-none text-ink sm:text-3xl">
-                    Free
+              <div className="min-h-[5rem] min-w-0 sm:min-h-[5.5rem]">
+                <a
+                  href={RATINGS.google.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex h-full min-w-0 items-center justify-center rounded-lg border border-black/10 bg-white px-2.5 py-2.5 shadow-sm transition-shadow hover:shadow-md sm:px-3 sm:py-3"
+                >
+                  <dt className="sr-only">Google reviews</dt>
+                  <dd className="m-0 flex h-full w-full items-center justify-center">
+                    <img
+                      src={IMAGES.googleReviewsLogo}
+                      alt="Google 5-star reviews"
+                      width={220}
+                      height={88}
+                      className="h-[3.25rem] w-auto max-w-full object-contain sm:h-14"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </dd>
-                </div>
+                </a>
               </div>
             </dl>
 
