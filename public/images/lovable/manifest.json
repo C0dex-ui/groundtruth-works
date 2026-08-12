@@ -1,0 +1,171 @@
+[
+  {
+    "url": "https://groundtruth-works.lovable.app/og/og-default.jpg",
+    "pages": [
+      "/",
+      "/services",
+      "/industries",
+      "/industries/solar-site-preparation",
+      "/industries/general-contractors",
+      "/industries/commercial-development",
+      "/projects",
+      "/about",
+      "/contact",
+      "/get-a-quote",
+      "/insights",
+      "/reviews"
+    ],
+    "file": "og-default.jpg",
+    "local": "/images/lovable/01-og-default.jpg"
+  },
+  {
+    "url": "https://groundtruth-works.lovable.app/__l5e/assets-v1/94567f76-7630-4adf-a988-5872977cf12b/growfully7.jpg",
+    "pages": [
+      "/",
+      "/industries/commercial-development",
+      "/projects"
+    ],
+    "file": "growfully7.jpg",
+    "local": "/images/lovable/02-growfully7.jpg"
+  },
+  {
+    "url": "https://groundtruth-works.lovable.app/__l5e/assets-v1/12c0eb44-ae5b-404d-ac75-021a2d2cdead/growfully3.jpg",
+    "pages": [
+      "/",
+      "/services/land-clearing",
+      "/services/forestry-mulching"
+    ],
+    "file": "growfully3.jpg",
+    "local": "/images/lovable/03-growfully3.jpg"
+  },
+  {
+    "url": "https://groundtruth-works.lovable.app/__l5e/assets-v1/1c802a21-be71-4510-974d-bb1bfe1a9ed9/growfully10.jpg",
+    "pages": [
+      "/",
+      "/services/site-grading",
+      "/service-areas/mayflower-ar",
+      "/service-areas/conway-ar",
+      "/service-areas/vilonia-ar",
+      "/service-areas/greenbrier-ar",
+      "/service-areas/maumelle-ar",
+      "/service-areas/north-little-rock-ar",
+      "/service-areas/little-rock-ar",
+      "/service-areas/sherwood-ar"
+    ],
+    "file": "growfully10.jpg",
+    "local": "/images/lovable/04-growfully10.jpg"
+  },
+  {
+    "url": "https://groundtruth-works.lovable.app/assets/solar-site-5X0xDwkN.jpg",
+    "pages": [
+      "/",
+      "/industries/solar-site-preparation"
+    ],
+    "file": "solar-site-5X0xDwkN.jpg",
+    "local": "/images/lovable/05-solar-site-5X0xDwkN.jpg"
+  },
+  {
+    "url": "https://groundtruth-works.lovable.app/__l5e/assets-v1/14392ab4-24d2-47b0-9c58-f6cf77e59d0d/growfully20.jpg",
+    "pages": [
+      "/",
+      "/industries/general-contractors"
+    ],
+    "file": "growfully20.jpg",
+    "local": "/images/lovable/06-growfully20.jpg"
+  },
+  {
+    "url": "https://groundtruth-works.lovable.app/og/og-service.jpg",
+    "pages": [
+      "/services/land-clearing",
+      "/services/site-grading",
+      "/services/excavation-services",
+      "/services/site-preparation",
+      "/services/forestry-mulching",
+      "/services/brush-clearing",
+      "/services/dirt-work",
+      "/services/drainage-erosion-control"
+    ],
+    "file": "og-service.jpg",
+    "local": "/images/lovable/07-og-service.jpg"
+  },
+  {
+    "url": "https://groundtruth-works.lovable.app/__l5e/assets-v1/33a8eb51-d70b-44cd-8603-21628d4d63e7/growfully17.jpg",
+    "pages": [
+      "/services/land-clearing"
+    ],
+    "file": "growfully17.jpg",
+    "local": "/images/lovable/08-growfully17.jpg"
+  },
+  {
+    "url": "https://groundtruth-works.lovable.app/__l5e/assets-v1/bd6c0de1-0ccb-4f7d-855a-33e14df5ec54/growfully13.jpg",
+    "pages": [
+      "/services/excavation-services"
+    ],
+    "file": "growfully13.jpg",
+    "local": "/images/lovable/09-growfully13.jpg"
+  },
+  {
+    "url": "https://groundtruth-works.lovable.app/__l5e/assets-v1/70e67386-806f-4dfd-9673-7080e93e0e3d/growfully9.jpg",
+    "pages": [
+      "/services/site-preparation"
+    ],
+    "file": "growfully9.jpg",
+    "local": "/images/lovable/10-growfully9.jpg"
+  },
+  {
+    "url": "https://groundtruth-works.lovable.app/assets/brush-clearing-BC_VJsRa.jpg",
+    "pages": [
+      "/services/brush-clearing"
+    ],
+    "file": "brush-clearing-BC_VJsRa.jpg",
+    "local": "/images/lovable/11-brush-clearing-BC_VJsRa.jpg"
+  },
+  {
+    "url": "https://groundtruth-works.lovable.app/__l5e/assets-v1/b7387384-ac25-4bc1-abe6-77b455fcc266/growfully5.jpg",
+    "pages": [
+      "/services/dirt-work"
+    ],
+    "file": "growfully5.jpg",
+    "local": "/images/lovable/12-growfully5.jpg"
+  },
+  {
+    "url": "https://groundtruth-works.lovable.app/__l5e/assets-v1/dd023348-8db9-4e4b-a520-c3e6f26ddddd/growfully11.jpg",
+    "pages": [
+      "/services/drainage-erosion-control"
+    ],
+    "file": "growfully11.jpg",
+    "local": "/images/lovable/13-growfully11.jpg"
+  },
+  {
+    "url": "https://groundtruth-works.lovable.app/og/og-city.jpg",
+    "pages": [
+      "/service-areas",
+      "/service-areas/mayflower-ar",
+      "/service-areas/conway-ar",
+      "/service-areas/vilonia-ar",
+      "/service-areas/greenbrier-ar",
+      "/service-areas/maumelle-ar",
+      "/service-areas/north-little-rock-ar",
+      "/service-areas/little-rock-ar",
+      "/service-areas/sherwood-ar"
+    ],
+    "file": "og-city.jpg",
+    "local": "/images/lovable/14-og-city.jpg"
+  },
+  {
+    "url": "https://groundtruth-works.lovable.app/assets/arkansas-land-Db6vANsR.jpg",
+    "pages": [
+      "/service-areas",
+      "/service-areas/mayflower-ar",
+      "/service-areas/conway-ar",
+      "/service-areas/vilonia-ar",
+      "/service-areas/greenbrier-ar",
+      "/service-areas/maumelle-ar",
+      "/service-areas/north-little-rock-ar",
+      "/service-areas/little-rock-ar",
+      "/service-areas/sherwood-ar"
+    ],
+    "file": "arkansas-land-Db6vANsR.jpg",
+    "local": "/images/lovable/15-arkansas-land-Db6vANsR.jpg"
+  }
+]

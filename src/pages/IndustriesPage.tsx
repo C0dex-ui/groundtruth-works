@@ -13,7 +13,7 @@ import {
   SectionBlock,
 } from '../components/SectionBlock'
 import { TrustStrip } from '../components/TrustStrip'
-import { INDUSTRIES, SERVICE_CITIES, SERVICES } from '../data/content'
+import { INTERIOR_IMAGES, SERVICE_CITIES, SERVICES } from '../data/content'
 import { INDUSTRIES_INDEX } from '../data/company-pages'
 import { getIndustryDetail, INDUSTRIES_DETAIL } from '../data/industries-detail'
 import { getServiceDetail } from '../data/services-detail'
@@ -30,10 +30,11 @@ export function IndustriesIndexPage() {
         title={INDUSTRIES_INDEX.heroTitle}
         lead={INDUSTRIES_INDEX.lead}
         primaryCta={{ label: 'GET A QUOTE', href: '/get-a-quote' }}
-        image={INDUSTRIES[0].image}
+        image={INTERIOR_IMAGES.industriesIndex}
         imageAlt=""
       />
 
+      {/* Text cards only — homepage owns industry photos; detail pages use unique interior shots. */}
       <SectionBlock title="Industries" tone="white">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {INDUSTRIES_DETAIL.map((industry, i) => {
@@ -44,42 +45,31 @@ export function IndustriesIndexPage() {
               <ScrollCard key={industry.slug} delay={i * 70}>
                 <Link
                   to={`/industries/${industry.slug}`}
-                  className="card-industrial group relative flex h-full min-h-[22rem] flex-col overflow-hidden rounded-2xl"
+                  className="card-industrial group flex h-full flex-col rounded-2xl p-6 sm:p-7"
                 >
-                  <img
-                    src={industry.image}
-                    alt=""
-                    className="absolute inset-0 img-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent" />
-                  <div className="relative mt-auto p-6 sm:p-7">
-                    <span className="label text-xs text-accent">
-                      0{i + 1} / Industry
-                    </span>
-                    <h3 className="font-display mt-2 text-3xl uppercase text-white">
-                      {industry.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-white/80">
-                      {industry.short}
-                    </p>
-                    <ul className="mt-4 flex flex-wrap gap-1.5">
-                      {services.slice(0, 4).map((s) =>
-                        s ? (
-                          <li
-                            key={s.slug}
-                            className="rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-[0.7rem] text-white/90"
-                          >
-                            {s.title}
-                          </li>
-                        ) : null,
-                      )}
-                    </ul>
-                    <span className="label mt-5 inline-flex items-center gap-1.5 text-sm text-white">
-                      View industry
-                      <ArrowRight className="h-4 w-4 text-accent transition-transform group-hover:translate-x-1" />
-                    </span>
-                  </div>
+                  <span className="label text-xs text-muted">
+                    0{i + 1} / Industry
+                  </span>
+                  <h3 className="heading-md mt-2 text-ink">{industry.title}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
+                    {industry.short}
+                  </p>
+                  <ul className="mt-4 flex flex-wrap gap-1.5">
+                    {services.slice(0, 4).map((s) =>
+                      s ? (
+                        <li
+                          key={s.slug}
+                          className="rounded-full border border-black/10 bg-paper px-2.5 py-1 text-[0.7rem] text-ink"
+                        >
+                          {s.title}
+                        </li>
+                      ) : null,
+                    )}
+                  </ul>
+                  <span className="label mt-5 inline-flex items-center gap-1.5 text-sm text-ink">
+                    View industry
+                    <ArrowRight className="h-4 w-4 text-accent transition-transform group-hover:translate-x-1" />
+                  </span>
                 </Link>
               </ScrollCard>
             )

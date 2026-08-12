@@ -21,7 +21,7 @@ import {
   SectionBlock,
 } from '../components/SectionBlock'
 import { TrustStrip } from '../components/TrustStrip'
-import { SERVICE_CITIES, SERVICES } from '../data/content'
+import { INTERIOR_IMAGES, SERVICE_CITIES, SERVICES } from '../data/content'
 import { SERVICES_INDEX } from '../data/company-pages'
 import {
   getServiceDetail,
@@ -45,42 +45,30 @@ export function ServicesIndexPage() {
         title={SERVICES_INDEX.heroTitle}
         lead={SERVICES_INDEX.lead}
         primaryCta={{ label: 'GET A QUOTE', href: '/get-a-quote' }}
-        image={SERVICES[0].image}
+        image={INTERIOR_IMAGES.servicesIndex}
         imageAlt=""
       >
         <TrustStrip />
       </PageHero>
 
+      {/* Text cards only — homepage already owns each service photo; do not reuse here. */}
       <SectionBlock title={SERVICES_INDEX.featuredTitle} tone="white">
         <div className="grid gap-4 md:grid-cols-2">
           {featured.map((service, i) => (
             <ScrollCard key={service.title} delay={i * 60}>
               <Link
                 to={service.href}
-                className="card-industrial group relative flex min-h-[18rem] flex-col overflow-hidden rounded-2xl sm:min-h-[22rem]"
+                className="card-industrial group flex h-full flex-col rounded-2xl border-l-4 border-l-accent p-6 sm:p-8"
               >
-                <img
-                  src={service.image}
-                  alt=""
-                  className="absolute inset-0 img-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-transparent" />
-                <div className="relative mt-auto p-6 sm:p-8">
-                  <span className="label inline-flex rounded-full bg-accent px-2.5 py-1 text-[0.65rem] text-ink">
-                    Core service
-                  </span>
-                  <h3 className="font-display mt-3 text-3xl uppercase text-white">
-                    {service.title}
-                  </h3>
-                  <p className="mt-2 max-w-md text-sm leading-relaxed text-white/80 sm:text-base">
-                    {service.description}
-                  </p>
-                  <span className="label mt-4 inline-flex items-center gap-1.5 text-sm text-accent">
-                    Explore
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </div>
+                <span className="label text-xs text-muted">Core service</span>
+                <h3 className="heading-md mt-2 text-ink">{service.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted sm:text-base">
+                  {service.description}
+                </p>
+                <span className="label mt-5 inline-flex items-center gap-1.5 text-sm text-ink">
+                  Explore
+                  <ArrowRight className="h-4 w-4 text-accent transition-transform group-hover:translate-x-1" />
+                </span>
               </Link>
             </ScrollCard>
           ))}
@@ -93,26 +81,16 @@ export function ServicesIndexPage() {
             <ScrollCard key={service.title} delay={i * 50}>
               <Link
                 to={service.href}
-                className="card-industrial group flex h-full flex-col overflow-hidden rounded-2xl"
+                className="card-industrial group flex h-full flex-col rounded-2xl p-5"
               >
-                <div className="relative aspect-[16/10] overflow-hidden bg-paper-dark">
-                  <img
-                    src={service.image}
-                    alt=""
-                    className="img-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <h3 className="heading-md text-ink">{service.title}</h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
-                    {service.description}
-                  </p>
-                  <span className="label mt-4 inline-flex items-center gap-1 text-sm text-ink">
-                    Learn more
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </div>
+                <h3 className="heading-md text-ink">{service.title}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
+                  {service.description}
+                </p>
+                <span className="label mt-4 inline-flex items-center gap-1 text-sm text-ink">
+                  Learn more
+                  <ArrowRight className="h-4 w-4 text-accent transition-transform group-hover:translate-x-0.5" />
+                </span>
               </Link>
             </ScrollCard>
           ))}

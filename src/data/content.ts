@@ -69,12 +69,13 @@ export const TESTIMONIALS = [
 /** Hero background video (served from public/). */
 export const HERO_VIDEO = '/videos/groundtruth-hero.mp4'
 
-/** Every path is used once — no redundant imagery across the homepage. */
+/**
+ * HOMEPAGE imagery only — each path is used once on `/`.
+ * Interior pages must use INTERIOR_IMAGES so nothing is shared across routes.
+ */
 export const IMAGES = {
   logo: '/logo.png',
-  /** BBB Accredited Business seal (transparent PNG) */
   bbbLogo: '/images/bbb-logo.png',
-  /** Google 5-star reviews mark (transparent PNG) */
   googleReviewsLogo: '/images/google-5star-logo.png',
   /** Poster / reduced-motion fallback for hero video */
   hero: '/images/hero.jpg',
@@ -100,6 +101,34 @@ export const IMAGES = {
     '/images/gallery-03.jpg',
     '/images/gallery-04.jpg',
   ],
+} as const
+
+/**
+ * INTERIOR-only photos (sourced from live Lovable assets under /images/lovable/).
+ * Never used on the homepage. Each path appears on at most one interior route.
+ */
+export const INTERIOR_IMAGES = {
+  servicesIndex: '/images/lovable/07-og-service.jpg',
+  industriesIndex: '/images/lovable/01-og-default.jpg',
+  serviceAreasIndex: '/images/lovable/14-og-city.jpg',
+  projectsHero: '/images/lovable/15-arkansas-land-Db6vANsR.jpg',
+  /** Service detail heroes — separate files from homepage service cards */
+  serviceDetail: {
+    'land-clearing': '/images/lovable/03-growfully3.jpg',
+    'site-grading': '/images/lovable/04-growfully10.jpg',
+    'excavation-services': '/images/lovable/09-growfully13.jpg',
+    'site-preparation': '/images/lovable/10-growfully9.jpg',
+    'forestry-mulching': '/images/lovable/08-growfully17.jpg',
+    'brush-clearing': '/images/lovable/11-brush-clearing-BC_VJsRa.jpg',
+    'dirt-work': '/images/lovable/12-growfully5.jpg',
+    'drainage-erosion-control': '/images/lovable/13-growfully11.jpg',
+  },
+  /** Industry detail heroes — separate from homepage industry cards */
+  industryDetail: {
+    'solar-site-preparation': '/images/lovable/05-solar-site-5X0xDwkN.jpg',
+    'general-contractors': '/images/lovable/06-growfully20.jpg',
+    'commercial-development': '/images/lovable/02-growfully7.jpg',
+  },
 } as const
 
 /** Primary nav — Services / Industries / Service Areas open dropdowns (Lovable pattern). */

@@ -1,7 +1,7 @@
 /**
  * Industry detail copy — sourced from groundtruth-works.lovable.app industry pages.
  */
-import { IMAGES } from './content'
+import { INTERIOR_IMAGES } from './content'
 import type { Faq, NamedBlurb } from './services-detail'
 
 export type IndustryDetail = {
@@ -32,7 +32,7 @@ export const INDUSTRIES_DETAIL: IndustryDetail[] = [
     lead:
       'Civil balance of system for solar developers and EPCs: clearing, grading to racking tolerance, access roads and stormwater — sequenced to your pile-driving date.',
     quoteCtaLabel: 'Get a solar site quote',
-    image: IMAGES.solar,
+    image: INTERIOR_IMAGES.industryDetail['solar-site-preparation'],
     short:
       'Utility-scale array site work — clearing, grading to tolerance, access roads and erosion control.',
     introTitle: 'Solar site preparation, in short',
@@ -195,7 +195,7 @@ export const INDUSTRIES_DETAIL: IndustryDetail[] = [
     lead:
       'Excavation, grading and site prep for general contractors across Central Arkansas. Owned equipment, current certificates, and the owner on the job.',
     quoteCtaLabel: 'Send us plans to bid',
-    image: IMAGES.gc,
+    image: INTERIOR_IMAGES.industryDetail['general-contractors'],
     short:
       'A site-work sub who mobilizes fast, hits grade, and does not hold up your schedule.',
     introTitle: 'What we are, in short',
@@ -342,7 +342,7 @@ export const INDUSTRIES_DETAIL: IndustryDetail[] = [
     lead:
       'Commercial site work across Central Arkansas — warehouse pads, parking fields, retail and industrial ground, built to the geotech spec and the civil plan.',
     quoteCtaLabel: 'Get a site work quote',
-    image: IMAGES.commercial,
+    image: INTERIOR_IMAGES.industryDetail['commercial-development'],
     short: 'Parking lots, warehouse pads, industrial sites and subdivision earthwork.',
     introTitle: 'Commercial site work, in short',
     intro: [

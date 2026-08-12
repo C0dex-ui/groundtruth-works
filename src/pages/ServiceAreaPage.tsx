@@ -7,6 +7,7 @@ import { PageShell } from '../components/PageShell'
 import { CardGrid, FaqList, SectionBlock } from '../components/SectionBlock'
 import { TrustStrip } from '../components/TrustStrip'
 import {
+  INTERIOR_IMAGES,
   PHONE_DISPLAY,
   PHONE_HREF,
   SERVICE_CITIES,
@@ -255,6 +256,8 @@ export function ServiceAreasIndexPage() {
         title={SERVICE_AREAS_INDEX.heroTitle}
         lead={SERVICE_AREAS_INDEX.lead}
         primaryCta={{ label: 'GET A QUOTE', href: '/get-a-quote' }}
+        image={INTERIOR_IMAGES.serviceAreasIndex}
+        imageAlt="Central Arkansas service territory"
       >
         <TrustStrip />
       </PageHero>

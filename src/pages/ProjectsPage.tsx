@@ -4,16 +4,13 @@ import { InteriorCta } from '../components/InteriorCta'
 import { PageHero } from '../components/PageHero'
 import { PageShell } from '../components/PageShell'
 import { SectionBlock } from '../components/SectionBlock'
-import { IMAGES, SERVICES } from '../data/content'
+import { INTERIOR_IMAGES, SERVICES } from '../data/content'
 import { PROJECTS_PAGE } from '../data/company-pages'
 
-const FRAMES = [
-  { src: IMAGES.gallery[0], caption: 'Site work in progress' },
-  { src: IMAGES.gallery[1], caption: 'Earthmoving on active pad' },
-  { src: IMAGES.gallery[2], caption: 'Cleared tract ready for grade' },
-  { src: IMAGES.gallery[3], caption: 'Commercial rough grade' },
-] as const
-
+/**
+ * Projects page — no photo grid reuse of homepage gallery images.
+ * Single interior-only hero photo; capability list uses text + service links only.
+ */
 export function ProjectsPage() {
   return (
     <PageShell>
@@ -27,8 +24,8 @@ export function ProjectsPage() {
         lead={PROJECTS_PAGE.lead}
         primaryCta={{ label: 'Call (501) 269-6860', href: 'tel:+15012696860' }}
         secondaryCta={{ label: 'GET A QUOTE', href: '/get-a-quote' }}
-        image={IMAGES.hero}
-        imageAlt=""
+        image={INTERIOR_IMAGES.projectsHero}
+        imageAlt="Central Arkansas land — capability photography in progress"
       />
 
       <SectionBlock
@@ -57,35 +54,12 @@ export function ProjectsPage() {
         <p className="mt-8 max-w-2xl font-display text-xl uppercase leading-snug text-ink sm:text-2xl">
           {PROJECTS_PAGE.honesty}
         </p>
+        <p className="mt-4 max-w-2xl text-sm text-muted">
+          {PROJECTS_PAGE.photoCaption}
+        </p>
       </SectionBlock>
 
-      <SectionBlock title="Capability photography" tone="paper">
-        <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4 md:gap-4">
-          {FRAMES.map((frame, i) => (
-            <figure
-              key={frame.src}
-              className={`card-industrial group relative aspect-[4/3] overflow-hidden rounded-xl sm:rounded-2xl ${
-                i === 0 ? 'col-span-2 md:row-span-2 md:aspect-auto md:min-h-[20rem]' : ''
-              }`}
-            >
-              <img
-                src={frame.src}
-                alt={frame.caption}
-                className="img-cover transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-              />
-              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 to-transparent px-3 pb-3 pt-10">
-                <span className="label text-[0.7rem] text-white/90 sm:text-sm">
-                  {frame.caption}
-                </span>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-        <p className="mt-4 text-sm text-muted">{PROJECTS_PAGE.photoCaption}</p>
-      </SectionBlock>
-
-      <SectionBlock title={PROJECTS_PAGE.visitTitle} tone="white">
+      <SectionBlock title={PROJECTS_PAGE.visitTitle} tone="paper">
         <div className="max-w-3xl space-y-4 text-base leading-relaxed text-muted sm:text-lg">
           {PROJECTS_PAGE.visit.map((p) => (
             <p key={p.slice(0, 40)}>{p}</p>

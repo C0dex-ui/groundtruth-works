@@ -2,7 +2,7 @@
  * Service detail copy — sourced from groundtruth-works.lovable.app service pages.
  * Do not invent claims; keep placeholders out of published UI.
  */
-import { IMAGES } from './content'
+import { INTERIOR_IMAGES } from './content'
 
 export type NamedBlurb = { title: string; body: string }
 export type Faq = { q: string; a: string }
@@ -35,7 +35,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     lead:
       'Land clearing is the removal of trees, stumps, brush and undergrowth from a tract so the ground underneath can be used. Growfully clears acreage across Central Arkansas three ways — forestry mulching, grubbing with haul-off, and selective clearing — and hands the site over ready to strip, grade and build on.',
     quoteCtaLabel: 'Get a clearing quote',
-    image: IMAGES.landClearing,
+    image: INTERIOR_IMAGES.serviceDetail['land-clearing'],
     introTitle: 'What land clearing is',
     intro: [
       'Clearing takes a tract from whatever grew on it to workable ground: canopy, understory, briar, vines, fence-line growth, downed timber and — depending on method — the stumps and root balls under it. This is site work: machines, acreage, and a surface the next trade can work on.',
@@ -184,7 +184,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     lead:
       'Site grading is shaping ground to planned elevations and slopes so it drains correctly and carries what gets built on it. Growfully grades commercial pads, parking lots, roads and building sites across Central Arkansas — cut and fill balanced, lifts compacted to spec, finished surface held to plan tolerance.',
     quoteCtaLabel: 'Get a grading quote',
-    image: IMAGES.siteGrading,
+    image: INTERIOR_IMAGES.serviceDetail['site-grading'],
     introTitle: 'What site grading is',
     intro: [
       'A civil plan shows finished elevations at points across a site. Grading is the work of making the real ground match those numbers: cutting where the ground is high, filling where it is low, compacting the fill so it does not settle, and shaping slopes so water runs to a defined outfall instead of pooling against a building.',
@@ -354,7 +354,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     lead:
       'Excavation is the controlled removal of earth to the depths and shapes a plan calls for. Growfully digs footings, foundations, utility trenches, ponds and building pads across Central Arkansas, protects the excavation while it is open, and puts the backfill back compacted to spec.',
     quoteCtaLabel: 'Get an excavation quote',
-    image: IMAGES.excavation,
+    image: INTERIOR_IMAGES.serviceDetail['excavation-services'],
     introTitle: 'What excavation is',
     intro: [
       'Every structure starts as a hole. Excavation is the trade that puts that hole in the right place, at the right elevation, with walls that stay up while people work inside them, and with the dirt around it put back so nothing settles later.',
@@ -508,7 +508,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     lead:
       'Site preparation is the work that turns raw ground into a buildable site. Growfully clears, strips, grades, compacts and stones commercial sites across Central Arkansas, then hands your foundation crew a pad that is at plan elevation and passes density.',
     quoteCtaLabel: 'Get a site prep quote',
-    image: IMAGES.sitePrep,
+    image: INTERIOR_IMAGES.serviceDetail['site-preparation'],
     introTitle: 'What site preparation is',
     intro: [
       'Site work is the umbrella scope: one contractor, one number, responsible for everything from the first tree to the last proof roll. It exists because splitting clearing, earthwork and stone across three outfits is how elevations get missed and schedules slip.',
@@ -658,7 +658,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     lead:
       'Forestry mulching grinds standing brush and small trees into a mulch mat, in place, in one pass. No burn piles, no haul trucks, minimal soil disturbance. Growfully mulches tracts across Central Arkansas — and tells you when a different method would serve you better.',
     quoteCtaLabel: 'Get a mulching quote',
-    image: IMAGES.forestry,
+    image: INTERIOR_IMAGES.serviceDetail['forestry-mulching'],
     introTitle: 'What forestry mulching is',
     intro: [
       'A carrier — a compact track loader or a purpose-built forestry machine — runs a rotary drum with carbide teeth at the front. The drum takes standing vegetation down and grinds it in the same motion. What is standing at 8am is a chip layer on the ground by lunch.',
@@ -795,7 +795,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     lead:
       'Brush clearing removes undergrowth, briar, scrub and volunteer saplings so land is usable again. Growfully clears overgrown lots, fence lines and small acreage across Central Arkansas, and matches the machine and the method to what is actually growing on your ground.',
     quoteCtaLabel: 'Get a brush clearing quote',
-    image: IMAGES.brush,
+    image: INTERIOR_IMAGES.serviceDetail['brush-clearing'],
     introTitle: 'What brush clearing is',
     intro: [
       'Brush clearing is everything below the tree line. In Central Arkansas that usually means privet, honeysuckle, greenbrier, blackberry, cedar scrub, sweetgum volunteers and whatever else took over after a few unmowed seasons. Two years of neglect is a bush hog job. Ten is a machine job.',
@@ -936,7 +936,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     lead:
       'Dirt work is moving earth to where it needs to be and compacting it so it stays. Growfully hauls, places and shapes fill across Central Arkansas — building pads, access roads, parking areas and balanced cut and fill, with density tested where the spec calls for it.',
     quoteCtaLabel: 'Get a dirt work quote',
-    image: IMAGES.dirtWork,
+    image: INTERIOR_IMAGES.serviceDetail['dirt-work'],
     introTitle: 'What dirt work is',
     intro: [
       'Dirt work is the volume side of earthmoving. Excavation takes material out, grading sets the surface, and dirt work is what happens in between and after — hauling, placing, spreading, compacting and shaping the material into something that will carry a load.',
@@ -1081,7 +1081,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     lead:
       'Construction site drainage and erosion control across Central Arkansas. Positive grade, swales and ditching, detention, culverts and drainage structures, plus the SWPPP measures that keep an active site in compliance and keep sediment out of the receiving water.',
     quoteCtaLabel: 'Get a drainage quote',
-    image: IMAGES.drainage,
+    image: INTERIOR_IMAGES.serviceDetail['drainage-erosion-control'],
     introTitle: 'What this scope covers',
     intro: [
       'This is site civil work. Water gets a designed path off the pad, across the site, into a structure or basin, and out at a stabilized point — and the soil stays where the grading plan put it while the job is open.',
