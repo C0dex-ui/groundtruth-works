@@ -1,4 +1,59 @@
-/** Three ways to clear — Lovable /services/land-clearing comparison table */
+/**
+ * Three ways to clear a tract — visual icons + comparison from
+ * groundtruth-works.lovable.app/services/land-clearing
+ */
+
+function ForestryMulchingIcon() {
+  return (
+    <svg viewBox="0 0 200 120" className="h-full w-full" aria-hidden>
+      {/* Sky */}
+      <rect x="0" y="0" width="200" height="120" fill="#ffffff" />
+      {/* Mulch mat (lime) over intact soil */}
+      <rect x="0" y="78" width="200" height="14" fill="#c2ff36" />
+      <rect x="0" y="92" width="200" height="28" fill="#0a0a0a" />
+      {/* Stumps left in place */}
+      {[40, 80, 120, 160].map((x) => (
+        <rect key={x} x={x - 5} y={68} width="10" height="10" fill="#0a0a0a" />
+      ))}
+    </svg>
+  )
+}
+
+function GrubbingIcon() {
+  return (
+    <svg viewBox="0 0 200 120" className="h-full w-full" aria-hidden>
+      <rect x="0" y="0" width="200" height="120" fill="#ffffff" />
+      {/* Bare soil surface */}
+      <rect x="0" y="82" width="200" height="10" fill="#c2ff36" />
+      <rect x="0" y="92" width="200" height="28" fill="#0a0a0a" />
+      {/* Root-ball voids backfilled (lime notches into black) */}
+      {[45, 100, 155].map((x) => (
+        <path
+          key={x}
+          d={`M ${x - 18} 92 L ${x} 108 L ${x + 18} 92 Z`}
+          fill="#c2ff36"
+        />
+      ))}
+    </svg>
+  )
+}
+
+function SelectiveClearingIcon() {
+  return (
+    <svg viewBox="0 0 200 120" className="h-full w-full" aria-hidden>
+      <rect x="0" y="0" width="200" height="120" fill="#ffffff" />
+      <rect x="0" y="88" width="200" height="10" fill="#c2ff36" />
+      <rect x="0" y="98" width="200" height="22" fill="#0a0a0a" />
+      {/* Standing trees */}
+      {[50, 100, 150].map((x) => (
+        <g key={x}>
+          <rect x={x - 2} y={58} width="4" height="30" fill="#0a0a0a" />
+          <path d={`M ${x} 28 L ${x + 22} 62 L ${x - 22} 62 Z`} fill="#0a0a0a" />
+        </g>
+      ))}
+    </svg>
+  )
+}
 
 const METHODS = [
   {
@@ -8,6 +63,7 @@ const METHODS = [
     cost: 'Lowest per acre',
     debris: 'Ground in place and left as a mat that holds soil',
     best: 'Pasture reclamation, trails, fence lines, fuel reduction, solar prep where stumps can stay',
+    Icon: ForestryMulchingIcon,
   },
   {
     title: 'Grubbing and haul-off',
@@ -16,6 +72,7 @@ const METHODS = [
     cost: 'Highest per acre',
     debris: 'Loaded and hauled to a legal disposal or grinding site, or burned by permit',
     best: 'Anything structural: building pads, slabs, parking, roads, utilities',
+    Icon: GrubbingIcon,
   },
   {
     title: 'Selective clearing',
@@ -24,6 +81,7 @@ const METHODS = [
     cost: 'Middle, and rises with how tight the selection is',
     debris: 'Mulched, chipped or hauled depending on access and what stays',
     best: 'Homesites, driveway corridors, view and access lines, tracts kept wooded',
+    Icon: SelectiveClearingIcon,
   },
 ] as const
 
@@ -41,11 +99,29 @@ export function ClearingMethods() {
           anything else a clearing contractor decides for you.
         </p>
 
-        <div className="mt-8 overflow-x-auto rounded-2xl border border-black/8 bg-white">
+        {/* Visual diagrams — Lovable icon style */}
+        <div className="mt-10 grid gap-4 sm:grid-cols-3 sm:gap-5">
+          {METHODS.map(({ title, summary, Icon }) => (
+            <figure key={title} className="min-w-0">
+              <div className="overflow-hidden rounded-sm border-2 border-ink bg-white aspect-[5/3]">
+                <Icon />
+              </div>
+              <figcaption className="mt-4">
+                <h3 className="font-display text-xl uppercase leading-tight text-ink sm:text-2xl">
+                  {title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{summary}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+
+        {/* Comparison table under the icons */}
+        <div className="mt-12 overflow-x-auto rounded-2xl border border-black/8 bg-white">
           <table className="w-full min-w-[48rem] text-left text-sm">
             <thead className="border-b border-black/8 bg-paper">
               <tr>
-                <th className="label px-4 py-3 text-xs text-muted"> </th>
+                <th className="label px-4 py-3 text-xs text-muted">Method</th>
                 {METHODS.map((m) => (
                   <th key={m.title} className="px-4 py-3 font-display text-base uppercase text-ink">
                     {m.title}
@@ -54,46 +130,26 @@ export function ClearingMethods() {
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b border-black/6">
-                <td className="label px-4 py-3 text-xs text-muted">Result</td>
-                {METHODS.map((m) => (
-                  <td key={m.title} className="px-4 py-3 text-muted">
-                    {m.summary}
-                  </td>
-                ))}
-              </tr>
-              <tr className="border-b border-black/6">
-                <td className="label px-4 py-3 text-xs text-muted">Speed</td>
-                {METHODS.map((m) => (
-                  <td key={m.title} className="px-4 py-3 text-muted">
-                    {m.speed}
-                  </td>
-                ))}
-              </tr>
-              <tr className="border-b border-black/6">
-                <td className="label px-4 py-3 text-xs text-muted">Cost (relative)</td>
-                {METHODS.map((m) => (
-                  <td key={m.title} className="px-4 py-3 text-muted">
-                    {m.cost}
-                  </td>
-                ))}
-              </tr>
-              <tr className="border-b border-black/6">
-                <td className="label px-4 py-3 text-xs text-muted">Debris</td>
-                {METHODS.map((m) => (
-                  <td key={m.title} className="px-4 py-3 text-muted">
-                    {m.debris}
-                  </td>
-                ))}
-              </tr>
-              <tr>
-                <td className="label px-4 py-3 text-xs text-muted">Best use</td>
-                {METHODS.map((m) => (
-                  <td key={m.title} className="px-4 py-3 font-medium text-ink">
-                    {m.best}
-                  </td>
-                ))}
-              </tr>
+              {(
+                [
+                  ['Speed', 'speed'],
+                  ['Cost (relative)', 'cost'],
+                  ['Debris', 'debris'],
+                  ['Best use', 'best'],
+                ] as const
+              ).map(([label, key]) => (
+                <tr key={label} className="border-b border-black/6 last:border-0">
+                  <td className="label px-4 py-3 text-xs text-muted">{label}</td>
+                  {METHODS.map((m) => (
+                    <td
+                      key={m.title}
+                      className={`px-4 py-3 ${key === 'best' ? 'font-medium text-ink' : 'text-muted'}`}
+                    >
+                      {m[key]}
+                    </td>
+                  ))}
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

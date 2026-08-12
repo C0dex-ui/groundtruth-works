@@ -5,33 +5,33 @@ const LAYERS = [
     key: 'surface',
     label: 'Surface',
     detail: 'Asphalt or slab, by others',
-    color: '#1c1c1a',
+    fill: '#0a0a0a',
     text: '#ffffff',
-    height: 'h-14',
+    h: 48,
   },
   {
     key: 'base',
     label: 'Base stone',
     detail: 'Typically 6 – 12 in.',
-    color: '#8a8a86',
+    fill: '#6b6b66',
     text: '#ffffff',
-    height: 'h-16',
+    h: 56,
   },
   {
     key: 'fill',
     label: 'Compacted fill',
     detail: 'Placed in 6 – 8 in. lifts',
-    color: '#c2ff36',
+    fill: '#c2ff36',
     text: '#0a0a0a',
-    height: 'h-20',
+    h: 72,
   },
   {
     key: 'subgrade',
     label: 'Prepared subgrade',
     detail: 'Proof rolled, undercut where it fails',
-    color: '#5a4a3a',
+    fill: '#3d3228',
     text: '#ffffff',
-    height: 'h-16',
+    h: 56,
   },
 ] as const
 
@@ -55,6 +55,9 @@ const DESCRIPTIONS = [
 ] as const
 
 export function PadBuildUp() {
+  const totalH = LAYERS.reduce((s, l) => s + l.h, 0) + 40
+  let y = 16
+
   return (
     <section className="section-pad bg-paper" aria-labelledby="pad-build-heading">
       <div className="container-site">
@@ -69,24 +72,57 @@ export function PadBuildUp() {
         </p>
 
         <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-start">
-          <div className="card-industrial overflow-hidden rounded-2xl bg-white p-5 sm:p-6">
+          <div className="overflow-hidden border-2 border-ink bg-white p-4 sm:p-6">
             <p className="label mb-4 text-xs text-muted">
               Commercial pad build-up, bottom to top
             </p>
-            <div className="flex flex-col-reverse gap-1">
-              {[...LAYERS].reverse().map((layer) => (
-                <div
-                  key={layer.key}
-                  className={`${layer.height} flex flex-col items-center justify-center px-3 text-center`}
-                  style={{ backgroundColor: layer.color, color: layer.text }}
-                >
-                  <span className="font-display text-lg uppercase tracking-wide sm:text-xl">
-                    {layer.label}
-                  </span>
-                  <span className="mt-0.5 text-xs opacity-90 sm:text-sm">{layer.detail}</span>
-                </div>
-              ))}
-            </div>
+            <svg
+              viewBox={`0 0 360 ${totalH}`}
+              className="mx-auto block h-auto w-full max-w-sm"
+              role="img"
+              aria-label="Pad section: subgrade, compacted fill, base stone, surface"
+            >
+              {/* Draw top → bottom for visual stack from surface down */}
+              {LAYERS.map((layer) => {
+                const rectY = y
+                y += layer.h
+                return (
+                  <g key={layer.key}>
+                    <rect
+                      x="20"
+                      y={rectY}
+                      width="320"
+                      height={layer.h}
+                      fill={layer.fill}
+                      stroke="#0a0a0a"
+                      strokeWidth="1"
+                    />
+                    <text
+                      x="180"
+                      y={rectY + layer.h / 2 - 6}
+                      textAnchor="middle"
+                      fill={layer.text}
+                      fontFamily="Anton, Arial Narrow, sans-serif"
+                      fontSize="18"
+                      letterSpacing="0.04em"
+                    >
+                      {layer.label.toUpperCase()}
+                    </text>
+                    <text
+                      x="180"
+                      y={rectY + layer.h / 2 + 14}
+                      textAnchor="middle"
+                      fill={layer.text}
+                      fontFamily="Roboto, sans-serif"
+                      fontSize="11"
+                      opacity="0.9"
+                    >
+                      {layer.detail}
+                    </text>
+                  </g>
+                )
+              })}
+            </svg>
             <p className="mt-4 text-sm leading-relaxed text-muted">
               Typical commercial pad section. Depths follow the geotechnical report and the civil
               plan, not a rule of thumb.

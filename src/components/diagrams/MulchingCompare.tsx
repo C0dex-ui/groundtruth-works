@@ -1,9 +1,46 @@
 /** Mulching vs traditional clearing — Lovable /services/forestry-mulching */
 
+function MulchIcon() {
+  return (
+    <svg viewBox="0 0 200 120" className="h-full w-full" aria-hidden>
+      <rect width="200" height="120" fill="#fff" />
+      <rect x="0" y="78" width="200" height="14" fill="#c2ff36" />
+      <rect x="0" y="92" width="200" height="28" fill="#0a0a0a" />
+      {[36, 72, 108, 144, 170].map((x) => (
+        <rect key={x} x={x} y={68} width="8" height="10" fill="#0a0a0a" />
+      ))}
+    </svg>
+  )
+}
+
+function TraditionalIcon() {
+  return (
+    <svg viewBox="0 0 200 120" className="h-full w-full" aria-hidden>
+      <rect width="200" height="120" fill="#fff" />
+      {/* Bare open soil */}
+      <rect x="0" y="70" width="200" height="50" fill="#0a0a0a" />
+      {/* Haul pile / windrow */}
+      <ellipse cx="150" cy="78" rx="36" ry="18" fill="#c2ff36" />
+      <ellipse cx="150" cy="74" rx="28" ry="12" fill="#0a0a0a" opacity="0.25" />
+      {/* Disturbed ground texture */}
+      {[30, 55, 80, 105].map((x) => (
+        <path
+          key={x}
+          d={`M ${x} 70 Q ${x + 8} 88 ${x + 16} 70`}
+          fill="none"
+          stroke="#c2ff36"
+          strokeWidth="2"
+        />
+      ))}
+    </svg>
+  )
+}
+
 const ROWS = [
   {
     factor: 'Production',
-    mulch: 'One machine, one pass. Light growth runs an acre or more a day with no second crew behind it.',
+    mulch:
+      'One machine, one pass. Light growth runs an acre or more a day with no second crew behind it.',
     traditional:
       'Slower on paper — dozer, excavator, grapple and trucks — but faster to a truly clean, buildable pad.',
   },
@@ -11,8 +48,7 @@ const ROWS = [
     factor: 'Cost',
     mulch:
       'Lower on light and medium growth because nothing is hauled and no burn permit or pit is involved.',
-    traditional:
-      'Higher, and most of the difference is trucking and disposal, not machine time.',
+    traditional: 'Higher, and most of the difference is trucking and disposal, not machine time.',
   },
   {
     factor: 'Soil disturbance',
@@ -64,7 +100,36 @@ export function MulchingCompare() {
           have no reason to push one that does not fit your job.
         </p>
 
-        <div className="mt-8 overflow-x-auto rounded-2xl border border-black/8 bg-white">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <figure>
+            <div className="aspect-[5/3] overflow-hidden border-2 border-ink bg-white">
+              <MulchIcon />
+            </div>
+            <figcaption className="mt-4">
+              <h3 className="font-display text-xl uppercase text-ink sm:text-2xl">
+                Forestry mulching
+              </h3>
+              <p className="mt-2 text-sm text-muted">
+                Mulch mat over intact soil. Stumps and roots stay in the ground.
+              </p>
+            </figcaption>
+          </figure>
+          <figure>
+            <div className="aspect-[5/3] overflow-hidden border-2 border-ink bg-white">
+              <TraditionalIcon />
+            </div>
+            <figcaption className="mt-4">
+              <h3 className="font-display text-xl uppercase text-ink sm:text-2xl">
+                Traditional clearing
+              </h3>
+              <p className="mt-2 text-sm text-muted">
+                Bare soil, stumps and root balls pulled — debris piled, hauled or burned.
+              </p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div className="mt-12 overflow-x-auto rounded-2xl border border-black/8 bg-white">
           <table className="w-full min-w-[40rem] text-left text-sm">
             <thead className="border-b border-black/8 bg-paper">
               <tr>

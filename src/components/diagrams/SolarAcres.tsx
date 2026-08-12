@@ -5,7 +5,6 @@ const BLOCKS = [
     mw: '1 MW',
     acres: '5 – 8 acres',
     note: 'Small commercial or community array',
-    /** Relative visual scale ~ mid of range */
     scale: 6.5,
   },
   {
@@ -38,30 +37,29 @@ export function SolarAcres() {
           acres. These are the ranges the industry plans with for single-axis tracker fields.
         </p>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-3 sm:gap-5">
           {BLOCKS.map((block) => {
-            // Square side proportional to sqrt(area) so blocks are drawn to scale by area
-            const sidePct = Math.sqrt(block.scale / max) * 100
+            const sidePct = Math.sqrt(block.scale / max) * 78
             return (
-              <article
-                key={block.mw}
-                className="card-industrial flex flex-col rounded-2xl bg-white p-5 sm:p-6"
-              >
-                <div className="flex min-h-[11rem] items-end justify-center border-b border-black/8 pb-4">
+              <figure key={block.mw} className="min-w-0">
+                <div className="flex aspect-[5/3] items-end justify-center border-2 border-ink bg-white p-4">
                   <div
-                    className="rounded-md border-2 border-ink bg-accent/90 shadow-[var(--shadow-card)]"
+                    className="border-2 border-ink bg-accent"
                     style={{
-                      width: `${Math.max(sidePct, 18)}%`,
+                      width: `${Math.max(sidePct, 14)}%`,
                       aspectRatio: '1',
-                      maxWidth: '100%',
                     }}
                     aria-hidden
                   />
                 </div>
-                <p className="font-display mt-4 text-3xl uppercase text-ink">{block.mw}</p>
-                <p className="mt-1 text-lg font-semibold text-ink">{block.acres}</p>
-                <p className="mt-2 text-sm text-muted">{block.note}</p>
-              </article>
+                <figcaption className="mt-4">
+                  <p className="font-display text-2xl uppercase text-ink sm:text-3xl">
+                    {block.mw}
+                  </p>
+                  <p className="mt-1 text-lg font-semibold text-ink">{block.acres}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{block.note}</p>
+                </figcaption>
+              </figure>
             )
           })}
         </div>
