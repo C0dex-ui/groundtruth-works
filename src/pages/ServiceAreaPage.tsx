@@ -112,6 +112,38 @@ export function ServiceAreaPage() {
               </>
             )}
 
+            {detail?.access && detail.accessTitle && (
+              <>
+                <h2 className="heading-xl mt-10 text-ink">{detail.accessTitle}</h2>
+                <div className="mt-4 space-y-4 text-base leading-relaxed text-muted">
+                  {detail.access.map((p) => (
+                    <p key={p.slice(0, 48)}>{p}</p>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {detail?.permitting && detail.permittingTitle && (
+              <>
+                <h2 className="heading-xl mt-10 text-ink">{detail.permittingTitle}</h2>
+                <ul className="mt-4 space-y-3">
+                  {detail.permitting.map((item) => (
+                    <li
+                      key={item.slice(0, 48)}
+                      className="flex gap-3 text-base leading-relaxed text-muted"
+                    >
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-3 text-sm text-muted">
+                  Confirm the current requirement with the jurisdiction before mobilisation — we do
+                  it for you as part of the scope.
+                </p>
+              </>
+            )}
+
             {!detail && meta && (
               <>
                 <h2 className="heading-xl text-ink">{city.name}, AR</h2>
