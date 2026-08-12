@@ -109,8 +109,8 @@ export const IMAGES = {
  * Never used on the homepage. Each path appears on at most one interior route.
  */
 export const INTERIOR_IMAGES = {
-  servicesIndex: '/images/lovable/07-og-service.jpg',
-  industriesIndex: '/images/lovable/01-og-default.jpg',
+  servicesIndex: '/images/heroes/services-index.jpg',
+  industriesIndex: '/images/heroes/industries-index.jpg',
   serviceAreasIndex: '/images/lovable/14-og-city.jpg',
   projectsHero: '/images/lovable/15-arkansas-land-Db6vANsR.jpg',
   about: '/images/heroes/about.jpg',
@@ -138,7 +138,53 @@ export const INTERIOR_IMAGES = {
     'general-contractors': '/images/lovable/06-growfully20.jpg',
     'commercial-development': '/images/lovable/02-growfully7.jpg',
   },
+  /**
+   * City service-area heroes — every city route gets a photo (not map-only).
+   * Maps live lower on the page in the body.
+   */
+  cityHero: {
+    'mayflower-ar': '/images/heroes/city-mayflower.jpg',
+    'conway-ar': '/images/heroes/city-conway.jpg',
+    'vilonia-ar': '/images/heroes/city-vilonia.jpg',
+    'greenbrier-ar': '/images/heroes/city-greenbrier.jpg',
+    'maumelle-ar': '/images/heroes/city-maumelle.jpg',
+    'north-little-rock-ar': '/images/heroes/city-north-little-rock.jpg',
+    'little-rock-ar': '/images/heroes/city-little-rock.jpg',
+    'sherwood-ar': '/images/heroes/city-sherwood.jpg',
+  } as Record<string, string>,
+  cityHeroDefault: '/images/heroes/city-default.jpg',
+  /**
+   * Intro prose media (right column under hero). Distinct from hero paths.
+   * One file per section that would otherwise be text-only.
+   */
+  serviceIntro: {
+    'land-clearing': '/images/heroes/intro-land-clearing.jpg',
+    'site-grading': '/images/heroes/intro-site-grading.jpg',
+    'excavation-services': '/images/heroes/intro-excavation.jpg',
+    'site-preparation': '/images/heroes/intro-site-prep.jpg',
+    'forestry-mulching': '/images/heroes/intro-forestry.jpg',
+    'brush-clearing': '/images/heroes/intro-brush.jpg',
+    'dirt-work': '/images/heroes/intro-dirt-work.jpg',
+    'drainage-erosion-control': '/images/heroes/intro-drainage.jpg',
+  },
+  industryIntro: {
+    'solar-site-preparation': '/images/heroes/intro-solar.jpg',
+    'general-contractors': '/images/heroes/intro-gc.jpg',
+    'commercial-development': '/images/heroes/intro-commercial.jpg',
+  },
+  aboutWhy: '/images/heroes/intro-about-why.jpg',
+  aboutYears: '/images/heroes/intro-about-years.jpg',
+  projectsVisit: '/images/heroes/intro-projects-visit.jpg',
+  reviewsWhich: '/images/heroes/intro-reviews-which.jpg',
+  reviewsLines: '/images/heroes/intro-reviews-lines.jpg',
+  gradeTolerance: '/images/heroes/intro-grade-tolerance.jpg',
+  serviceAreasOutside: '/images/heroes/intro-areas-outside.jpg',
 } as const
+
+/** Resolve a unique interior hero photo for a city slug. */
+export function cityHeroImage(slug: string): string {
+  return INTERIOR_IMAGES.cityHero[slug] ?? INTERIOR_IMAGES.cityHeroDefault
+}
 
 /** Primary nav — Services / Industries / Service Areas open dropdowns (Lovable pattern). */
 export type NavChild = { label: string; href: string; description?: string }

@@ -97,17 +97,29 @@ export function ReviewsPage() {
         </div>
       </SectionBlock>
 
-      <SectionBlock title={REVIEWS_PAGE.whichTitle} tone="paper">
-        <div className="max-w-3xl space-y-4 text-base leading-relaxed text-muted sm:text-lg">
+      <SectionBlock
+        title={REVIEWS_PAGE.whichTitle}
+        tone="paper"
+        image={INTERIOR_IMAGES.reviewsWhich}
+        imageAlt="Verified commercial site work"
+      >
+        <div className="space-y-4 text-base leading-relaxed text-muted sm:text-[1.05rem]">
           {REVIEWS_PAGE.which.map((p) => (
             <p key={p.slice(0, 48)}>{p}</p>
           ))}
         </div>
       </SectionBlock>
 
-      <SectionBlock title="Reviews of current service lines" tone="white">
-        <p className="font-display text-2xl uppercase text-ink">Nothing published here yet.</p>
-        <div className="mt-4 max-w-3xl space-y-4 text-base leading-relaxed text-muted sm:text-lg">
+      <SectionBlock
+        title="Reviews of current service lines"
+        tone="white"
+        image={INTERIOR_IMAGES.reviewsLines}
+        imageAlt="Commercial clearing and grading in progress"
+      >
+        <p className="font-display text-xl uppercase text-ink sm:text-2xl">
+          Nothing published here yet.
+        </p>
+        <div className="mt-4 space-y-4 text-base leading-relaxed text-muted sm:text-[1.05rem]">
           <p>
             We have not yet published a review that describes current commercial site work. Reviews
             from recent clearing, grading and site prep jobs are being collected now and will appear

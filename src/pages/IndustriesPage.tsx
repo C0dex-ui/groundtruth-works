@@ -32,12 +32,12 @@ export function IndustriesIndexPage() {
         lead={INDUSTRIES_INDEX.lead}
         primaryCta={{ label: 'GET A QUOTE', href: '/get-a-quote' }}
         image={INTERIOR_IMAGES.industriesIndex}
-        imageAlt=""
+        imageAlt="Commercial site work for Growfully industry clients"
       />
 
       {/* Text cards only — homepage owns industry photos; detail pages use unique interior shots. */}
       <SectionBlock title="Industries" tone="white">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
           {INDUSTRIES_DETAIL.map((industry, i) => {
             const services = industry.relatedServiceSlugs
               .map((slug) => getServiceDetail(slug))
@@ -46,16 +46,16 @@ export function IndustriesIndexPage() {
               <ScrollCard key={industry.slug} delay={i * 70}>
                 <Link
                   to={`/industries/${industry.slug}`}
-                  className="card-industrial group flex h-full flex-col rounded-2xl p-6 sm:p-7"
+                  className="card-industrial group flex h-full flex-col rounded-xl p-4 sm:p-5"
                 >
                   <span className="label text-xs text-muted">
                     0{i + 1} / Industry
                   </span>
-                  <h3 className="heading-md mt-2 text-ink">{industry.title}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
+                  <h3 className="heading-md mt-1.5 text-ink">{industry.title}</h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
                     {industry.short}
                   </p>
-                  <ul className="mt-4 flex flex-wrap gap-1.5">
+                  <ul className="mt-3 flex flex-wrap gap-1.5">
                     {services.slice(0, 4).map((s) =>
                       s ? (
                         <li
@@ -67,7 +67,7 @@ export function IndustriesIndexPage() {
                       ) : null,
                     )}
                   </ul>
-                  <span className="label mt-5 inline-flex items-center gap-1.5 text-sm text-ink">
+                  <span className="label mt-3 inline-flex items-center gap-1.5 text-sm text-ink">
                     View industry
                     <ArrowRight className="h-4 w-4 text-accent transition-transform group-hover:translate-x-1" />
                   </span>
@@ -128,8 +128,17 @@ export function IndustryDetailPage() {
         <TrustStrip />
       </PageHero>
 
-      <SectionBlock title={detail.introTitle} tone="white">
-        <div className="max-w-3xl space-y-4 text-base leading-relaxed text-muted sm:text-lg">
+      <SectionBlock
+        title={detail.introTitle}
+        tone="white"
+        image={
+          INTERIOR_IMAGES.industryIntro[
+            detail.slug as keyof typeof INTERIOR_IMAGES.industryIntro
+          ]
+        }
+        imageAlt={`${detail.title} site work in Central Arkansas`}
+      >
+        <div className="space-y-4 text-base leading-relaxed text-muted sm:text-[1.05rem]">
           {detail.intro.map((p) => (
             <p key={p.slice(0, 40)}>{p}</p>
           ))}

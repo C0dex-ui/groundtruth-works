@@ -13,6 +13,9 @@ mkdirSync(outDir, { recursive: true })
 
 /** [outName, sourceRel, left%, top%, width%, height%] — percentages of source */
 const jobs = [
+  // Index / company / legal / insights heroes
+  ['services-index.jpg', 'public/images/service-land-clearing.jpg', 0.05, 0.08, 0.9, 0.82],
+  ['industries-index.jpg', 'public/images/industry-commercial.jpg', 0.08, 0.12, 0.84, 0.78],
   ['about.jpg', 'public/images/process-clear.jpg', 0.05, 0.08, 0.9, 0.75],
   ['contact.jpg', 'public/images/process-strip.jpg', 0.1, 0.12, 0.85, 0.78],
   ['quote.jpg', 'public/images/process-grade.jpg', 0.0, 0.05, 0.92, 0.8],
@@ -21,6 +24,37 @@ const jobs = [
   ['insights-article.jpg', 'public/images/gallery-01.jpg', 0.15, 0.1, 0.8, 0.75],
   ['privacy.jpg', 'public/images/gallery-02.jpg', 0.05, 0.15, 0.85, 0.75],
   ['terms.jpg', 'public/images/gallery-03.jpg', 0.1, 0.05, 0.85, 0.8],
+  // City service-area heroes — distinct crops so every city hero is a photo
+  ['city-mayflower.jpg', 'public/images/process-clear.jpg', 0.2, 0.2, 0.75, 0.7],
+  ['city-conway.jpg', 'public/images/process-strip.jpg', 0.0, 0.0, 0.8, 0.85],
+  ['city-vilonia.jpg', 'public/images/process-grade.jpg', 0.15, 0.18, 0.8, 0.72],
+  ['city-greenbrier.jpg', 'public/images/process-compact.jpg', 0.0, 0.2, 0.85, 0.75],
+  ['city-maumelle.jpg', 'public/images/process-base.jpg', 0.0, 0.15, 0.78, 0.78],
+  ['city-north-little-rock.jpg', 'public/images/gallery-01.jpg', 0.0, 0.0, 0.85, 0.85],
+  ['city-little-rock.jpg', 'public/images/gallery-02.jpg', 0.15, 0.0, 0.8, 0.85],
+  ['city-sherwood.jpg', 'public/images/gallery-03.jpg', 0.0, 0.15, 0.9, 0.75],
+  // Fallback for any other Arkansas city route
+  ['city-default.jpg', 'public/images/gallery-04.jpg', 0.08, 0.08, 0.85, 0.8],
+
+  // Intro-section media (prose + right photo) — unique files, themed from service/process sources
+  ['intro-land-clearing.jpg', 'public/images/service-land-clearing.jpg', 0.12, 0.1, 0.78, 0.8],
+  ['intro-site-grading.jpg', 'public/images/service-site-grading.jpg', 0.08, 0.12, 0.82, 0.78],
+  ['intro-excavation.jpg', 'public/images/service-excavation.jpg', 0.15, 0.08, 0.8, 0.82],
+  ['intro-site-prep.jpg', 'public/images/service-site-prep.jpg', 0.05, 0.15, 0.85, 0.75],
+  ['intro-forestry.jpg', 'public/images/service-forestry-mulching.jpg', 0.1, 0.05, 0.8, 0.85],
+  ['intro-brush.jpg', 'public/images/service-brush-clearing.jpg', 0.0, 0.1, 0.88, 0.8],
+  ['intro-dirt-work.jpg', 'public/images/service-dirt-work.jpg', 0.18, 0.12, 0.75, 0.78],
+  ['intro-drainage.jpg', 'public/images/service-drainage.jpg', 0.08, 0.18, 0.84, 0.72],
+  ['intro-solar.jpg', 'public/images/industry-solar.jpg', 0.1, 0.1, 0.8, 0.8],
+  ['intro-gc.jpg', 'public/images/industry-gc.jpg', 0.05, 0.08, 0.85, 0.82],
+  ['intro-commercial.jpg', 'public/images/industry-commercial.jpg', 0.12, 0.15, 0.78, 0.75],
+  ['intro-about-why.jpg', 'public/images/process-clear.jpg', 0.25, 0.05, 0.7, 0.75],
+  ['intro-about-years.jpg', 'public/images/process-strip.jpg', 0.18, 0.22, 0.72, 0.7],
+  ['intro-projects-visit.jpg', 'public/images/process-grade.jpg', 0.22, 0.12, 0.72, 0.75],
+  ['intro-reviews-which.jpg', 'public/images/process-compact.jpg', 0.2, 0.0, 0.75, 0.8],
+  ['intro-reviews-lines.jpg', 'public/images/process-base.jpg', 0.05, 0.2, 0.8, 0.72],
+  ['intro-grade-tolerance.jpg', 'public/images/process-grade.jpg', 0.0, 0.22, 0.7, 0.7],
+  ['intro-areas-outside.jpg', 'public/images/gallery-04.jpg', 0.2, 0.15, 0.75, 0.75],
 ]
 
 for (const [name, srcRel, lx, ty, ww, hh] of jobs) {

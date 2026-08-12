@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react'
+import { INTERIOR_IMAGES } from '../data/content'
+import { SectionBlock } from './SectionBlock'
 
 /**
  * Interactive cut/fill section from Lovable site-grading page.
@@ -114,17 +116,17 @@ export function CutAndFillDiagram() {
     <section className="section-pad bg-paper" aria-labelledby="cut-fill-heading">
       <div className="container-site">
         <p className="eyebrow">Site grading</p>
-        <div className="accent-bar mt-3" />
-        <h2 id="cut-fill-heading" className="heading-xl mt-4 text-ink">
+        <div className="accent-bar mt-2.5" />
+        <h2 id="cut-fill-heading" className="heading-xl mt-3 text-ink">
           Cut and fill, and why balance matters
         </h2>
-        <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted sm:text-lg">
+        <p className="mt-2.5 max-w-3xl text-base leading-relaxed text-muted">
           Move the finished grade up and down and watch the earthwork trade off. Every yard of
           surplus leaves on a truck and every yard short arrives on one — which is why the elevation
           your engineer sets is a budget decision as much as a drainage one.
         </p>
 
-        <div className="card-industrial mt-8 overflow-hidden rounded-2xl bg-white p-4 sm:p-6">
+        <div className="card-industrial mt-5 overflow-hidden rounded-xl bg-white p-3.5 sm:p-5">
           <p className="label text-xs text-muted">Cut and fill section</p>
 
           <div className="mt-3 overflow-x-auto rounded-xl border border-black/10 bg-white">
@@ -225,27 +227,27 @@ export function CutAndFillDiagram() {
 /** Tolerance note that follows cut/fill on Lovable site-grading. */
 export function GradeToleranceNote() {
   return (
-    <section className="section-pad bg-white" aria-labelledby="tolerance-heading">
-      <div className="container-site max-w-3xl">
-        <p className="eyebrow">Precision</p>
-        <div className="accent-bar mt-3" />
-        <h2 id="tolerance-heading" className="heading-xl mt-4 text-ink">
-          What plus or minus a tenth means
-        </h2>
-        <div className="mt-4 space-y-4 text-base leading-relaxed text-muted sm:text-lg">
-          <p>
-            Tolerance is the number a commercial GC asks about first, because it decides whether the
-            next trade can start. A pad out by three tenths means a slab pour that eats extra
-            concrete, or a subgrade that has to be recut with a paving crew already scheduled and
-            already billing.
-          </p>
-          <p>
-            We hold plan tolerance with GPS or laser grade control, verify with a rod before calling
-            a surface finished, and proofroll so soft spots show up while a machine is still on site
-            rather than after the base stone is down.
-          </p>
-        </div>
+    <SectionBlock
+      id="grade-tolerance"
+      eyebrow="Precision"
+      title="What plus or minus a tenth means"
+      tone="white"
+      image={INTERIOR_IMAGES.gradeTolerance}
+      imageAlt="Fine grade and pad tolerance on a commercial site"
+    >
+      <div className="space-y-3 text-base leading-relaxed text-muted">
+        <p>
+          Tolerance is the number a commercial GC asks about first, because it decides whether the
+          next trade can start. A pad out by three tenths means a slab pour that eats extra
+          concrete, or a subgrade that has to be recut with a paving crew already scheduled and
+          already billing.
+        </p>
+        <p>
+          We hold plan tolerance with GPS or laser grade control, verify with a rod before calling
+          a surface finished, and proofroll so soft spots show up while a machine is still on site
+          rather than after the base stone is down.
+        </p>
       </div>
-    </section>
+    </SectionBlock>
   )
 }

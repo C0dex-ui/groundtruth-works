@@ -17,17 +17,17 @@ export function ExcavationSection() {
     <section className="section-pad bg-paper" aria-labelledby="ex-section-heading">
       <div className="container-site">
         <p className="eyebrow">Excavation</p>
-        <div className="accent-bar mt-3" />
-        <h2 id="ex-section-heading" className="heading-xl mt-4 text-ink">
+        <div className="accent-bar mt-2.5" />
+        <h2 id="ex-section-heading" className="heading-xl mt-3 text-ink">
           A nine-foot excavation, in section
         </h2>
-        <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted sm:text-lg">
+        <p className="mt-2.5 max-w-3xl text-base leading-relaxed text-muted">
           Three numbers decide how a hole gets dug: how much topsoil comes off, where the bench sits,
           and how deep the bearing elevation is. Everything else — slope ratio, working room,
           protective system — follows from those.
         </p>
 
-        <div className="card-industrial mt-8 overflow-hidden rounded-2xl bg-white p-4 sm:p-6">
+        <div className="card-industrial mt-5 overflow-hidden rounded-xl bg-white p-3.5 sm:p-5">
           <div className="overflow-x-auto">
             <svg
               viewBox="0 0 640 340"

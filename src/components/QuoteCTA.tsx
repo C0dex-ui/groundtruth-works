@@ -24,15 +24,15 @@ export function QuoteCTA() {
       aria-labelledby="quote-heading"
     >
       <div className="noise-fade pointer-events-none absolute inset-0" aria-hidden />
-      <div className="container-site relative grid gap-8 lg:grid-cols-[1fr_1.05fr] lg:items-stretch lg:gap-10">
-        <div className="flex min-w-0 flex-col justify-between gap-8 sm:gap-10">
+      <div className="container-site relative grid gap-6 lg:grid-cols-[1fr_1.05fr] lg:items-stretch lg:gap-8">
+        <div className="flex min-w-0 flex-col justify-between gap-6 sm:gap-8">
           <div>
             <p className="eyebrow !text-accent">Free estimate</p>
-            <div className="accent-bar mt-3" />
-            <h2 id="quote-heading" className="heading-xl mt-4">
+            <div className="accent-bar mt-2.5" />
+            <h2 id="quote-heading" className="heading-xl mt-3">
               Get a Real Number
             </h2>
-            <p className="mt-4 max-w-md text-base leading-relaxed text-white/75 sm:text-lg">
+            <p className="mt-2.5 max-w-md text-base leading-relaxed text-white/75">
               Tell us what you need cleared or graded and David gets back to you with a real number.
             </p>
           </div>

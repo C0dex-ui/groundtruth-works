@@ -91,53 +91,53 @@ export function MulchingCompare() {
     <section className="section-pad bg-paper" aria-labelledby="mulch-compare-heading">
       <div className="container-site">
         <p className="eyebrow">Forestry mulching</p>
-        <div className="accent-bar mt-3" />
-        <h2 id="mulch-compare-heading" className="heading-xl mt-4 text-ink">
+        <div className="accent-bar mt-2.5" />
+        <h2 id="mulch-compare-heading" className="heading-xl mt-3 text-ink">
           Mulching vs traditional clearing
         </h2>
-        <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted sm:text-lg">
+        <p className="mt-2.5 max-w-3xl text-base leading-relaxed text-muted">
           Straight comparison, no thumb on the scale. Both methods are on our own truck list, so we
           have no reason to push one that does not fit your job.
         </p>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6">
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 sm:gap-4">
           <figure>
-            <div className="aspect-[5/3] overflow-hidden border-2 border-ink bg-white">
+            <div className="aspect-[16/9] overflow-hidden border-2 border-ink bg-white">
               <MulchIcon />
             </div>
-            <figcaption className="mt-4">
-              <h3 className="font-display text-xl uppercase text-ink sm:text-2xl">
+            <figcaption className="mt-2.5">
+              <h3 className="font-display text-lg uppercase text-ink sm:text-xl">
                 Forestry mulching
               </h3>
-              <p className="mt-2 text-sm text-muted">
+              <p className="mt-1 text-sm text-muted">
                 Mulch mat over intact soil. Stumps and roots stay in the ground.
               </p>
             </figcaption>
           </figure>
           <figure>
-            <div className="aspect-[5/3] overflow-hidden border-2 border-ink bg-white">
+            <div className="aspect-[16/9] overflow-hidden border-2 border-ink bg-white">
               <TraditionalIcon />
             </div>
-            <figcaption className="mt-4">
-              <h3 className="font-display text-xl uppercase text-ink sm:text-2xl">
+            <figcaption className="mt-2.5">
+              <h3 className="font-display text-lg uppercase text-ink sm:text-xl">
                 Traditional clearing
               </h3>
-              <p className="mt-2 text-sm text-muted">
+              <p className="mt-1 text-sm text-muted">
                 Bare soil, stumps and root balls pulled — debris piled, hauled or burned.
               </p>
             </figcaption>
           </figure>
         </div>
 
-        <div className="mt-12 overflow-x-auto rounded-2xl border border-black/8 bg-white">
+        <div className="mt-6 overflow-x-auto rounded-xl border border-black/8 bg-white">
           <table className="w-full min-w-[40rem] text-left text-sm">
             <thead className="border-b border-black/8 bg-paper">
               <tr>
-                <th className="label px-4 py-3 text-xs text-muted">Factor</th>
-                <th className="px-4 py-3 font-display text-base uppercase text-ink">
+                <th className="label px-3 py-2.5 text-xs text-muted">Factor</th>
+                <th className="px-3 py-2.5 font-display text-sm uppercase text-ink sm:text-base">
                   Forestry mulching
                 </th>
-                <th className="px-4 py-3 font-display text-base uppercase text-ink">
+                <th className="px-3 py-2.5 font-display text-sm uppercase text-ink sm:text-base">
                   Traditional clearing
                 </th>
               </tr>
@@ -145,29 +145,29 @@ export function MulchingCompare() {
             <tbody>
               {ROWS.map((row) => (
                 <tr key={row.factor} className="border-b border-black/6 last:border-0">
-                  <td className="label px-4 py-3 text-xs text-muted">{row.factor}</td>
-                  <td className="px-4 py-3 text-muted">{row.mulch}</td>
-                  <td className="px-4 py-3 text-muted">{row.traditional}</td>
+                  <td className="label px-3 py-2.5 text-xs text-muted">{row.factor}</td>
+                  <td className="px-3 py-2.5 text-muted">{row.mulch}</td>
+                  <td className="px-3 py-2.5 text-muted">{row.traditional}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-6">
           <h3 className="heading-md text-ink">When mulching is the wrong call</h3>
-          <ul className="mt-4 space-y-3">
+          <ul className="mt-3 space-y-2">
             {WRONG.map((item) => (
               <li
                 key={item.slice(0, 40)}
-                className="flex gap-3 text-base leading-relaxed text-muted"
+                className="flex gap-3 text-sm leading-relaxed text-muted sm:text-base"
               >
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                 <span>{item}</span>
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-base font-medium text-ink">
+          <p className="mt-3 text-sm font-medium text-ink sm:text-base">
             If your job is one of those, we will tell you on the estimate and quote the clearing
             method that actually fits.
           </p>

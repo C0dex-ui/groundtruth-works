@@ -28,16 +28,16 @@ export function SolarAcres() {
     <section className="section-pad bg-paper" aria-labelledby="solar-acres-heading">
       <div className="container-site">
         <p className="eyebrow">Solar</p>
-        <div className="accent-bar mt-3" />
-        <h2 id="solar-acres-heading" className="heading-xl mt-4 text-ink">
+        <div className="accent-bar mt-2.5" />
+        <h2 id="solar-acres-heading" className="heading-xl mt-3 text-ink">
           How much ground an array takes
         </h2>
-        <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted sm:text-lg">
+        <p className="mt-2.5 max-w-3xl text-base leading-relaxed text-muted">
           Before anyone draws a layout, developers and landowners want the same number: how many
           acres. These are the ranges the industry plans with for single-axis tracker fields.
         </p>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-3 sm:gap-5">
+        <div className="mt-5 grid gap-3 sm:grid-cols-3 sm:gap-4">
           {BLOCKS.map((block) => {
             const sidePct = Math.sqrt(block.scale / max) * 78
             return (

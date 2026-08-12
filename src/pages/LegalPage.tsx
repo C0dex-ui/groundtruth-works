@@ -33,7 +33,7 @@ export function LegalPage({ kind }: { kind: LegalKind }) {
       />
 
       <section className="section-pad bg-white">
-        <div className="container-site max-w-3xl space-y-10">
+        <div className="container-site max-w-3xl space-y-6">
           {doc.sections.map((section) => (
             <article key={section.title}>
               <h2 className="heading-md text-ink">{section.title}</h2>

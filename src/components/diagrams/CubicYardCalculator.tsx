@@ -26,16 +26,16 @@ export function CubicYardCalculator() {
     <section className="section-pad bg-paper" aria-labelledby="cy-calc-heading">
       <div className="container-site">
         <p className="eyebrow">Dirt work</p>
-        <div className="accent-bar mt-3" />
-        <h2 id="cy-calc-heading" className="heading-xl mt-4 text-ink">
+        <div className="accent-bar mt-2.5" />
+        <h2 id="cy-calc-heading" className="heading-xl mt-3 text-ink">
           Cubic yard calculator
         </h2>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+        <p className="mt-2.5 max-w-2xl text-base leading-relaxed text-muted">
           Enter length, width and depth in feet. You get cubic yards, an approximate truckload count,
           and an order allowance for compaction. Useful before you call anybody, including us.
         </p>
 
-        <div className="card-industrial mt-8 grid gap-6 rounded-2xl bg-white p-5 sm:p-8 lg:grid-cols-[1fr_1fr]">
+        <div className="card-industrial mt-5 grid gap-5 rounded-xl bg-white p-4 sm:p-6 lg:grid-cols-[1fr_1fr]">
           <div className="space-y-4">
             <div>
               <label htmlFor="cy-length" className="mb-1.5 block text-sm font-medium">

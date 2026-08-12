@@ -17,11 +17,11 @@ export function SitePrepSchedule() {
     <section className="section-pad bg-paper" aria-labelledby="schedule-heading">
       <div className="container-site">
         <p className="eyebrow">Site preparation</p>
-        <div className="accent-bar mt-3" />
-        <h2 id="schedule-heading" className="heading-xl mt-4 text-ink">
+        <div className="accent-bar mt-2.5" />
+        <h2 id="schedule-heading" className="heading-xl mt-3 text-ink">
           Where site prep sits in your schedule
         </h2>
-        <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted sm:text-lg">
+        <p className="mt-2.5 max-w-3xl text-base leading-relaxed text-muted">
           For a GC, the useful question is not what site prep includes — it is when it blocks you.
           Here is a typical twelve week strip on a small commercial pad, with our scope marked.
         </p>

@@ -94,7 +94,7 @@ export function Hero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/35 to-ink/45" />
       <div className="noise-fade pointer-events-none absolute inset-0 -z-10" />
 
-      <div className="hero-shell container-site relative flex min-h-[calc(100svh-4.25rem)] flex-col justify-center py-10 sm:min-h-[calc(100svh-4.75rem)] sm:py-12 lg:py-14 max-sm:min-h-[calc(100svh-4.25rem-5.25rem)] max-sm:pb-8">
+      <div className="hero-shell container-site relative flex min-h-[min(78svh,42rem)] flex-col justify-center py-8 sm:min-h-[min(80svh,46rem)] sm:py-10 lg:py-12 max-sm:min-h-[min(72svh,36rem)] max-sm:pb-7">
         <motion.div
           className="flex w-full min-w-0 flex-col"
           variants={reduced ? undefined : container}

@@ -24,17 +24,17 @@ export function InteriorCta({
     >
       <div className="noise-fade pointer-events-none absolute inset-0" aria-hidden />
       <div className="container-site relative">
-        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+        <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-8">
           <div>
             <p className="eyebrow !text-accent">{eyebrow}</p>
-            <div className="accent-bar mt-3" />
-            <h2 id={`${id}-heading`} className="heading-xl mt-4">
+            <div className="accent-bar mt-2.5" />
+            <h2 id={`${id}-heading`} className="heading-xl mt-3">
               {title}
             </h2>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
+            <p className="mt-3 max-w-xl text-base leading-relaxed text-white/75">
               {lead}
             </p>
-            <ul className="mt-6 grid gap-2 sm:grid-cols-2">
+            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
               {[
                 'Owner quotes every job',
                 'BBB A+ accredited',
@@ -43,7 +43,7 @@ export function InteriorCta({
               ].map((item) => (
                 <li
                   key={item}
-                  className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white/85"
+                  className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/85"
                 >
                   <ShieldCheck className="h-4 w-4 shrink-0 text-accent" aria-hidden />
                   {item}
@@ -52,12 +52,12 @@ export function InteriorCta({
             </ul>
           </div>
 
-          <div className="flex flex-col gap-3">
-            <a href={PHONE_HREF} className="btn-primary w-full !min-h-14 !text-base">
+          <div className="flex flex-col gap-2.5">
+            <a href={PHONE_HREF} className="btn-primary w-full !min-h-12 !text-base">
               <Phone className="h-5 w-5" aria-hidden />
               Call {PHONE_DISPLAY}
             </a>
-            <Link to="/get-a-quote" className="btn-ghost-light w-full !min-h-14 !text-base">
+            <Link to="/get-a-quote" className="btn-ghost-light w-full !min-h-12 !text-base">
               GET A QUOTE
             </Link>
             <p className="text-center text-sm text-white/50">

@@ -18,10 +18,16 @@ type PageHeroProps = {
   eyebrow?: string
   title: string
   lead: ReactNode
-  /** Prefer a unique photo per route. */
+  /**
+   * Unique photo per route — required for the two-column interior hero.
+   * Every interior page should pass a distinct path from INTERIOR_IMAGES.
+   */
   image?: string
   imageAlt?: string
-  /** Or an interactive map (city pages). */
+  /**
+   * Optional map media (legacy). Prefer a photo in the hero; put maps in the body.
+   * If both are set, the photo wins.
+   */
   map?: HeroMap
   primaryCta?: { label: string; href: string }
   secondaryCta?: { label: string; href: string; external?: boolean }
@@ -30,7 +36,8 @@ type PageHeroProps = {
 }
 
 /**
- * Interior page hero — always two-column on large screens when image or map is set.
+ * Interior page hero — two-column on large screens when a photo (or map) is set.
+ * Prefer `image` so every hero always has a photograph.
  */
 export function PageHero({
   crumbs,
@@ -54,28 +61,28 @@ export function PageHero({
   return (
     <section className={shell}>
       {dark && <div className="noise-fade pointer-events-none absolute inset-0" aria-hidden />}
-      <div className="section-pad relative">
+      <div className="section-pad-hero relative">
         <div className="container-site">
           <Breadcrumbs items={crumbs} />
 
           <div
-            className={`grid gap-8 lg:items-center ${hasMedia ? 'lg:grid-cols-[1.05fr_0.95fr] lg:gap-12' : ''}`}
+            className={`mt-4 grid gap-5 lg:items-center ${hasMedia ? 'lg:grid-cols-[1.1fr_0.9fr] lg:gap-8' : ''}`}
           >
             <div>
               {eyebrow && (
                 <p className={`eyebrow ${dark ? '!text-accent' : ''}`}>{eyebrow}</p>
               )}
-              <div className="accent-bar mt-3" />
-              <h1 className={`heading-xl mt-4 ${dark ? 'text-white' : 'text-ink'}`}>{title}</h1>
+              <div className="accent-bar mt-2.5" />
+              <h1 className={`heading-xl mt-3 ${dark ? 'text-white' : 'text-ink'}`}>{title}</h1>
               <div
-                className={`mt-4 max-w-2xl text-base leading-relaxed sm:text-lg ${
+                className={`mt-3 max-w-2xl text-base leading-relaxed sm:text-[1.05rem] ${
                   dark ? 'text-white/75' : 'text-muted'
                 }`}
               >
                 {lead}
               </div>
 
-              <div className="btn-row mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <div className="btn-row mt-5 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
                 {primaryCta &&
                   (primaryCta.href.startsWith('tel:') || primaryCta.href.startsWith('http') ? (
                     <a href={primaryCta.href} className="btn-primary">
@@ -122,7 +129,7 @@ export function PageHero({
             </div>
 
             {image && (
-              <div className="card-industrial relative aspect-[4/3] overflow-hidden rounded-2xl lg:aspect-[5/4]">
+              <div className="card-industrial relative aspect-[16/11] overflow-hidden rounded-xl sm:aspect-[5/3] lg:aspect-[4/3]">
                 <img
                   src={image}
                   alt={imageAlt}
@@ -142,7 +149,7 @@ export function PageHero({
                   lat={map.lat}
                   lng={map.lng}
                   zoom={map.zoom ?? 12}
-                  heightClass="h-64 sm:h-80 lg:h-[22rem]"
+                  heightClass="h-52 sm:h-64 lg:h-[18rem]"
                   subtitle={
                     map.mode === 'state'
                       ? 'Google Maps · Growfully LLC'

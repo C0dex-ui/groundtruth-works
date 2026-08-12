@@ -59,13 +59,18 @@ export function ProjectsPage() {
         </p>
       </SectionBlock>
 
-      <SectionBlock title={PROJECTS_PAGE.visitTitle} tone="paper">
-        <div className="max-w-3xl space-y-4 text-base leading-relaxed text-muted sm:text-lg">
+      <SectionBlock
+        title={PROJECTS_PAGE.visitTitle}
+        tone="paper"
+        image={INTERIOR_IMAGES.projectsVisit}
+        imageAlt="Live job walk with Growfully"
+      >
+        <div className="space-y-4 text-base leading-relaxed text-muted sm:text-[1.05rem]">
           {PROJECTS_PAGE.visit.map((p) => (
             <p key={p.slice(0, 40)}>{p}</p>
           ))}
         </div>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
           <a href="tel:+15012696860" className="btn-primary">
             Call (501) 269-6860
           </a>

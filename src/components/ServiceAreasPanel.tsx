@@ -31,24 +31,24 @@ export function ServiceAreasPanel({
   return (
     <section id={id} className={`section-pad ${bg}`} aria-labelledby={id ? `${id}-heading` : undefined}>
       <div className="container-site">
-        <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-10">
+        <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-8">
           <div className="min-w-0">
             <p className="eyebrow">Service areas</p>
-            <div className="accent-bar mt-3" />
+            <div className="accent-bar mt-2.5" />
             <h2
               id={id ? `${id}-heading` : undefined}
-              className="heading-xl mt-4 text-ink"
+              className="heading-xl mt-3 text-ink"
             >
               {title}
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">{lead}</p>
+            <p className="mt-2.5 text-base leading-relaxed text-muted">{lead}</p>
 
-            <div className="mt-6 flex flex-wrap gap-2 sm:mt-8">
+            <div className="mt-4 flex flex-wrap gap-2 sm:mt-5">
               {cities.map((city) => (
                 <Link
                   key={city.slug}
                   to={`/service-areas/${city.slug}`}
-                  className="chip min-h-11"
+                  className="chip min-h-10"
                 >
                   <MapPin className="chip-icon h-3.5 w-3.5" aria-hidden />
                   <span>
@@ -58,7 +58,7 @@ export function ServiceAreasPanel({
               ))}
             </div>
 
-            <Link to="/service-areas" className="btn-outline mt-6 inline-flex">
+            <Link to="/service-areas" className="btn-outline mt-4 inline-flex">
               All service areas
               <ArrowRight className="h-4 w-4" />
             </Link>
@@ -67,7 +67,7 @@ export function ServiceAreasPanel({
           <div className="min-w-0">
             <AreaMap
               mode="state"
-              heightClass="h-72 sm:h-80 lg:h-[26rem]"
+              heightClass="h-56 sm:h-64 lg:h-[20rem]"
               subtitle="Google Maps · Growfully LLC · Central Arkansas"
             />
           </div>

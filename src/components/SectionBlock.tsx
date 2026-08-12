@@ -8,6 +8,13 @@ type SectionBlockProps = {
   children: ReactNode
   tone?: 'paper' | 'white' | 'ink'
   className?: string
+  /**
+   * Optional photo on the right (desktop). Use for plain prose intros so the
+   * section is not a text-only column with empty space.
+   * Path must be unique to this route (INTERIOR_IMAGES).
+   */
+  image?: string
+  imageAlt?: string
 }
 
 export function SectionBlock({
@@ -18,34 +25,62 @@ export function SectionBlock({
   children,
   tone = 'paper',
   className = '',
+  image,
+  imageAlt = '',
 }: SectionBlockProps) {
   const bg =
     tone === 'white' ? 'bg-white' : tone === 'ink' ? 'steel-grid text-white' : 'bg-paper'
+  const titleClass = tone === 'ink' ? 'text-white' : 'text-ink'
+  const leadClass = tone === 'ink' ? 'text-white/75' : 'text-muted'
+
+  const header = (
+    <>
+      {eyebrow && (
+        <p className={`eyebrow ${tone === 'ink' ? '!text-accent' : ''}`}>{eyebrow}</p>
+      )}
+      <div className="accent-bar mt-2.5" />
+      <h2 className={`heading-xl mt-3 ${titleClass}`}>{title}</h2>
+      {lead && (
+        <div className={`mt-2.5 text-base leading-relaxed sm:text-[1.05rem] ${leadClass}`}>
+          {lead}
+        </div>
+      )}
+    </>
+  )
+
+  const media = image ? (
+    <div className="card-industrial relative aspect-[16/11] overflow-hidden rounded-xl sm:aspect-[5/3] lg:sticky lg:top-28 lg:aspect-[4/3]">
+      <img
+        src={image}
+        alt={imageAlt}
+        className="img-cover"
+        loading="lazy"
+        decoding="async"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/35 to-transparent"
+        aria-hidden
+      />
+    </div>
+  ) : null
 
   return (
     <section id={id} className={`section-pad ${bg} ${className}`}>
       <div className="container-site">
-        <div className="max-w-3xl">
-          {eyebrow && (
-            <p className={`eyebrow ${tone === 'ink' ? '!text-accent' : ''}`}>{eyebrow}</p>
-          )}
-          <div className="accent-bar mt-3" />
-          <h2
-            className={`heading-xl mt-4 ${tone === 'ink' ? 'text-white' : 'text-ink'}`}
-          >
-            {title}
-          </h2>
-          {lead && (
-            <div
-              className={`mt-3 text-base leading-relaxed sm:text-lg ${
-                tone === 'ink' ? 'text-white/75' : 'text-muted'
-              }`}
-            >
-              {lead}
+        {image ? (
+          <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-8">
+            <div className="min-w-0">
+              {header}
+              <div className="mt-5 sm:mt-6">{children}</div>
             </div>
-          )}
-        </div>
-        <div className="mt-8 sm:mt-10">{children}</div>
+            {media}
+          </div>
+        ) : (
+          <>
+            <div className="max-w-3xl">{header}</div>
+            <div className="mt-5 sm:mt-6">{children}</div>
+          </>
+        )}
       </div>
     </section>
   )
@@ -57,14 +92,14 @@ export function CardGrid({
   items: { title: string; body: string }[]
 }) {
   return (
-    <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((item) => (
         <article
           key={item.title}
-          className="card-industrial rounded-2xl p-5 sm:p-6"
+          className="card-industrial rounded-xl p-4 sm:p-5"
         >
           <h3 className="heading-md text-ink">{item.title}</h3>
-          <p className="mt-2 font-body text-sm leading-relaxed text-muted">{item.body}</p>
+          <p className="mt-1.5 font-body text-sm leading-relaxed text-muted">{item.body}</p>
         </article>
       ))}
     </div>
@@ -77,18 +112,18 @@ export function ProcessList({
   steps: { title: string; body: string }[]
 }) {
   return (
-    <ol className="grid gap-3 sm:gap-4">
+    <ol className="grid gap-2.5 sm:gap-3">
       {steps.map((step, i) => (
         <li
           key={step.title}
-          className="card-industrial flex gap-4 rounded-2xl p-4 sm:gap-5 sm:p-5"
+          className="card-industrial flex gap-3 rounded-xl p-3.5 sm:gap-4 sm:p-4"
         >
-          <span className="font-display flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-ink text-lg text-accent">
+          <span className="font-display flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-ink text-base text-accent">
             {String(i + 1).padStart(2, '0')}
           </span>
           <div className="min-w-0">
             <h3 className="heading-md text-ink">{step.title}</h3>
-            <p className="mt-1.5 font-body text-sm leading-relaxed text-muted sm:text-base">
+            <p className="mt-1 font-body text-sm leading-relaxed text-muted">
               {step.body}
             </p>
           </div>
@@ -100,16 +135,16 @@ export function ProcessList({
 
 export function FaqList({ items }: { items: { q: string; a: string }[] }) {
   return (
-    <div className="divide-y divide-black/8 rounded-2xl border border-black/8 bg-white">
+    <div className="divide-y divide-black/8 rounded-xl border border-black/8 bg-white">
       {items.map((item) => (
-        <details key={item.q} className="group px-5 py-4 sm:px-6">
-          <summary className="cursor-pointer list-none font-condensed text-base uppercase tracking-[0.04em] text-ink marker:content-none [&::-webkit-details-marker]:hidden">
-            <span className="flex items-start justify-between gap-4">
+        <details key={item.q} className="group px-4 py-3 sm:px-5">
+          <summary className="cursor-pointer list-none font-condensed text-sm uppercase tracking-[0.04em] text-ink marker:content-none sm:text-base [&::-webkit-details-marker]:hidden">
+            <span className="flex items-start justify-between gap-3">
               {item.q}
               <span className="mt-0.5 text-accent transition-transform group-open:rotate-45">+</span>
             </span>
           </summary>
-          <p className="mt-3 max-w-3xl font-body text-sm leading-relaxed text-muted sm:text-base">
+          <p className="mt-2 max-w-3xl font-body text-sm leading-relaxed text-muted">
             {item.a}
           </p>
         </details>

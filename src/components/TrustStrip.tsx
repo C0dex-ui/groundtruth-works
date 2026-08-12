@@ -7,7 +7,7 @@ const ICONS = [BadgeCheck, Clock3, Shield, FileCheck2]
 export function TrustStrip({ className = '' }: { className?: string }) {
   return (
     <div
-      className={`mt-8 grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3 ${className}`}
+      className={`mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4 ${className}`}
       aria-label="Trust signals"
     >
       {TRUST.map((item, i) => {
@@ -15,14 +15,14 @@ export function TrustStrip({ className = '' }: { className?: string }) {
         return (
           <div
             key={item.label}
-            className="flex items-start gap-2 rounded-xl border border-black/8 bg-white px-3 py-3 shadow-[var(--shadow-card)]"
+            className="flex items-start gap-2 rounded-lg border border-black/8 bg-white px-2.5 py-2.5 shadow-[var(--shadow-card)]"
           >
-            <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-ink text-accent">
-              <Icon className="h-4 w-4" aria-hidden />
+            <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-ink text-accent">
+              <Icon className="h-3.5 w-3.5" aria-hidden />
             </span>
             <div className="min-w-0">
-              <p className="font-display text-lg uppercase leading-none text-ink">{item.label}</p>
-              <p className="mt-1 text-[0.7rem] leading-tight text-muted">{item.detail}</p>
+              <p className="font-display text-base uppercase leading-none text-ink">{item.label}</p>
+              <p className="mt-0.5 text-[0.65rem] leading-tight text-muted">{item.detail}</p>
             </div>
           </div>
         )

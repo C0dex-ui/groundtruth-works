@@ -201,18 +201,18 @@ export function Testimonials() {
       aria-labelledby="testimonials-heading"
     >
       <div className="container-site">
-        <div className="mb-6 sm:mb-8">
+        <div className="mb-5">
           <p className="eyebrow">Testimonials</p>
-          <div className="accent-bar mt-3" />
-          <h2 id="testimonials-heading" className="heading-xl mt-4 text-ink">
+          <div className="accent-bar mt-2.5" />
+          <h2 id="testimonials-heading" className="heading-xl mt-3 text-ink">
             What Customers Say
           </h2>
         </div>
 
         {/* Trustindex widget shell */}
-        <div className="ti-widget rounded-[12px] bg-white p-4 shadow-[0_2px_8px_rgb(0_0_0/0.06)] sm:p-5 lg:p-6">
+        <div className="ti-widget rounded-[12px] bg-white p-3.5 shadow-[0_2px_8px_rgb(0_0_0/0.06)] sm:p-4 lg:p-5">
           {/* Summary header */}
-          <div className="ti-header mb-5 flex flex-col gap-4 border-b border-[#eee] pb-5 sm:mb-6 sm:flex-row sm:items-center sm:justify-between sm:pb-5">
+          <div className="ti-header mb-4 flex flex-col gap-3 border-b border-[#eee] pb-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex min-w-0 items-center gap-3.5">
               <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f1f3f4]">
                 <GoogleMark className="h-8 w-8" />

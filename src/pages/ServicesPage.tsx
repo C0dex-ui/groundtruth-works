@@ -46,26 +46,26 @@ export function ServicesIndexPage() {
         lead={SERVICES_INDEX.lead}
         primaryCta={{ label: 'GET A QUOTE', href: '/get-a-quote' }}
         image={INTERIOR_IMAGES.servicesIndex}
-        imageAlt=""
+        imageAlt="Land clearing and site work services in Central Arkansas"
       >
         <TrustStrip />
       </PageHero>
 
       {/* Text cards only — homepage already owns each service photo; do not reuse here. */}
       <SectionBlock title={SERVICES_INDEX.featuredTitle} tone="white">
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-3 md:grid-cols-2">
           {featured.map((service, i) => (
             <ScrollCard key={service.title} delay={i * 60}>
               <Link
                 to={service.href}
-                className="card-industrial group flex h-full flex-col rounded-2xl border-l-4 border-l-accent p-6 sm:p-8"
+                className="card-industrial group flex h-full flex-col rounded-xl border-l-4 border-l-accent p-4 sm:p-5"
               >
                 <span className="label text-xs text-muted">Core service</span>
-                <h3 className="heading-md mt-2 text-ink">{service.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted sm:text-base">
+                <h3 className="heading-md mt-1.5 text-ink">{service.title}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
                   {service.description}
                 </p>
-                <span className="label mt-5 inline-flex items-center gap-1.5 text-sm text-ink">
+                <span className="label mt-3 inline-flex items-center gap-1.5 text-sm text-ink">
                   Explore
                   <ArrowRight className="h-4 w-4 text-accent transition-transform group-hover:translate-x-1" />
                 </span>
@@ -76,18 +76,18 @@ export function ServicesIndexPage() {
       </SectionBlock>
 
       <SectionBlock title={SERVICES_INDEX.restTitle} tone="paper">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {rest.map((service, i) => (
             <ScrollCard key={service.title} delay={i * 50}>
               <Link
                 to={service.href}
-                className="card-industrial group flex h-full flex-col rounded-2xl p-5"
+                className="card-industrial group flex h-full flex-col rounded-xl p-4"
               >
                 <h3 className="heading-md text-ink">{service.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
+                <p className="mt-1.5 flex-1 text-sm leading-relaxed text-muted">
                   {service.description}
                 </p>
-                <span className="label mt-4 inline-flex items-center gap-1 text-sm text-ink">
+                <span className="label mt-3 inline-flex items-center gap-1 text-sm text-ink">
                   Learn more
                   <ArrowRight className="h-4 w-4 text-accent transition-transform group-hover:translate-x-0.5" />
                 </span>
@@ -137,8 +137,13 @@ export function ServiceDetailPage() {
         <TrustStrip />
       </PageHero>
 
-      <SectionBlock title={detail.introTitle} tone="white">
-        <div className="max-w-3xl space-y-4 text-base leading-relaxed text-muted sm:text-lg">
+      <SectionBlock
+        title={detail.introTitle}
+        tone="white"
+        image={INTERIOR_IMAGES.serviceIntro[detail.slug as keyof typeof INTERIOR_IMAGES.serviceIntro]}
+        imageAlt={`${detail.title} site work in Central Arkansas`}
+      >
+        <div className="space-y-4 text-base leading-relaxed text-muted sm:text-[1.05rem]">
           {detail.intro.map((p) => (
             <p key={p.slice(0, 40)}>{p}</p>
           ))}
@@ -203,18 +208,18 @@ export function ServiceDetailPage() {
       </SectionBlock>
 
       <SectionBlock title="Related services" tone="paper">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {related.map((s) => (
             <Link
               key={s.slug}
               to={`/services/${s.slug}`}
-              className="card-industrial group rounded-2xl p-5 transition-shadow hover:shadow-[var(--shadow-lift)]"
+              className="card-industrial group rounded-xl p-4 transition-shadow hover:shadow-[var(--shadow-lift)]"
             >
               <h3 className="heading-md text-ink">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
+              <p className="mt-1.5 text-sm leading-relaxed text-muted">
                 {SERVICES.find((x) => serviceSlugFromHref(x.href) === s.slug)?.description}
               </p>
-              <span className="label mt-4 inline-flex items-center gap-1 text-sm text-ink">
+              <span className="label mt-3 inline-flex items-center gap-1 text-sm text-ink">
                 View service
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </span>

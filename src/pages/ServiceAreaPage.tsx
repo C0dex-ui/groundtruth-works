@@ -1,5 +1,6 @@
 import { ArrowRight, MapPin, Phone } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
+import { AreaMap } from '../components/AreaMap'
 import { InteriorCta } from '../components/InteriorCta'
 import { PageHero } from '../components/PageHero'
 import { PageShell } from '../components/PageShell'
@@ -11,6 +12,7 @@ import {
   PHONE_HREF,
   SERVICE_CITIES,
   SERVICES,
+  cityHeroImage,
   getCityBySlug,
 } from '../data/content'
 import {
@@ -63,130 +65,139 @@ export function ServiceAreaPage() {
           </>
         }
         primaryCta={{ label: 'GET A QUOTE', href: '#quote' }}
-        map={{
-          mode: 'city',
-          name: city.name,
-          lat: city.lat,
-          lng: city.lng,
-          zoom: 12,
-        }}
+        image={cityHeroImage(city.slug)}
+        imageAlt={`Site work capability photography — ${city.name}, Arkansas service area`}
       >
         <TrustStrip />
       </PageHero>
 
       <section className="section-pad bg-white">
-        <div className="container-site max-w-3xl">
-          <div>
-            {detail?.ground && detail.groundTitle && (
-              <>
-                <h2 className="heading-xl text-ink">{detail.groundTitle}</h2>
-                <div className="mt-4 space-y-4 text-base leading-relaxed text-muted">
-                  {detail.ground.map((p) => (
-                    <p key={p.slice(0, 40)}>{p}</p>
-                  ))}
-                </div>
-              </>
-            )}
-
-            {detail?.built && detail.builtTitle && (
-              <>
-                <h2 className="heading-xl mt-10 text-ink">{detail.builtTitle}</h2>
-                <div className="mt-4 space-y-4 text-base leading-relaxed text-muted">
-                  {detail.built.map((p) => (
-                    <p key={p.slice(0, 40)}>{p}</p>
-                  ))}
-                </div>
-              </>
-            )}
-
-            {detail?.calledFor && detail.calledForTitle && (
-              <>
-                <h2 className="heading-xl mt-10 text-ink">{detail.calledForTitle}</h2>
-                {typeof detail.calledFor === 'string' ? (
-                  <p className="mt-4 text-base leading-relaxed text-muted">
-                    {detail.calledFor}
-                  </p>
-                ) : (
-                  <div className="mt-6">
-                    <CardGrid items={detail.calledFor} />
-                    {detail.calledForNote && (
-                      <p className="mt-4 text-sm font-medium text-ink">
-                        {detail.calledForNote}
-                      </p>
-                    )}
+        <div className="container-site">
+          <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-8">
+            <div>
+              {detail?.ground && detail.groundTitle && (
+                <>
+                  <h2 className="heading-xl text-ink">{detail.groundTitle}</h2>
+                  <div className="mt-4 space-y-4 text-base leading-relaxed text-muted">
+                    {detail.ground.map((p) => (
+                      <p key={p.slice(0, 40)}>{p}</p>
+                    ))}
                   </div>
-                )}
-              </>
-            )}
+                </>
+              )}
 
-            {detail?.access && detail.accessTitle && (
-              <>
-                <h2 className="heading-xl mt-10 text-ink">{detail.accessTitle}</h2>
-                <div className="mt-4 space-y-4 text-base leading-relaxed text-muted">
-                  {detail.access.map((p) => (
-                    <p key={p.slice(0, 48)}>{p}</p>
-                  ))}
-                </div>
-              </>
-            )}
+              {detail?.built && detail.builtTitle && (
+                <>
+                  <h2 className="heading-xl mt-8 text-ink">{detail.builtTitle}</h2>
+                  <div className="mt-4 space-y-4 text-base leading-relaxed text-muted">
+                    {detail.built.map((p) => (
+                      <p key={p.slice(0, 40)}>{p}</p>
+                    ))}
+                  </div>
+                </>
+              )}
 
-            {detail?.permitting && detail.permittingTitle && (
-              <>
-                <h2 className="heading-xl mt-10 text-ink">{detail.permittingTitle}</h2>
-                <ul className="mt-4 space-y-3">
-                  {detail.permitting.map((item) => (
-                    <li
-                      key={item.slice(0, 48)}
-                      className="flex gap-3 text-base leading-relaxed text-muted"
-                    >
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-3 text-sm text-muted">
-                  Confirm the current requirement with the jurisdiction before mobilisation — we do
-                  it for you as part of the scope.
-                </p>
-              </>
-            )}
-
-            {!detail && meta && (
-              <>
-                <h2 className="heading-xl text-ink">{city.name}, AR</h2>
-                <div className="card-industrial mt-6 rounded-2xl p-5">
-                  <p className="label text-xs text-muted">From the service-areas table</p>
-                  <dl className="mt-3 space-y-2 text-sm">
-                    <div>
-                      <dt className="text-muted">County</dt>
-                      <dd className="font-medium text-ink">{meta.county}</dd>
+              {detail?.calledFor && detail.calledForTitle && (
+                <>
+                  <h2 className="heading-xl mt-8 text-ink">{detail.calledForTitle}</h2>
+                  {typeof detail.calledFor === 'string' ? (
+                    <p className="mt-4 text-base leading-relaxed text-muted">
+                      {detail.calledFor}
+                    </p>
+                  ) : (
+                    <div className="mt-6">
+                      <CardGrid items={detail.calledFor} />
+                      {detail.calledForNote && (
+                        <p className="mt-4 text-sm font-medium text-ink">
+                          {detail.calledForNote}
+                        </p>
+                      )}
                     </div>
-                    <div>
-                      <dt className="text-muted">Drive time from Mayflower</dt>
-                      <dd className="font-medium text-ink">{meta.drive}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-muted">Most common work</dt>
-                      <dd className="font-medium text-ink">{meta.commonWork}</dd>
-                    </div>
-                  </dl>
-                </div>
-                <p className="mt-6 text-sm leading-relaxed text-muted">
-                  Long-form local copy for this town is only published when it exists on the source
-                  site. Facts above come from the Central Arkansas service-areas table; call for a
-                  site-specific number.
-                </p>
-              </>
-            )}
+                  )}
+                </>
+              )}
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a href={PHONE_HREF} className="btn-primary">
-                <Phone className="h-4 w-4" aria-hidden />
-                Call {PHONE_DISPLAY}
-              </a>
-              <Link to="/get-a-quote" className="btn-outline">
-                GET A QUOTE
-              </Link>
+              {detail?.access && detail.accessTitle && (
+                <>
+                  <h2 className="heading-xl mt-8 text-ink">{detail.accessTitle}</h2>
+                  <div className="mt-4 space-y-4 text-base leading-relaxed text-muted">
+                    {detail.access.map((p) => (
+                      <p key={p.slice(0, 48)}>{p}</p>
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {detail?.permitting && detail.permittingTitle && (
+                <>
+                  <h2 className="heading-xl mt-8 text-ink">{detail.permittingTitle}</h2>
+                  <ul className="mt-4 space-y-3">
+                    {detail.permitting.map((item) => (
+                      <li
+                        key={item.slice(0, 48)}
+                        className="flex gap-3 text-base leading-relaxed text-muted"
+                      >
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-3 text-sm text-muted">
+                    Confirm the current requirement with the jurisdiction before mobilisation — we do
+                    it for you as part of the scope.
+                  </p>
+                </>
+              )}
+
+              {!detail && meta && (
+                <>
+                  <h2 className="heading-xl text-ink">{city.name}, AR</h2>
+                  <div className="card-industrial mt-6 rounded-2xl p-5">
+                    <p className="label text-xs text-muted">From the service-areas table</p>
+                    <dl className="mt-3 space-y-2 text-sm">
+                      <div>
+                        <dt className="text-muted">County</dt>
+                        <dd className="font-medium text-ink">{meta.county}</dd>
+                      </div>
+                      <div>
+                        <dt className="text-muted">Drive time from Mayflower</dt>
+                        <dd className="font-medium text-ink">{meta.drive}</dd>
+                      </div>
+                      <div>
+                        <dt className="text-muted">Most common work</dt>
+                        <dd className="font-medium text-ink">{meta.commonWork}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                  <p className="mt-6 text-sm leading-relaxed text-muted">
+                    Long-form local copy for this town is only published when it exists on the source
+                    site. Facts above come from the Central Arkansas service-areas table; call for a
+                    site-specific number.
+                  </p>
+                </>
+              )}
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <a href={PHONE_HREF} className="btn-primary">
+                  <Phone className="h-4 w-4" aria-hidden />
+                  Call {PHONE_DISPLAY}
+                </a>
+                <Link to="/get-a-quote" className="btn-outline">
+                  GET A QUOTE
+                </Link>
+              </div>
+            </div>
+
+            <div className="min-w-0 lg:sticky lg:top-28">
+              <AreaMap
+                mode="city"
+                name={city.name}
+                lat={city.lat}
+                lng={city.lng}
+                zoom={12}
+                heightClass="h-52 sm:h-64 lg:h-[18rem]"
+                subtitle={`Google Maps · ${city.name}, AR`}
+              />
             </div>
           </div>
         </div>
@@ -300,11 +311,16 @@ export function ServiceAreasIndexPage() {
         <p className="mt-4 text-sm text-muted">{SERVICE_AREAS_INDEX.counties}</p>
       </SectionBlock>
 
-      <SectionBlock title={SERVICE_AREAS_INDEX.outsideTitle} tone="paper">
-        <p className="max-w-3xl text-base leading-relaxed text-muted">
+      <SectionBlock
+        title={SERVICE_AREAS_INDEX.outsideTitle}
+        tone="paper"
+        image={INTERIOR_IMAGES.serviceAreasOutside}
+        imageAlt="Growfully coverage across Central Arkansas"
+      >
+        <p className="text-base leading-relaxed text-muted">
           {SERVICE_AREAS_INDEX.outside}
         </p>
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
           <a href={PHONE_HREF} className="btn-primary">
             Call {PHONE_DISPLAY}
           </a>

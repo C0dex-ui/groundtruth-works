@@ -29,28 +29,38 @@ export function AboutPage() {
         <TrustStrip />
       </PageHero>
 
-      <SectionBlock title={ABOUT.whyTitle} tone="white">
-        <div className="max-w-3xl space-y-4 text-base leading-relaxed text-muted sm:text-lg">
+      <SectionBlock
+        title={ABOUT.whyTitle}
+        tone="white"
+        image={INTERIOR_IMAGES.aboutWhy}
+        imageAlt="Growfully land clearing and site work"
+      >
+        <div className="space-y-4 text-base leading-relaxed text-muted sm:text-[1.05rem]">
           {ABOUT.why.map((p) => (
             <p key={p.slice(0, 48)}>{p}</p>
           ))}
         </div>
-        <p className="mt-6 text-sm italic text-muted">
+        <p className="mt-5 text-sm italic text-muted">
           David Culberson, owner and operator, Mayflower, AR.
         </p>
       </SectionBlock>
 
-      <SectionBlock title={ABOUT.yearsTitle} tone="paper">
-        <div className="max-w-3xl space-y-4 text-base leading-relaxed text-muted sm:text-lg">
+      <SectionBlock
+        title={ABOUT.yearsTitle}
+        tone="paper"
+        image={INTERIOR_IMAGES.aboutYears}
+        imageAlt="Central Arkansas site work over the years"
+      >
+        <div className="space-y-4 text-base leading-relaxed text-muted sm:text-[1.05rem]">
           {ABOUT.years.map((p) => (
             <p key={p.slice(0, 48)}>{p}</p>
           ))}
         </div>
-        <dl className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <dl className="mt-5 grid gap-3 sm:grid-cols-2">
           {ABOUT.facts.map((fact) => (
-            <div key={fact.label} className="card-industrial rounded-2xl p-5">
+            <div key={fact.label} className="card-industrial rounded-xl p-4">
               <dt className="label text-xs text-muted">{fact.label}</dt>
-              <dd className="mt-2 font-body text-base font-medium text-ink">{fact.value}</dd>
+              <dd className="mt-1.5 font-body text-base font-medium text-ink">{fact.value}</dd>
             </div>
           ))}
         </dl>

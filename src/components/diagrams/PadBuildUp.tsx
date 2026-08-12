@@ -62,18 +62,18 @@ export function PadBuildUp() {
     <section className="section-pad bg-paper" aria-labelledby="pad-build-heading">
       <div className="container-site">
         <p className="eyebrow">Commercial development</p>
-        <div className="accent-bar mt-3" />
-        <h2 id="pad-build-heading" className="heading-xl mt-4 text-ink">
+        <div className="accent-bar mt-2.5" />
+        <h2 id="pad-build-heading" className="heading-xl mt-3 text-ink">
           How a pad is built up
         </h2>
-        <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted sm:text-lg">
+        <p className="mt-2.5 max-w-3xl text-base leading-relaxed text-muted">
           Every commercial surface is a stack, and every layer has one job. Skip one and the lot fails
           in the first wet winter, not in year ten.
         </p>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-start">
-          <div className="overflow-hidden border-2 border-ink bg-white p-4 sm:p-6">
-            <p className="label mb-4 text-xs text-muted">
+        <div className="mt-5 grid gap-5 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+          <div className="overflow-hidden border-2 border-ink bg-white p-3.5 sm:p-5">
+            <p className="label mb-3 text-xs text-muted">
               Commercial pad build-up, bottom to top
             </p>
             <svg

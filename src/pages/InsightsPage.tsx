@@ -117,7 +117,7 @@ export function InsightArticlePage() {
             ))}
           </div>
 
-          <h2 className="heading-xl mt-12 text-ink">The short answer, by ground type</h2>
+          <h2 className="heading-xl mt-8 text-ink">The short answer, by ground type</h2>
           <p className="mt-4 text-base leading-relaxed text-muted">{article.tableLead}</p>
 
           <div className="mt-6 overflow-x-auto rounded-2xl border border-black/8">
@@ -143,7 +143,7 @@ export function InsightArticlePage() {
           <p className="mt-4 text-sm text-muted">{article.tableNote}</p>
 
           {article.factors.map((factor) => (
-            <section key={factor.title} className="mt-12">
+            <section key={factor.title} className="mt-8">
               <h2 className="heading-md text-ink">{factor.title}</h2>
               <div className="mt-4 space-y-4 text-base leading-relaxed text-muted">
                 {factor.body.map((p) => (
@@ -171,7 +171,7 @@ export function InsightArticlePage() {
             </section>
           ))}
 
-          <section className="mt-12">
+          <section className="mt-8">
             <h2 className="heading-xl text-ink">{article.comparableTitle}</h2>
             <div className="mt-6">
               <Checklist items={[...article.comparable]} />
@@ -181,7 +181,7 @@ export function InsightArticlePage() {
             </p>
           </section>
 
-          <section className="mt-12">
+          <section className="mt-8">
             <h2 className="heading-xl text-ink">{article.exampleTitle}</h2>
             <div className="mt-4 space-y-4 text-base leading-relaxed text-muted">
               {article.example.map((p) => (
@@ -190,7 +190,7 @@ export function InsightArticlePage() {
             </div>
           </section>
 
-          <section className="mt-12 border-t border-black/8 pt-10">
+          <section className="mt-8 border-t border-black/8 pt-6">
             <h2 className="heading-md text-ink">Keep reading</h2>
             <ul className="mt-4 space-y-3">
               {article.keepReading.map((link) => (

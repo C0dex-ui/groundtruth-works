@@ -90,40 +90,40 @@ export function ClearingMethods() {
     <section className="section-pad bg-paper" aria-labelledby="clear-methods-heading">
       <div className="container-site">
         <p className="eyebrow">Land clearing</p>
-        <div className="accent-bar mt-3" />
-        <h2 id="clear-methods-heading" className="heading-xl mt-4 text-ink">
+        <div className="accent-bar mt-2.5" />
+        <h2 id="clear-methods-heading" className="heading-xl mt-3 text-ink">
           Three ways to clear a tract
         </h2>
-        <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted sm:text-lg">
+        <p className="mt-2.5 max-w-3xl text-base leading-relaxed text-muted">
           Same wooded parcel, three completely different results — and the choice is worth more than
           anything else a clearing contractor decides for you.
         </p>
 
         {/* Visual diagrams — Lovable icon style */}
-        <div className="mt-10 grid gap-4 sm:grid-cols-3 sm:gap-5">
+        <div className="mt-6 grid gap-3 sm:grid-cols-3 sm:gap-4">
           {METHODS.map(({ title, summary, Icon }) => (
             <figure key={title} className="min-w-0">
-              <div className="overflow-hidden rounded-sm border-2 border-ink bg-white aspect-[5/3]">
+              <div className="aspect-[16/9] overflow-hidden rounded-sm border-2 border-ink bg-white">
                 <Icon />
               </div>
-              <figcaption className="mt-4">
-                <h3 className="font-display text-xl uppercase leading-tight text-ink sm:text-2xl">
+              <figcaption className="mt-2.5">
+                <h3 className="font-display text-lg uppercase leading-tight text-ink sm:text-xl">
                   {title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{summary}</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted">{summary}</p>
               </figcaption>
             </figure>
           ))}
         </div>
 
         {/* Comparison table under the icons */}
-        <div className="mt-12 overflow-x-auto rounded-2xl border border-black/8 bg-white">
+        <div className="mt-6 overflow-x-auto rounded-xl border border-black/8 bg-white">
           <table className="w-full min-w-[48rem] text-left text-sm">
             <thead className="border-b border-black/8 bg-paper">
               <tr>
-                <th className="label px-4 py-3 text-xs text-muted">Method</th>
+                <th className="label px-3 py-2.5 text-xs text-muted">Method</th>
                 {METHODS.map((m) => (
-                  <th key={m.title} className="px-4 py-3 font-display text-base uppercase text-ink">
+                  <th key={m.title} className="px-3 py-2.5 font-display text-sm uppercase text-ink sm:text-base">
                     {m.title}
                   </th>
                 ))}
@@ -139,11 +139,11 @@ export function ClearingMethods() {
                 ] as const
               ).map(([label, key]) => (
                 <tr key={label} className="border-b border-black/6 last:border-0">
-                  <td className="label px-4 py-3 text-xs text-muted">{label}</td>
+                  <td className="label px-3 py-2.5 text-xs text-muted">{label}</td>
                   {METHODS.map((m) => (
                     <td
                       key={m.title}
-                      className={`px-4 py-3 ${key === 'best' ? 'font-medium text-ink' : 'text-muted'}`}
+                      className={`px-3 py-2.5 ${key === 'best' ? 'font-medium text-ink' : 'text-muted'}`}
                     >
                       {m[key]}
                     </td>
@@ -154,7 +154,7 @@ export function ClearingMethods() {
           </table>
         </div>
 
-        <p className="mt-6 max-w-2xl font-display text-xl uppercase leading-snug text-ink">
+        <p className="mt-4 max-w-2xl font-display text-lg uppercase leading-snug text-ink sm:text-xl">
           Mulch a tract you meant to pave and you pay for it twice.
         </p>
       </div>

@@ -19,8 +19,8 @@ export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-ink text-white">
       <div className="h-1 w-full bg-accent" aria-hidden />
-      <div className="container-site py-10 sm:py-12 lg:py-14">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+      <div className="container-site py-8 sm:py-9 lg:py-10">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-12 lg:gap-6">
           <div className="lg:col-span-4">
             <Link to="/" className="inline-flex items-center gap-3">
               <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-md bg-steel ring-1 ring-white/15">
@@ -113,7 +113,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-white/40 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-5 text-sm text-white/40 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {COMPANY} · Site work in Central Arkansas since 2002
           </p>
