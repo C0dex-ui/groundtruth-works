@@ -112,21 +112,20 @@ export function ProcessList({
   steps: { title: string; body: string }[]
 }) {
   return (
-    <ol className="grid gap-2.5 sm:gap-3">
+    <ol className="grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 sm:gap-3.5">
       {steps.map((step, i) => (
-        <li
-          key={step.title}
-          className="card-industrial flex gap-3 rounded-xl p-3.5 sm:gap-4 sm:p-4"
-        >
-          <span className="font-display flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-ink text-base text-accent">
-            {String(i + 1).padStart(2, '0')}
-          </span>
-          <div className="min-w-0">
-            <h3 className="heading-md text-ink">{step.title}</h3>
-            <p className="mt-1 font-body text-sm leading-relaxed text-muted">
-              {step.body}
-            </p>
-          </div>
+        <li key={step.title} className="h-full min-w-0">
+          <article className="card-industrial flex h-full gap-3 rounded-xl p-3.5 sm:gap-3.5 sm:p-4">
+            <span className="font-display flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-ink text-base text-accent">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <div className="min-w-0 flex-1">
+              <h3 className="heading-md text-ink">{step.title}</h3>
+              <p className="mt-1 font-body text-sm leading-relaxed text-muted">
+                {step.body}
+              </p>
+            </div>
+          </article>
         </li>
       ))}
     </ol>
