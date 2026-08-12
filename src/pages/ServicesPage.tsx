@@ -1,6 +1,14 @@
 import { ArrowRight, MapPin } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { CutAndFillDiagram, GradeToleranceNote } from '../components/CutAndFillDiagram'
+import {
+  ClearingMethods,
+  CubicYardCalculator,
+  CutAndFillDiagram,
+  ExcavationSection,
+  GradeToleranceNote,
+  MulchingCompare,
+  SitePrepSchedule,
+} from '../components/diagrams'
 import { InteriorCta } from '../components/InteriorCta'
 import { PageHero } from '../components/PageHero'
 import { PageShell } from '../components/PageShell'
@@ -169,15 +177,25 @@ export function ServiceDetailPage() {
         </div>
       </SectionBlock>
 
-      {/* Lovable site-grading interactive diagram */}
+      {/* Interactive diagrams from Lovable service pages */}
+      {detail.slug === 'land-clearing' && <ClearingMethods />}
       {detail.slug === 'site-grading' && (
         <>
           <CutAndFillDiagram />
           <GradeToleranceNote />
         </>
       )}
+      {detail.slug === 'excavation-services' && <ExcavationSection />}
+      {detail.slug === 'site-preparation' && <SitePrepSchedule />}
+      {detail.slug === 'forestry-mulching' && <MulchingCompare />}
+      {detail.slug === 'dirt-work' && <CubicYardCalculator />}
 
-      {detail.extraSections?.map((section) => (
+      {/* Land clearing methods already shown as interactive table — skip duplicate card grid */}
+      {detail.extraSections
+        ?.filter((section) =>
+          detail.slug === 'land-clearing' ? section.title !== 'Three ways to clear a tract' : true,
+        )
+        .map((section) => (
         <SectionBlock
           key={section.title}
           title={section.title}

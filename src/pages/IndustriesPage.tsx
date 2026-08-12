@@ -1,5 +1,6 @@
 import { ArrowRight, MapPin } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
+import { PadBuildUp, SolarAcres } from '../components/diagrams'
 import { InteriorCta } from '../components/InteriorCta'
 import { PageHero } from '../components/PageHero'
 import { PageShell } from '../components/PageShell'
@@ -143,6 +144,9 @@ export function IndustryDetailPage() {
           ))}
         </div>
       </SectionBlock>
+
+      {detail.slug === 'solar-site-preparation' && <SolarAcres />}
+      {detail.slug === 'commercial-development' && <PadBuildUp />}
 
       <SectionBlock title="What we self-perform" tone="paper">
         <CardGrid items={detail.selfPerform} />
