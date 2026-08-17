@@ -366,10 +366,6 @@ export const INDUSTRIES_DETAIL: IndustryDetail[] = [
         body: 'Inlets, pipe runs, headwalls and swales installed and backfilled so the collection system works before the surface goes down.',
       },
       {
-        title: 'Utility trench coordination',
-        body: 'Trench, bedding and backfill for wet and dry utilities, sequenced with your subs and verified against the utility plan.',
-      },
-      {
         title: 'Curb and paving preparation',
         body: 'Fine grade and stone brought to tolerance so the paving contractor is not correcting dirt work with asphalt.',
       },

@@ -9,6 +9,7 @@ import {
   QUOTE_SERVICE_OPTIONS,
   openMailtoQuote,
 } from '../data/content'
+import { HOURS_LINE } from '../data/company-pages'
 
 export function QuoteCTA() {
   const [submitted, setSubmitted] = useState(false)
@@ -67,7 +68,7 @@ export function QuoteCTA() {
               <a href={EMAIL_HREF} className="text-white underline underline-offset-2">
                 {EMAIL}
               </a>
-              . Mon–Sat 7:00 AM – 5:00 PM · Sunday closed.
+              . {HOURS_LINE}.
             </p>
           </div>
 

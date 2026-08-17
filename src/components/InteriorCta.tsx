@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Phone, ShieldCheck } from 'lucide-react'
 import { PHONE_DISPLAY, PHONE_HREF } from '../data/content'
+import { HOURS_LINE } from '../data/company-pages'
 
 type InteriorCtaProps = {
   id?: string
@@ -61,7 +62,7 @@ export function InteriorCta({
               Call {PHONE_DISPLAY}
             </a>
             <p className="text-center text-sm text-white/50">
-              Mon–Sat 7:00 AM – 5:00 PM · Sunday closed
+              {HOURS_LINE}
             </p>
           </div>
         </div>

@@ -12,6 +12,7 @@ import {
   SERVICES,
   TAGLINE,
 } from '../data/content'
+import { HOURS_LINE } from '../data/company-pages'
 
 export function Footer() {
   const areaLinks = SERVICE_CITIES.slice(0, 8)
@@ -47,7 +48,7 @@ export function Footer() {
             <p className="mt-4 text-sm leading-relaxed text-white/45">
               Mayflower, AR · Serving Central Arkansas
               <br />
-              Mon–Sat 7:00 AM – 5:00 PM · Sunday closed
+              {HOURS_LINE}
             </p>
             <Link to="/get-a-quote" className="btn-primary mt-6">
               GET A QUOTE

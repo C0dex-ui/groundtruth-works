@@ -232,7 +232,7 @@ export const NAV: readonly NavItem[] = [
       {
         label: 'Excavation Services',
         href: '/services/excavation-services',
-        description: 'Cut, fill, trenching and bulk earthmoving',
+        description: 'Cut, fill and bulk earthmoving',
       },
       {
         label: 'Site Preparation',
@@ -338,7 +338,7 @@ export const SERVICES = [
   {
     title: 'Excavation Services',
     description:
-      'Cut, fill, trenching and bulk earthmoving for footings, utilities, ponds and building pads.',
+      'Cut, fill and bulk earthmoving for ponds, building pads and large dirt projects.',
     href: '/services/excavation-services',
     image: IMAGES.excavation,
   },

@@ -8,8 +8,8 @@ export const OWNER = {
   role: 'Owner and operator',
 } as const
 
-export const HOURS_LINE = 'Mon–Sat 7:00 AM – 5:00 PM · Sunday closed'
-export const HOURS_DETAIL = 'Monday–Saturday, 7:00 AM – 5:00 PM · Closed Sunday'
+export const HOURS_LINE = 'Mon–Fri 8:00 AM – 5:00 PM CST · Closed Sat and Sun'
+export const HOURS_DETAIL = 'Monday–Friday, 8:00 AM – 5:00 PM CST · Closed Saturday and Sunday'
 
 export const ABOUT = {
   heroTitle: 'The man who quotes it runs it',
@@ -108,7 +108,7 @@ export const PROJECTS_PAGE = {
 
 export const CONTACT_PAGE = {
   heroTitle: 'Call and tell us about the site',
-  lead: 'Fastest way to reach us, seven a.m. to five, Monday to Saturday:',
+  lead: 'Fastest way to reach us, eight a.m. to five, Monday to Friday:',
   serviceAreaNote:
     'Mayflower, AR · Serving Central Arkansas — roughly 60–75 miles out, Faulkner and Pulaski counties as the anchors.',
   truckNote:

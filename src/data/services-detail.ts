@@ -33,7 +33,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     title: 'Land Clearing',
     heroTitle: 'Land clearing in Central Arkansas',
     lead:
-      'Land clearing is the removal of trees, stumps, brush and undergrowth from a tract so the ground underneath can be used. Growfully clears acreage across Central Arkansas three ways — forestry mulching, grubbing with haul-off, and selective clearing — and hands the site over ready to strip, grade and build on.',
+      'Land clearing is the removal of trees, stumps, brush and undergrowth from a tract so the ground underneath can be used. Growfully clears acreage across Central Arkansas three ways — forestry mulching, grubbing with haul-off, and selective clearing — then stays on the job to strip, grade and finish the dirt so the site is ready to build on.',
     quoteCtaLabel: 'Get a clearing quote',
     image: INTERIOR_IMAGES.serviceDetail['land-clearing'],
     introTitle: 'What land clearing is',
@@ -116,7 +116,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
       },
       {
         title: 'Method and debris',
-        body: 'Mulching in place is cheapest per acre. Grubbing with haul-off is dearest, because you pay for stump removal, backfill, loading and trucking by the load and by the mile.',
+        body: 'Mulching in place is cheapest per acre. Grubbing with haul-off is the most expensive, because you pay for stump removal, backfill, loading and trucking by the load and by the mile.',
       },
       {
         title: 'Terrain, soil and access',
@@ -128,7 +128,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
       },
       {
         title: 'Permits, erosion control and season',
-        body: 'An acre of disturbance brings stormwater permitting and controls to maintain. Dry winter ground clears faster and cleaner than a wet Arkansas spring.',
+        body: 'An acre of disturbance brings stormwater permitting and controls to maintain. Dry summer ground clears faster and cleaner than a wet Arkansas spring.',
       },
     ],
     costNote:
@@ -306,7 +306,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
       },
       {
         title: 'Weather',
-        body: 'Earthwork stops in wet weather and clay needs dry days to condition. Arkansas spring is the risk window; late summer and winter are the productive ones.',
+        body: 'Earthwork stops in wet weather and clay needs dry days to condition. Arkansas spring is the risk window; late summer and fall are the productive ones.',
       },
     ],
     readyList: [
@@ -352,24 +352,16 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     title: 'Excavation Services',
     heroTitle: 'Excavation contractor, Central Arkansas',
     lead:
-      'Excavation is the controlled removal of earth to the depths and shapes a plan calls for. Growfully digs footings, foundations, utility trenches, ponds and building pads across Central Arkansas, protects the excavation while it is open, and puts the backfill back compacted to spec.',
+      'Excavation is the controlled removal of earth to the depths and shapes a plan calls for. Growfully handles bulk cut and fill, ponds, building pads, undercut and demolition across Central Arkansas, protects the excavation while it is open, and puts the backfill back compacted to spec.',
     quoteCtaLabel: 'Get an excavation quote',
     image: INTERIOR_IMAGES.serviceDetail['excavation-services'],
     introTitle: 'What excavation is',
     intro: [
-      'Every structure starts as a hole. Excavation is the trade that puts that hole in the right place, at the right elevation, with walls that stay up while people work inside them, and with the dirt around it put back so nothing settles later.',
+      'Excavation is the trade that moves earth to the right place and the right elevation — bulk cut, pads, ponds and demolition — with the dirt put back so nothing settles later.',
       'On a commercial job it is measured work. Quantities come off the plan in cubic yards, depths get shot against a benchmark, and the backfill has a density number attached to it. That is the difference between an excavation contractor and a machine with an operator.',
       'Central Arkansas ground makes it interesting. Faulkner County uplands run clay that holds water and turns to grease in the spring. The Arkansas River bottoms below Mayflower are silty and soft. Ridges toward Perry and Saline counties hide shale and weathered sandstone at depths a boring log did not catch.',
     ],
     useCases: [
-      {
-        title: 'Footings and foundations',
-        body: 'Spread footings, grade beams, elevator pits and stem walls dug to plan bearing elevation and kept clean and dry until the pour.',
-      },
-      {
-        title: 'Utility trenching',
-        body: 'Storm, sanitary, water, gas, electric and conduit — trenched, bedded, laid to grade, and backfilled compacted over the pipe zone.',
-      },
       {
         title: 'Bulk earthmoving',
         body: 'Mass cut and fill to bring a site to subgrade, whether that balances on site or means importing and exporting dirt.',
@@ -384,7 +376,15 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
       },
       {
         title: 'Demolition and removal',
-        body: 'Old slabs, footings, tanks, culverts and buried debris out of the way before new construction starts.',
+        body: 'Old slabs, tanks, culverts and buried debris out of the way before new construction starts.',
+      },
+      {
+        title: 'Warehouse demolition',
+        body: 'Warehouse and industrial buildings taken down, debris loaded and hauled, and the footprint left ready for the next use of the ground.',
+      },
+      {
+        title: 'House demolition',
+        body: 'Residential structures taken down and hauled so the lot can be opened for a new pad, a commercial reuse, or open ground.',
       },
     ],
     process: [
@@ -455,8 +455,8 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
         body: 'Two business days for Arkansas One Call, longer if a private locate is needed on a developed parcel.',
       },
       {
-        title: 'Footing excavation',
-        body: 'A small commercial footprint commonly runs a few days, driven by depth and how fast the inspector can get there.',
+        title: 'Pad and pond work',
+        body: 'A small commercial pad or pond commonly runs a few days, driven by volume, haul cycles and how fast the inspector can get there.',
       },
       {
         title: 'Bulk earthwork',
@@ -480,7 +480,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     faqs: [
       {
         q: 'What does an excavation contractor actually do?',
-        a: 'An excavation contractor moves earth to the elevations and shapes a plan calls for. On a commercial job that means footing and foundation excavation, utility trenching, bulk cut and fill, pond and basin digging, undercut and replacement of bad soil, and backfill compacted to a density spec.',
+        a: 'An excavation contractor moves earth to the elevations and shapes a plan calls for. On a commercial job that means bulk cut and fill, pond and basin digging, building pads, undercut and replacement of bad soil, demolition and removal, and backfill compacted to a density spec.',
       },
       {
         q: 'How deep can you dig, and when is shoring required?',
